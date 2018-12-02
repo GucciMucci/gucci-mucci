@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-import './header.scss'
+import React, { Component } from 'react';
+import './header.scss';
+import { Link } from 'react-router-dom';
 
 
 export default class Header extends Component {
   render() {
     return (
       <div className="header">
-        <span>GUCCI</span>
-        <span className="bag-link">👜</span>
+        <Link to='/'><span>GUCCI</span></Link>
+        <Link to='/bag'><span className="bag-link">👜</span></Link>
       </div>
     )
   }
