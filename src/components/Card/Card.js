@@ -14,6 +14,7 @@ class Card extends Component {
 				<h1>{name}</h1>
 				<img src={images[0].image} alt="" />
 				<p>{price}</p>
+				<button>👜</button>
 			</div>
 		);
 	}
