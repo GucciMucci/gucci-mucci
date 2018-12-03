@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './home.scss';
+import Card from '../Card/Card'
 import firebase from '../firebase'
 
 export default class Home extends Component {
@@ -7,8 +8,17 @@ export default class Home extends Component {
     super()
     this.state = {
       username: '',
-      currentItem: ''
+      currentItem: '',
+      data: []
     }
+  }
+
+  componentDidMount() {
+    firebase.database().ref('bags').once('value').then(snapshot => {
+      this.setState({
+        data: snapshot.val()
+      })
+    })
   }
 
   handleChange = (e) => {
@@ -35,13 +45,9 @@ export default class Home extends Component {
     return (
       <div>
         <section className="add-item">
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" name="username" placeholder="What's your name?" onChange={this.handleChange} value={this.state.username} />
-            <input type="text" name="currentItem" placeholder="What are you bringing ?" onChange={this.handleChange} value={this.state.currentItem} />
-            <button>Add Item</button>
-          </form>
+          {this.state.data.map(item => <Card item={item} />)}
         </section>
-      </div>
+      </div >
     )
   }
 }
