@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import _ from "../utils";
+import { Link } from "react-router-dom";
 
 export default class Checkout extends Component {
   constructor() {
