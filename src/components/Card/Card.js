@@ -6,6 +6,20 @@ class Card extends Component {
 		super(props);
 		this.state = { ...props.item }
 	}
+
+	addToBag = (product) => {
+		let localBag = localStorage.getItem('bagArray');
+		if (localBag) {
+			const tempBag = JSON.parse(localStorage.getItem('bagArray'))
+			tempBag.push(product)
+			localStorage.setItem("bagArray", JSON.stringify(tempBag))
+		} else {
+			localStorage.setItem("bagArray", JSON.stringify([product]))
+		}
+		console.log('---bagArray------->',localStorage.getItem('bagArray'))
+	}
+
+
 	render() {
 		let { name, images, price } = this.state
 		images = _.sortURL(images);
@@ -14,7 +28,7 @@ class Card extends Component {
 				<h1>{name}</h1>
 				<img src={images[0].image} alt="" />
 				<p>{price}</p>
-				<button>👜</button>
+				<button onClick={() => this.addToBag(this.state)}>👜</button>
 			</div>
 		);
 	}
