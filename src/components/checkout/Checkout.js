@@ -35,6 +35,7 @@ export default class Checkout extends Component {
           token={this.onToken}
           stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
         />
+        <span />
       </div>
     );
   }
