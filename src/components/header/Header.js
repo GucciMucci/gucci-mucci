@@ -1,15 +1,47 @@
-import React, { Component } from 'react';
-import './header.scss';
-import { Link } from 'react-router-dom';
-
+import React, { Component } from "react";
+import "./header.scss";
+import { Link } from "react-router-dom";
+import firebase from "./../firebase";
+import Login from "../Login/Login";
 
 export default class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    };
+  }
+  componentDidMount() {
+    this.authListenier();
+  }
+  authListenier() {
+    firebase.auth().onAuthStateChanged(user => {
+      console.log(this.state.user);
+      console.log("---user id", user.uid);
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: null });
+      }
+    });
+  }
+
+  logout = () => {
+    firebase.auth().signOut();
+    this.setState({ user: null });
+  };
+
   render() {
     return (
       <div className="header">
-        <Link to='/'><span>GUCCI</span></Link>
-        <Link to='/bag'><span className="bag-link">👜</span></Link>
+        <Link to="/">
+          <span>GUCCI</span>
+        </Link>
+        {this.state.user === null ? <Link to="/login">Login</Link> : <button onClick={this.logout}>Logout</button>}
+        <Link to="/bag">
+          <span className="bag-link">👜</span>
+        </Link>
       </div>
-    )
+    );
   }
 }
