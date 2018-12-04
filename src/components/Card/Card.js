@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import _ from "../utils";
 
 class Card extends Component {
@@ -25,7 +26,9 @@ class Card extends Component {
 		return (
 			<div>
 				<h1>{name}</h1>
-				<img src={images[0].image} alt="" />
+				<Link to={window.location.pathname + "/" + name}>
+					<img src={images[0].image} alt="" />
+				</Link>
 				<p>{price}</p>
 				<button onClick={() => this.addToBag(this.state)}>👜</button>
 			</div>
