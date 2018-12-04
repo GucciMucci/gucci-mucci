@@ -6,7 +6,8 @@ export default class Login extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      error: ""
     };
   }
 
@@ -32,7 +33,8 @@ export default class Login extends Component {
         console.log(user);
       })
       .catch(error => {
-        console.log(error);
+        console.log(error.message);
+        this.setState({ error: error.message });
       });
   };
 
@@ -53,6 +55,7 @@ export default class Login extends Component {
             Login
           </button>
           <button onClick={this.signup}>Sign Up</button>
+          {this.state.error && <div>Please enter a valid password. {this.state.error}</div>}
         </form>
       </div>
     );

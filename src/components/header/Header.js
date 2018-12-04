@@ -8,7 +8,7 @@ export default class Header extends Component {
   constructor() {
     super();
     this.state = {
-      user: {}
+      user: null
     };
   }
   componentDidMount() {
@@ -16,7 +16,7 @@ export default class Header extends Component {
   }
   authListenier() {
     firebase.auth().onAuthStateChanged(user => {
-      // console.log(user);
+      console.log(this.state.user);
       console.log("---user id", user.uid);
       if (user) {
         this.setState({ user });
@@ -26,7 +26,10 @@ export default class Header extends Component {
     });
   }
 
-  logout = () => firebase.auth().signOut();
+  logout = () => {
+    firebase.auth().signOut();
+    this.setState({ user: null });
+  };
 
   render() {
     return (
@@ -34,7 +37,7 @@ export default class Header extends Component {
         <Link to="/">
           <span>GUCCI</span>
         </Link>
-        {this.state.user ? <button onClick={this.logout}>Logout</button> : <Link to="/login">Login</Link>}
+        {this.state.user === null ? <Link to="/login">Login</Link> : <button onClick={this.logout}>Logout</button>}
         <Link to="/bag">
           <span className="bag-link">👜</span>
         </Link>
