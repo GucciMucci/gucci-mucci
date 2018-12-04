@@ -17,6 +17,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "react-stripe-checkout": "^2.6.3",
     "reset-css": "^4.0.1",
     "sass": "^1.15.1"
   },
