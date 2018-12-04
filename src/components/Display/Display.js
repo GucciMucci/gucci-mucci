@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./home.scss";
+import "./display.scss";
 import Card from "../Card/Card";
 import firebase from "../firebase";
 
-export default class Home extends Component {
+export default class Display extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -11,12 +11,13 @@ export default class Home extends Component {
 			currentItem: "",
 			data: []
 		};
+		this.route = window.location.pathname;
 	}
 
 	componentDidMount() {
 		firebase
 			.database()
-			.ref("frontpage")
+			.ref(this.route)
 			.once("value")
 			.then(snapshot => {
 				this.setState({
@@ -28,7 +29,11 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div>
-				<p>Stuff goes here</p>
+				<section className="add-item">
+					{this.state.data.map(item => (
+						<Card key={item.style} item={item} />
+					))}
+				</section>
 			</div>
 		);
 	}
