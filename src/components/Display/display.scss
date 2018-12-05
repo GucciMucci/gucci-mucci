@@ -1,0 +1,12 @@
+.products {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(100px, 1fr));
+	column-gap: 3px;
+
+	max-width: 100%;
+	padding: 15px;
+}
+
+.card img {
+	width: 100%;
+}

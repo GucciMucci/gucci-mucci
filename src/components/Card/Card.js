@@ -24,13 +24,13 @@ class Card extends Component {
 		let { name, images, price } = this.state;
 		images = _.sortURL(images);
 		return (
-			<div>
-				<h1>{name}</h1>
+			<div className="card">
 				<Link to={window.location.pathname + "/" + name}>
 					<img src={images[0].image} alt="" />
 				</Link>
+				{/* <h1>{name}</h1>
 				<p>{price}</p>
-				<button onClick={() => this.addToBag(this.state)}>👜</button>
+				<button onClick={() => this.addToBag(this.state)}>👜</button> */}
 			</div>
 		);
 	}
