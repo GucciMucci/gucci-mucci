@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
 import _ from "../utils";
 import { Link } from "react-router-dom";
 
@@ -7,13 +8,25 @@ export default class Checkout extends Component {
   constructor() {
     super();
     this.state = {
-      products: JSON.parse(localStorage.getItem("bagArray")) || []
+      products: JSON.parse(localStorage.getItem("bagArray")) || [],
+      total: 0
     };
   }
 
   onToken = token => {
-    console.log("onToken", token);
+    let total = _.getTotal(this.state.products);
+    axios.post("/api/stripe", {
+      method: "POST",
+      body: token,
+      amount: total * 100
+    });
+    // .then(res => {
+    //   res.json().then(data => {
+    //     alert(`We are in business, ${data.email}`);
+    //   });
+    // });
   };
+
   render() {
     let total = _.getTotal(this.state.products);
     const showProducts = this.state.products.map(product => {
@@ -36,7 +49,11 @@ export default class Checkout extends Component {
           token={this.onToken}
           stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
         />
-        <span />
+        <Link to="/bag">
+          <span>
+            <button>Back to Bag</button>
+          </span>
+        </Link>
       </div>
     );
   }
