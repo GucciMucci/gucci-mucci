@@ -3,14 +3,20 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import _ from "../utils";
 import { Link } from "react-router-dom";
+import withContext from "../../context/Context_HOC";
 
-export default class Checkout extends Component {
-  constructor() {
-    super();
+class Checkout extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       products: JSON.parse(localStorage.getItem("bagArray")) || [],
-      total: 0
+      total: 0,
+      user: null
     };
+  }
+
+  componentDidMount() {
+    this.props.context.authListenier();
   }
 
   onToken = token => {
@@ -28,6 +34,9 @@ export default class Checkout extends Component {
   };
 
   render() {
+    console.log("context---------->", this.props.context);
+    this.state.user &&
+      console.log("user.email---------->", this.props.context.user.email);
     let total = _.getTotal(this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
@@ -43,18 +52,26 @@ export default class Checkout extends Component {
         {showProducts}
         <h1>TOTAL: {total}</h1>
         <StripeCheckout
-          name="Gucci"
-          image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/1960s_Gucci_Logo.svg/2000px-1960s_Gucci_Logo.svg.png"
+          name="© G U C C I"
+          image="http://desiderata.info/wp-content/uploads/Gucci-GG-logo.png"
+          // White logo with black background:
+          // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
           amount={total * 100}
           token={this.onToken}
+          email={
+            this.props.context.user ? this.props.context.user.email : undefined
+          }
           stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
         />
-        <Link to="/bag">
-          <span>
+
+        <span>
+          <Link to="/bag">
             <button>Back to Bag</button>
-          </span>
-        </Link>
+          </Link>
+        </span>
       </div>
     );
   }
 }
+
+export default withContext(Checkout);
