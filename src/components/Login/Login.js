@@ -26,11 +26,12 @@ export default class Login extends Component {
 
   signup = e => {
     e.preventDefault();
+    const usersRef = firebase.database().ref("users");
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
-        console.log(user);
+        usersRef.child(user.user.uid).set({ email: user.user.email, cart: ["test"] });
       })
       .catch(error => {
         console.log(error.message);
