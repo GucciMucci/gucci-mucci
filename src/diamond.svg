@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500.182 500.365">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #9a9a9a;
+      }
+    </style>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(0 0.365)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" class="cls-1" width="100.182" height="100.182" transform="translate(200.182 -0.365)"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" class="cls-1" width="100.182" height="100.182" transform="translate(100 99.818)"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" class="cls-1" width="100.182" height="100.182" transform="translate(300.365 99.818)"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" class="cls-1" width="100.182" height="100.182" transform="translate(0 199.818)"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" class="cls-1" width="100.182" height="100.182" transform="translate(100 299.818)"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" class="cls-1" width="100.182" height="100.182" transform="translate(200 399.818)"/>
+    <rect id="Rectangle_7" data-name="Rectangle 7" class="cls-1" width="100.182" height="100.182" transform="translate(300 299.818)"/>
+    <rect id="Rectangle_8" data-name="Rectangle 8" class="cls-1" width="100.182" height="100.182" transform="translate(400 199.818)"/>
+  </g>
+</svg>
