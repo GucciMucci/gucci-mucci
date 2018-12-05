@@ -27,10 +27,19 @@ export default class ContextProvider extends Component {
     });
   };
 
+  logout = () => {
+    firebase.auth().signOut();
+    this.setState({ user: null });
+  };
+
   render() {
     return (
       <AppContext.Provider
-        value={{ ...this.state, authListenier: this.authListenier }}
+        value={{
+          ...this.state,
+          authListenier: this.authListenier,
+          logout: this.logout
+        }}
       >
         {this.props.children}
       </AppContext.Provider>

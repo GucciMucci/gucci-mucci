@@ -6,12 +6,11 @@ import { Link } from "react-router-dom";
 import withContext from "../../context/Context_HOC";
 
 class Checkout extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       products: JSON.parse(localStorage.getItem("bagArray")) || [],
-      total: 0,
-      user: null
+      total: 0
     };
   }
 
@@ -34,8 +33,7 @@ class Checkout extends Component {
   };
 
   render() {
-    console.log("context---------->", this.props.context);
-    this.state.user &&
+    this.props.context.user &&
       console.log("user.email---------->", this.props.context.user.email);
     let total = _.getTotal(this.state.products);
     const showProducts = this.state.products.map(product => {
