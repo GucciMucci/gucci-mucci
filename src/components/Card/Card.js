@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import _ from "../utils";
+import heartOpen from "./heart-regular.svg";
 
 class Card extends Component {
 	constructor(props) {
@@ -28,9 +29,12 @@ class Card extends Component {
 				<Link to={window.location.pathname + "/" + name}>
 					<img src={images[0].image} alt="" />
 				</Link>
-				{/* <h1>{name}</h1>
-				<p>{price}</p>
-				<button onClick={() => this.addToBag(this.state)}>👜</button> */}
+				<div className="hoverPopup">
+					<img src={images[1].image} alt="" />
+					<h1>{name}</h1>
+					<p>{price}</p>
+				</div>
+				<img className="heart" src={heartOpen} alt="" />
 			</div>
 		);
 	}

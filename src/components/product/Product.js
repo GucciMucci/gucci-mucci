@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from "../firebase";
+import "./product.scss";
 
 class Product extends Component {
 	constructor(props) {
@@ -26,17 +27,18 @@ class Product extends Component {
 	}
 
 	render() {
-		const { name, images, price } = this.state.product;
+		const { name, images, price, style } = this.state.product;
 		console.log(images);
 		return this.state.product.images ? (
-			<div>
-				<h1>{name}</h1>
+			<div className="product">
 				<div className="images">
 					{images.map(image => {
 						return <img src={image.image} alt="" />;
 					})}
 				</div>
+				<h1>{name}</h1>
 				<h3>{price}</h3>
+				<h3>{style}</h3>
 			</div>
 		) : (
 			""

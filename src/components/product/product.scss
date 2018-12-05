@@ -1,0 +1,12 @@
+.product {
+	.images {
+		display: grid;
+
+		overflow-x: auto;
+
+		// overflow-x: scroll;
+		img {
+			width: 50vw;
+		}
+	}
+}
