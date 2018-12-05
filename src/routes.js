@@ -7,6 +7,7 @@ import Checkout from "./components/checkout/Checkout";
 import Display from "./components/Display/Display";
 import Product from "./components/product/Product";
 import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
 
 export default (
 	<Switch>

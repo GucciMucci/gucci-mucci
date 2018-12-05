@@ -4,6 +4,7 @@
   "private": true,
   "main": "server/index.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
@@ -19,7 +20,8 @@
     "react-scripts": "2.1.1",
     "react-stripe-checkout": "^2.6.3",
     "reset-css": "^4.0.1",
-    "sass": "^1.15.1"
+    "sass": "^1.15.1",
+    "stripe": "^6.17.0"
   },
   "scripts": {
     "start": "react-scripts start",

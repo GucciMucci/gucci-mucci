@@ -2,49 +2,33 @@ import React, { Component } from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
 import firebase from "./../firebase";
-import Login from "../Login/Login";
+import withContext from "../../context/Context_HOC";
 
-export default class Header extends Component {
-	constructor() {
-		super();
-		this.state = {
-			user: null
-		};
-	}
-	componentDidMount() {
-		this.authListenier();
-	}
-	authListenier() {
-		firebase.auth().onAuthStateChanged(user => {
-			console.log(this.state.user);
-			console.log("---user id", user.uid);
-			if (user) {
-				this.setState({ user });
-			} else {
-				this.setState({ user: null });
-			}
-		});
-	}
+class Header extends Component {
+  componentDidMount() {
+    this.props.context.authListenier();
+  }
 
-	logout = () => {
-		firebase.auth().signOut();
-		this.setState({ user: null });
-	};
-
-	render() {
-		return (
-			<div className="header">
-				<Link to="/">
-					<span>GUCCI</span>
-				</Link>
-				{this.state.user === null ? <Link to="/login">Login</Link> : <button onClick={this.logout}>Logout</button>}
-				<Link to="/bag">
-					<span className="bag-link">👜</span>
-				</Link>
-				<nav>
-					<Link to="/women/dresses">Women</Link>
-				</nav>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className="header">
+        <Link to="/">
+          <span>GUCCI</span>
+        </Link>
+        {this.props.context.user === null ? (
+          <Link to="/login">Login</Link>
+        ) : (
+          <button onClick={this.props.context.logout}>Logout</button>
+        )}
+        <Link to="/bag">
+          <span className="bag-link">👜</span>
+        </Link>
+        <nav>
+          <Link to="/women/dresses">Women</Link>
+        </nav>
+      </div>
+    );
+  }
 }
+
+export default withContext(Header);
