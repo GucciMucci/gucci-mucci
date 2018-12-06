@@ -21,7 +21,7 @@ class Bag extends Component {
         .ref(`users/${uid}/cart`)
         .once("value")
         .then(cart => {
-          this.setState({ products: cart.val() });
+          cart.val() && this.setState({ products: cart.val() });
         });
     }
   }
