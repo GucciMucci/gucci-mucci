@@ -47,7 +47,7 @@ class Checkout extends Component {
     return (
       <div>
         <h1>CHECKOUT</h1>
-        {showProducts}
+        <div>{showProducts}</div>
         <h1>TOTAL: {total}</h1>
         <StripeCheckout
           name="© G U C C I"
