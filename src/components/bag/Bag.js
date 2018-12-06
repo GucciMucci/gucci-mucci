@@ -52,8 +52,17 @@ class Bag extends Component {
         <div key={product.style} className="bag-product">
           <h1>{product.name}</h1>
           <h3>Price: {product.price}</h3>
-          <img className="bag-product-img" src={product.images[0].image} alt="" />
-          <button onClick={() => this.removeFromBag(product.style)}>Remove</button>
+          <img
+            className="bag-product-img"
+            src={product.images[0].image}
+            alt=""
+          />
+          <button onClick={() => this.removeFromBag(product.style)}>
+            Remove
+          </button>
+          <button onClick={() => this.updateQuantity(1)}>
+            Increase Quantity
+          </button>
         </div>
       );
     });
@@ -76,8 +85,8 @@ class Bag extends Component {
             <div>
               <h2>VIEW DETAILS</h2>
               <p>
-                You will be charged only at the time of shipment except for DIY orders where the full amount is charged
-                at the time of purchase.
+                You will be charged only at the time of shipment except for DIY
+                orders where the full amount is charged at the time of purchase.
               </p>
             </div>
             <div>
