@@ -11,6 +11,7 @@ import Profile from "./components/Profile/Profile";
 
 export default (
 	<Switch>
+		<Route path="/profile" component={Profile} />
 		<Route path="/women/:type/:name" component={Product} />
 		<Route path="/women/:type" component={Display} />
 		<Route path="/men/:type/:name" component={Product} />
