@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from "../firebase";
+import withContext from "../../context/Context_HOC";
 import "./product.scss";
 
 class Product extends Component {
@@ -19,7 +20,6 @@ class Product extends Component {
       .then(snapshot => {
         let data = snapshot.val();
         let index = data.findIndex(item => item.name === url[url.length - 1].replace(/%20/g, " "));
-        console.log(data[index]);
         this.setState({
           product: data[index]
         });
@@ -28,20 +28,37 @@ class Product extends Component {
 
   addToBag = product => {
     let localBag = localStorage.getItem("bagArray");
-    if (localBag) {
-      const tempBag = JSON.parse(localStorage.getItem("bagArray"));
-      tempBag.push(product);
-      localStorage.setItem("bagArray", JSON.stringify(tempBag));
+    product.quantity = 1;
+    if (this.props.context.user.id) {
+      const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
+      usersRef.once("value").then(res => {
+        let cart = res.val();
+        let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
+        console.log(index);
+        if (index !== -1) {
+          cart[index].quantity += 1;
+          usersRef.set(cart);
+        } else if (cart) {
+          usersRef.set([...cart, product]);
+        } else {
+          usersRef.set([product]);
+        }
+      });
     } else {
-      localStorage.setItem("bagArray", JSON.stringify([product]));
+      if (localBag) {
+        const tempBag = JSON.parse(localStorage.getItem("bagArray"));
+        tempBag.push(product);
+        localStorage.setItem("bagArray", JSON.stringify(tempBag));
+      } else {
+        localStorage.setItem("bagArray", JSON.stringify([product]));
+      }
+      return localStorage;
     }
-    console.log("---bagArray------->", localStorage.getItem("bagArray"));
-    return localStorage;
   };
 
   render() {
     const { name, images, price, style } = this.state.product;
-    console.log(images);
+
     return this.state.product.images ? (
       <div className="product">
         <div className="images">
@@ -66,4 +83,4 @@ class Product extends Component {
   }
 }
 
-export default Product;
+export default withContext(Product);

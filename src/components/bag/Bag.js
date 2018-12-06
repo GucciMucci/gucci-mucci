@@ -1,14 +1,39 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import withContext from "../../context/Context_HOC";
+import firebase from "../firebase";
 import _ from "../utils";
 import "./bag.scss";
 
-export default class Bag extends Component {
-  constructor() {
-    super();
+class Bag extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       products: JSON.parse(localStorage.getItem("bagArray")) || []
     };
+  }
+
+  getBag() {
+    if (this.props.context.user) {
+      let uid = this.props.context.user.id;
+      firebase
+        .database()
+        .ref(`users/${uid}/cart`)
+        .once("value")
+        .then(cart => {
+          this.setState({ products: cart.val() });
+        });
+    }
+  }
+
+  componentDidMount() {
+    this.getBag();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.context !== prevProps.context) {
+      this.getBag();
+    }
   }
 
   removeFromBag(style) {
@@ -20,24 +45,15 @@ export default class Bag extends Component {
   }
 
   render() {
-    console.log("---bagArray------->", localStorage.getItem("bagArray"));
-    console.log("this.state.product---------->", this.state.products);
     let total = _.getTotal(this.state.products);
 
-    console.log("total---------->", total);
     const showProducts = this.state.products.map(product => {
       return (
         <div key={product.style} className="bag-product">
           <h1>{product.name}</h1>
           <h3>Price: {product.price}</h3>
-          <img
-            className="bag-product-img"
-            src={product.images[0].image}
-            alt=""
-          />
-          <button onClick={() => this.removeFromBag(product.style)}>
-            Remove
-          </button>
+          <img className="bag-product-img" src={product.images[0].image} alt="" />
+          <button onClick={() => this.removeFromBag(product.style)}>Remove</button>
         </div>
       );
     });
@@ -60,8 +76,8 @@ export default class Bag extends Component {
             <div>
               <h2>VIEW DETAILS</h2>
               <p>
-                You will be charged only at the time of shipment except for DIY
-                orders where the full amount is charged at the time of purchase.
+                You will be charged only at the time of shipment except for DIY orders where the full amount is charged
+                at the time of purchase.
               </p>
             </div>
             <div>
@@ -77,3 +93,5 @@ export default class Bag extends Component {
     );
   }
 }
+
+export default withContext(Bag);

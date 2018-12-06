@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import firebase from "../components/firebase";
+import { withRouter } from "react-router-dom";
 
 export const AppContext = React.createContext();
 
-export default class ContextProvider extends Component {
+class ContextProvider extends Component {
   constructor() {
     super();
     this.state = {
@@ -13,7 +14,6 @@ export default class ContextProvider extends Component {
 
   authListenier = () => {
     firebase.auth().onAuthStateChanged(user => {
-      console.log("---user id", user);
       if (user) {
         this.setState({
           user: {
@@ -30,6 +30,7 @@ export default class ContextProvider extends Component {
   logout = () => {
     firebase.auth().signOut();
     this.setState({ user: null });
+    this.props.history.push("/");
   };
 
   render() {
@@ -46,3 +47,5 @@ export default class ContextProvider extends Component {
     );
   }
 }
+
+export default withRouter(ContextProvider);
