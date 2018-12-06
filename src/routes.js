@@ -8,10 +8,12 @@ import Display from "./components/Display/Display";
 import Product from "./components/product/Product";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
+import SavedItems from "./components/SavedItems/SavedItems";
 
 export default (
   <Switch>
     <Route path="/profile" component={Profile} />
+    <Route path="/saved-items" component={SavedItems} />
     <Route path="/women/:type/:name" component={Product} />
     <Route path="/women/:type" component={Display} />
     <Route path="/men/:type/:name" component={Product} />
