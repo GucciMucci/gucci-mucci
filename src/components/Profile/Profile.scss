@@ -1,0 +1,85 @@
+.profile {
+  font-family: neuzeit-grotesk, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  height: 100vh;
+  width: 100vw;
+}
+
+.profile-header {
+  height: 200px;
+  width: 100%;
+  background-color: #191919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    text-transform: uppercase;
+    color: white;
+    font-size: 40px;
+  }
+}
+
+.profile-container {
+  background: rgb(231, 231, 231);
+  margin: 15px;
+  height: 100vh;
+  width: unquote("-webkit-calc(100% - 30px)");
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 15px;
+
+  .recommend {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid white;
+    h1 {
+      color: black;
+    }
+    h1:hover {
+      color: grey;
+      cursor: pointer;
+    }
+  }
+
+  .saved {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    h1 {
+      color: black;
+    }
+    h1:hover {
+      color: grey;
+      cursor: pointer;
+    }
+  }
+
+  .pic-holder {
+    height: 250px;
+    width: 250px;
+    border-radius: 100%;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 100px;
+  }
+  h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-family: Times New Roman, "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+  }
+}
