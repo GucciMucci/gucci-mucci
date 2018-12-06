@@ -52,7 +52,13 @@ class Product extends Component {
         <h1>{name}</h1>
         <h3>{price}</h3>
         <h3>{style}</h3>
-        <button onClick={this.addToBag}>Add to Cart</button>
+        <button
+          onClick={() => {
+            this.addToBag(this.state.product);
+          }}
+        >
+          Add to Cart
+        </button>
       </div>
     ) : (
       ""
