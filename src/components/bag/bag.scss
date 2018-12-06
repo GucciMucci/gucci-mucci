@@ -1,0 +1,46 @@
+@import "../../sass/main.scss";
+
+.bag {
+  @include background;
+  @include primary-font;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0 50px;
+  overflow-y: auto;
+  h2 {
+    @include heading;
+  }
+}
+
+.bag-products {
+  margin: 0 10px;
+}
+
+.bag-product {
+  border-top: $border;
+}
+
+.bag-product-img {
+  width: 30%;
+}
+
+.order-sum {
+  @include checkout-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h2,
+  p {
+    border-bottom: $border;
+  }
+}
+
+.checkout-btn {
+  @include button-dark;
+  width: 100%;
+}
+
+.pay-pal-btn {
+  @include button-light;
+  width: 100%;
+}

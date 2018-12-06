@@ -28,12 +28,10 @@ export default class Display extends Component {
 
 	render() {
 		return (
-			<div>
-				<section className="add-item">
-					{this.state.data.map(item => (
-						<Card key={item.style} item={item} />
-					))}
-				</section>
+			<div className="products">
+				{this.state.data.map(item => (
+					<Card key={item.style} item={item} />
+				))}
 			</div>
 		);
 	}
