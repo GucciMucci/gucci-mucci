@@ -44,6 +44,7 @@ export default class Login extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
         usersRef.child(user.user.uid).set({ email: user.user.email, cart: ["test"] });
+        this.props.history.push("/profile");
       })
       .catch(error => {
         console.log(error.message);
