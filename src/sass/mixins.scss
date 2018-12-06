@@ -1,0 +1,43 @@
+@mixin primary-font {
+  font-family: neuzeit-grotesk, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin background {
+  background: $background;
+  margin: 15px;
+  height: 100vh;
+  width: unquote("-webkit-calc(100% - 30px)");
+}
+
+@mixin checkout-box {
+  width: 295px;
+  height: 502px;
+  background: white;
+  margin: 0 10px;
+  padding: 25px;
+}
+
+@mixin button {
+  font-size: 14px;
+  height: 40px;
+  width: 220px;
+}
+
+@mixin button-dark {
+  @include button;
+  background: black;
+  color: $background;
+}
+
+@mixin button-light {
+  @include button;
+  background: $background;
+  border: 2px solid black;
+}
+
+@mixin heading {
+  color: $light-text;
+  text-align: left;
+}

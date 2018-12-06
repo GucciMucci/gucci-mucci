@@ -27,24 +27,51 @@ export default class Bag extends Component {
     console.log("total---------->", total);
     const showProducts = this.state.products.map(product => {
       return (
-        <div>
+        <div key={product.style} className="bag-product">
           <h1>{product.name}</h1>
           <h3>Price: {product.price}</h3>
-          <img src={product.images[0].image} alt="" />
+          <img
+            className="bag-product-img"
+            src={product.images[0].image}
+            alt=""
+          />
           <button onClick={() => this.removeFromBag(product.style)}>
-            Remove from 👜
+            Remove
           </button>
         </div>
       );
     });
     return (
       this.state.products && (
-        <div>
-          <div>{showProducts}</div>
-          <div>Total: {total} </div>
-          <Link to="/checkout">
-            <button>Checkout</button>
-          </Link>
+        <div className="bag">
+          <div className="bag-products">
+            <h2 className="heading">YOUR SELECTIONS</h2>
+            {showProducts}
+          </div>
+
+          <div className="order-sum">
+            <h2 className="heading">ORDER SUMMARY</h2>
+            <ul>
+              <li>Subtotal $ {total}</li>
+              <li>Shipping</li>
+              <li>Estimated Tax</li>
+              <li>Estimated Total $ {total}</li>
+            </ul>
+            <div>
+              <h2>VIEW DETAILS</h2>
+              <p>
+                You will be charged only at the time of shipment except for DIY
+                orders where the full amount is charged at the time of purchase.
+              </p>
+            </div>
+            <div>
+              <Link to="/checkout">
+                <button className="checkout-btn">CHECKOUT</button>
+              </Link>
+              <div>OR</div>
+              <button className="pay-pal-btn">PAY WITH ©PayPal</button>
+            </div>
+          </div>
         </div>
       )
     );
