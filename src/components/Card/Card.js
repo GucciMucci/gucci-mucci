@@ -20,7 +20,7 @@ class Card extends Component {
             <img src={images[1].image} alt="" />
             <h1>{name}</h1>
             <h2>{price}</h2>
-            <p>Shop this -></p>
+            <p>SHOP THIS ></p>
           </div>
           <img className="heart" src={heartOpen} alt="" />
         </Link>
