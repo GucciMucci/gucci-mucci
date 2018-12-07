@@ -21,7 +21,8 @@ module.exports = {
   getTotal: arr => {
     return arr.reduce((previousVal, currentVal) => {
       return (
-        parseInt(previousVal) + parseInt(currentVal.price.replace(/[,$]/g, ""))
+        parseInt(previousVal) +
+        parseInt(currentVal.price.replace(/[,$]/g, "")) * currentVal.quantity
       );
     }, 0);
   }

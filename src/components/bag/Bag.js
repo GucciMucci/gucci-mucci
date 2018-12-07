@@ -62,7 +62,7 @@ class Bag extends Component {
   updateQuantity(style, amount) {
     const products = this.state.products;
     let itemIndex = products.findIndex(item => item.style === style);
-    products[itemIndex].quantity++;
+    products[itemIndex].quantity = amount;
     this.setState({ products: products });
     if (this.props.context.user) {
       const userRef = firebase
@@ -80,7 +80,6 @@ class Bag extends Component {
 
   render() {
     let total = _.getTotal(this.state.products);
-    console.log("this.state.products---------->", this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
         <div key={product.style} className="bag-product">
@@ -95,9 +94,16 @@ class Bag extends Component {
           <button onClick={() => this.removeFromBag(product.style)}>
             Remove
           </button>
-          <button onClick={() => this.updateQuantity(product.style, 1)}>
-            Increase Quantity
-          </button>
+          <select
+            onChange={e => this.updateQuantity(product.style, e.target.value)}
+            value={product.quantity}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
       );
     });
