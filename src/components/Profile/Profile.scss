@@ -1,3 +1,4 @@
+@import "../../sass/main.scss";
 .profile {
   font-family: neuzeit-grotesk, sans-serif;
   font-style: normal;
@@ -7,13 +8,16 @@
 }
 
 .profile-header {
-  height: 200px;
+  height: 310px;
   width: 100%;
-  background-color: #191919;
+  background: url("http://media.gucci.com/content/HeroAccountLandingStandard_3200x960/1541006106/HeroAccountLandingStandard_S91CRUISE_001_Default.jpg");
+  background-position: bottom center;
+  background-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   h1 {
+    padding-top: 160px;
     text-transform: uppercase;
     color: white;
     font-size: 40px;
