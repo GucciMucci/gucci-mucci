@@ -59,6 +59,12 @@
     flex-direction: column;
     width: 50%;
     height: 100%;
+    a {
+      color: black;
+      &:hover {
+        color: gray;
+      }
+    }
     h1 {
       color: black;
     }

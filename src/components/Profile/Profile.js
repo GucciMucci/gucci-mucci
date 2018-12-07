@@ -22,14 +22,14 @@ class Profile extends Component {
             <p>Specially selected items you may also like</p>
           </div>
           <div className="saved">
-            <img
-              src="http://media.gucci.com/content/DarkGray_AccountLandingRecommendedWishlist_Standard_504x504/1541006105/AccountLandingRecommendedWishlist_S91CRUISE-02_001_Light.jpg"
-              className="pic-holder"
-            />
             <Link to="/saved-items">
+              <img
+                src="http://media.gucci.com/content/DarkGray_AccountLandingRecommendedWishlist_Standard_504x504/1541006105/AccountLandingRecommendedWishlist_S91CRUISE-02_001_Light.jpg"
+                className="pic-holder"
+              />
               <h1>Saved Items</h1>
+              <p>All your favorite pieces in one beautiful place.</p>
             </Link>
-            <p>All your favorite pieces in one beautiful place.</p>
           </div>
         </div>
       </div>

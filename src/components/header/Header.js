@@ -19,6 +19,7 @@ class Header extends Component {
       case "/women/dresses":
       case "/women/dresses/" + name[name.length - 1]:
       case "/login":
+      case "/checkout":
         return "black";
     }
     return "";
@@ -41,7 +42,13 @@ class Header extends Component {
             {this.props.context.user === null ? (
               <Link to="/login">Login</Link>
             ) : (
-              <button onClick={this.props.context.logout}>Logout</button>
+              <div>
+                <Link to="/saved-items">Saved</Link>
+                <Link to="/profile">Profile</Link>
+                <a href="#" onClick={this.props.context.logout}>
+                  Logout
+                </a>
+              </div>
             )}
             <Link to="/bag">
               <span className="bag-link">👜</span>

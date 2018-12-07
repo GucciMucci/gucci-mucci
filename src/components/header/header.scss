@@ -33,6 +33,12 @@
     .right {
       display: flex;
       justify-content: flex-end;
+      a {
+        color: white;
+        display: inline;
+        margin: 0 15px;
+        cursor: pointer;
+      }
     }
   }
 
