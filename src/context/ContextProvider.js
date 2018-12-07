@@ -34,6 +34,7 @@ class ContextProvider extends Component {
   };
 
   addFav = product => {
+    let localFav = localStorage.getItem("favorites");
     if (this.state.user) {
       const usersRef = firebase.database().ref(`users/${this.state.user.id}`);
       const favRef = firebase.database().ref(`users/${this.state.user.id}/favorites`);
@@ -45,8 +46,18 @@ class ContextProvider extends Component {
       } else {
         usersRef.child("favorites").set({ [product.style]: product });
       }
+    } else {
+      if (localFav) {
+        const tempFav = JSON.parse(localStorage.getItem("favorites"));
+        tempFav.push(product);
+        localStorage.setItem("favorites", JSON.stringify(tempFav));
+      } else {
+        localStorage.setItem("favorites", JSON.stringify([product]));
+      }
+      console.log("localfavs", localStorage.getItem("favorites"));
     }
   };
+
   render() {
     console.log("context user", this.state.user);
     return (

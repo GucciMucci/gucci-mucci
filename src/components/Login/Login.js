@@ -20,15 +20,19 @@ export default class Login extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
         const usersRef = firebase.database().ref(`users/${user.user.uid}/cart`);
-        console.log(user);
-        // console.log(JSON.parse(localStorage.getItem("bagArray")));
+        const favRef = firebase.database().ref(`users/${user.user.uid}/favorites`);
         usersRef.once("value").then(res => {
-          console.log("once res~~~~", res.val());
           if (localStorage.getItem("bagArray")) {
             usersRef.set([...res.val(), ...JSON.parse(localStorage.getItem("bagArray"))]);
-            localStorage.clear();
+            localStorage.removeItem("bagArray");
           }
           this.props.history.push("/profile");
+        });
+        favRef.once("value").then(res => {
+          if (localStorage.getItem("favorites")) {
+            favRef.set({ ...res.val(), ...JSON.parse(localStorage.getItem("favorites")) });
+            localStorage.removeItem("favorites");
+          }
         });
       })
       .catch(error => {
