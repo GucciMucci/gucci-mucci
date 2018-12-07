@@ -11,7 +11,7 @@ export default class MucciSlider extends Component {
       slidesToScroll: 1
     };
     return (
-      <div className="">
+      <div className="slider">
         <Slider {...settings}>
           {this.props.images.map(image => {
             return <img src={image.image} alt="" />;

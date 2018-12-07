@@ -1,2 +1,18 @@
+@import "~slick-carousel/slick/slick.css";
+// @import "~slick-carousel/slick/slick-theme.css";
+@import "../../sass/main.scss";
+
 .product {
+  .images {
+    display: block;
+    width: 100vw;
+    margin: 0 auto;
+    background: $gray;
+    .slick-list {
+      max-width: 2000px;
+      button.slick-arrow.slick-next {
+        right: -25px;
+      }
+    }
+  }
 }
