@@ -80,6 +80,7 @@ class Bag extends Component {
 
   render() {
     let total = _.getTotal(this.state.products);
+    console.log("this.state.products---------->", this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
         <div key={product.style} className="bag-product">
@@ -95,14 +96,16 @@ class Bag extends Component {
             Remove
           </button>
           <select
-            onChange={e => this.updateQuantity(product.style, e.target.value)}
+            onChange={e =>
+              this.updateQuantity(product.style, parseInt(e.target.value))
+            }
             value={product.quantity}
           >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
           </select>
         </div>
       );

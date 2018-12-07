@@ -8,7 +8,8 @@ class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: {}
+      product: {},
+      showMemo: false
     };
   }
 
@@ -20,7 +21,9 @@ class Product extends Component {
       .once("value")
       .then(snapshot => {
         let data = snapshot.val();
-        let index = data.findIndex(item => item.name === url[url.length - 1].replace(/%20/g, " "));
+        let index = data.findIndex(
+          item => item.name === url[url.length - 1].replace(/%20/g, " ")
+        );
         this.setState({
           product: data[index]
         });
@@ -30,13 +33,19 @@ class Product extends Component {
   addToBag = product => {
     product.quantity = 1;
     if (this.props.context.user) {
-      const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
+      const usersRef = firebase
+        .database()
+        .ref(`users/${this.props.context.user.id}/cart`);
       usersRef.once("value").then(res => {
         let cart = res.val();
-        let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
+        let index = cart
+          ? cart.findIndex(item => item.style === product.style)
+          : -1;
         if (index !== -1) {
-          cart[index].quantity += 1;
-          usersRef.set(cart);
+          if (cart[index].quantity < 5) {
+            cart[index].quantity += 1;
+            usersRef.set(cart);
+          } else this.setState({ showMemo: true });
         } else if (cart) {
           usersRef.set([...cart, product]);
         } else {
@@ -49,7 +58,9 @@ class Product extends Component {
         const tempBag = JSON.parse(localStorage.getItem("bagArray"));
         const index = tempBag.findIndex(item => item.style === product.style);
         if (index !== -1) {
-          tempBag[index].quantity += 1;
+          if (tempBag[index].quantity < 5) {
+            tempBag[index].quantity += 1;
+          } else this.setState({ showMemo: true });
         } else {
           tempBag.push(product);
         }
@@ -72,6 +83,9 @@ class Product extends Component {
         <h1>{name}</h1>
         <h3>{price}</h3>
         <h3>{style}</h3>
+        {this.state.showMemo && (
+          <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>
+        )}
         <button
           onClick={() => {
             this.addToBag(this.state.product);
