@@ -33,13 +33,40 @@ class ContextProvider extends Component {
     this.props.history.push("/");
   };
 
+  addFav = product => {
+    let localFav = localStorage.getItem("favorites");
+    if (this.state.user) {
+      const usersRef = firebase.database().ref(`users/${this.state.user.id}`);
+      const favRef = firebase.database().ref(`users/${this.state.user.id}/favorites`);
+      if (favRef) {
+        favRef.once("value").then(res => {
+          let favs = res.val();
+          favRef.set({ ...favs, [product.style]: product });
+        });
+      } else {
+        usersRef.child("favorites").set({ [product.style]: product });
+      }
+    } else {
+      if (localFav) {
+        const tempFav = JSON.parse(localStorage.getItem("favorites"));
+        tempFav.push(product);
+        localStorage.setItem("favorites", JSON.stringify(tempFav));
+      } else {
+        localStorage.setItem("favorites", JSON.stringify([product]));
+      }
+      console.log("localfavs", localStorage.getItem("favorites"));
+    }
+  };
+
   render() {
+    console.log("context user", this.state.user);
     return (
       <AppContext.Provider
         value={{
           ...this.state,
           authListenier: this.authListenier,
-          logout: this.logout
+          logout: this.logout,
+          addFav: this.addFav
         }}
       >
         {this.props.children}

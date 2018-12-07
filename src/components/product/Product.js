@@ -93,6 +93,14 @@ class Product extends Component {
         >
           Add to Cart
         </button>
+
+        <button
+          onClick={() => {
+            this.props.context.addFav(this.state.product);
+          }}
+        >
+          Favorite
+        </button>
       </div>
     ) : (
       ""

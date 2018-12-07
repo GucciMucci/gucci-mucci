@@ -1,8 +1,8 @@
+@import "../../sass/main.scss";
+
 .login {
-  background: rgb(231, 231, 231);
-  margin: 10px;
-  height: 100vh;
-  width: 100%;
+  @include background;
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -25,7 +25,7 @@
   .diamond {
     height: 11px;
     position: absolute;
-    top: 95px;
+    top: 95px + 120px;
   }
 }
 
