@@ -36,11 +36,14 @@ class ContextProvider extends Component {
   addFav = product => {
     if (this.state.user) {
       const usersRef = firebase.database().ref(`users/${this.state.user.id}`);
-      if (usersRef.favorites) {
-        console.log(usersRef.favorites);
+      const favRef = firebase.database().ref(`users/${this.state.user.id}/favorites`);
+      if (favRef) {
+        favRef.once("value").then(res => {
+          let favs = res.val();
+          favRef.set({ ...favs, [product.style]: product });
+        });
       } else {
         usersRef.child("favorites").set({ [product.style]: product });
-        // usersRef.child(product.style).set(product);
       }
     }
   };
