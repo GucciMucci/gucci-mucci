@@ -1,4 +1,6 @@
 @import "./variables.scss";
+@import url("https://use.typekit.net/idz8jyc.css");
+@import url("https://fonts.googleapis.com/css?family=Cinzel");
 
 @mixin primary-font {
   font-family: neuzeit-grotesk, sans-serif;
@@ -6,9 +8,14 @@
   font-weight: 300;
 }
 
+@mixin gucci-font {
+  font-family: Cinzel;
+  font-weight: 700;
+}
+
 @mixin background {
   background: $background;
-  margin: 15px;
+  margin: 135px 15px;
   height: calc(100vh - 250px);
   width: unquote("-webkit-calc(100% - 30px)");
 }
@@ -17,8 +24,11 @@
   width: 295px;
   height: 502px;
   background: white;
-  margin: 0 10px;
+  margin: 10px 10px;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @mixin button {

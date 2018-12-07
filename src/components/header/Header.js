@@ -13,7 +13,7 @@ class Header extends Component {
     return (
       <div className="header">
         <Link to="/">
-          <span>GUCCI</span>
+          <span className="logo">GUCCI</span>
         </Link>
         {this.props.context.user === null ? (
           <Link to="/login">Login</Link>

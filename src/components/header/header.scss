@@ -1,3 +1,5 @@
+@import "../../sass/main.scss";
+
 .header {
   min-height: 120px;
   width: 100%;
@@ -15,6 +17,10 @@
   &:hover {
     background: #191919;
   }
+}
+
+.logo {
+  @include gucci-font;
 }
 
 .bag-link {
