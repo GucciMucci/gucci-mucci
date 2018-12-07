@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import _ from "../utils";
 
 export default class MucciSlider extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class MucciSlider extends Component {
       <div className="slider">
         <Slider {...settings}>
           {this.props.images.map(image => {
-            return <img src={image.image} alt="" />;
+            return <img src={_.highRes(image.image)} alt="" />;
           })}
         </Slider>
       </div>

@@ -20,10 +20,7 @@ module.exports = {
 
   getTotal: arr => {
     return arr.reduce((previousVal, currentVal) => {
-      return (
-        parseInt(previousVal) +
-        parseInt(currentVal.price.replace(/[,$]/g, "")) * currentVal.quantity
-      );
+      return parseInt(previousVal) + parseInt(currentVal.price.replace(/[,$]/g, "")) * currentVal.quantity;
     }, 0);
   },
 
@@ -31,5 +28,11 @@ module.exports = {
     return arr.reduce((previousVal, currentVal) => {
       return previousVal + currentVal.quantity;
     }, 0);
+  },
+  white: url => {
+    return url.replace(/DarkGray/gi, "White");
+  },
+  highRes: url => {
+    return url.replace(/490/gi, "800");
   }
 };

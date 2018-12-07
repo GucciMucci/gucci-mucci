@@ -17,7 +17,7 @@ class Card extends Component {
         <Link to={window.location.pathname + "/" + name}>
           <img src={images[0].image} alt="" />
           <div className="hoverPopup">
-            <img src={images[1].image} alt="" />
+            <img src={_.white(images[1].image)} alt="" />
             <h1>{name}</h1>
             <h2>{price}</h2>
             <p>SHOP THIS ></p>
