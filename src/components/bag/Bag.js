@@ -38,7 +38,9 @@ class Bag extends Component {
 
   removeFromBag(style) {
     if (this.props.context.user) {
-      const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
+      const usersRef = firebase
+        .database()
+        .ref(`users/${this.props.context.user.id}/cart`);
       usersRef.once("value").then(res => {
         let cart = res.val();
         let index = cart.findIndex(item => item.style === style);
@@ -57,14 +59,34 @@ class Bag extends Component {
     }
   }
 
+  updateQuantity(style, amount) {
+    const products = this.state.products;
+    let itemIndex = products.findIndex(item => item.style === style);
+    products[itemIndex].quantity++;
+    this.setState({ products: products });
+    if (this.props.context.user) {
+      const userRef = firebase
+        .database()
+        .ref(`users/${this.props.context.user.id}/cart`);
+      userRef.once("value").then(res => {
+        let cart = res.val();
+        cart = products;
+        userRef.set(cart);
+      });
+    } else {
+      localStorage.setItem("bagArray", JSON.stringify(products));
+    }
+  }
+
   render() {
     let total = _.getTotal(this.state.products);
-
+    console.log("this.state.products---------->", this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
         <div key={product.style} className="bag-product">
           <h1>{product.name}</h1>
           <h3>Price: {product.price}</h3>
+          <h3>Qty: {product.quantity} </h3>
           <img
             className="bag-product-img"
             src={product.images[0].image}
@@ -73,7 +95,7 @@ class Bag extends Component {
           <button onClick={() => this.removeFromBag(product.style)}>
             Remove
           </button>
-          <button onClick={() => this.updateQuantity(1)}>
+          <button onClick={() => this.updateQuantity(product.style, 1)}>
             Increase Quantity
           </button>
         </div>
