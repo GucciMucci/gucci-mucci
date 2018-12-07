@@ -21,9 +21,7 @@ class Product extends Component {
       .once("value")
       .then(snapshot => {
         let data = snapshot.val();
-        let index = data.findIndex(
-          item => item.name === url[url.length - 1].replace(/%20/g, " ")
-        );
+        let index = data.findIndex(item => item.name === url[url.length - 1].replace(/%20/g, " "));
         this.setState({
           product: data[index]
         });
@@ -33,14 +31,10 @@ class Product extends Component {
   addToBag = product => {
     product.quantity = 1;
     if (this.props.context.user) {
-      const usersRef = firebase
-        .database()
-        .ref(`users/${this.props.context.user.id}/cart`);
+      const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
       usersRef.once("value").then(res => {
         let cart = res.val();
-        let index = cart
-          ? cart.findIndex(item => item.style === product.style)
-          : -1;
+        let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
         if (index !== -1) {
           if (cart[index].quantity < 5) {
             cart[index].quantity += 1;
@@ -80,27 +74,28 @@ class Product extends Component {
         <div className="images">
           <MucciSlider images={images} />
         </div>
-        <h1>{name}</h1>
-        <h3>{price}</h3>
-        <h3>{style}</h3>
-        {this.state.showMemo && (
-          <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>
-        )}
-        <button
-          onClick={() => {
-            this.addToBag(this.state.product);
-          }}
-        >
-          Add to Cart
-        </button>
+        <div className="product-info">
+          <h1>{name}</h1>
+          <h2>{price}</h2>
+          <h3>Style {style}</h3>
+          {this.state.showMemo && <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>}
+          <button
+            className=""
+            onClick={() => {
+              this.addToBag(this.state.product);
+            }}
+          >
+            Add to Cart
+          </button>
 
-        <button
-          onClick={() => {
-            this.props.context.addFav(this.state.product);
-          }}
-        >
-          Favorite
-        </button>
+          <button
+            onClick={() => {
+              this.props.context.addFav(this.state.product);
+            }}
+          >
+            Favorite
+          </button>
+        </div>
       </div>
     ) : (
       ""

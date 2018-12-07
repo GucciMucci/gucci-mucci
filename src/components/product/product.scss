@@ -3,6 +3,40 @@
 @import "../../sass/main.scss";
 
 .product {
+  .product-info {
+    position: absolute;
+    top: 230px;
+    width: 100%;
+    h1,
+    h2,
+    h3 {
+      width: 300px;
+      margin: 20px auto;
+      font-family: sans-serif;
+      font-weight: 100;
+    }
+
+    h2,
+    h3 {
+      color: gray;
+    }
+
+    h1 {
+      font-size: 20pt;
+      letter-spacing: 1px;
+      line-height: 35px;
+    }
+
+    h2 {
+      padding-bottom: 15px;
+      border-bottom: 1px solid gray;
+      font-size: 25px;
+    }
+
+    h3 {
+      font-size: 13px;
+    }
+  }
   .images {
     display: block;
     width: 100vw;
