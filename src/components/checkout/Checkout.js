@@ -4,6 +4,8 @@ import axios from "axios";
 import _ from "../utils";
 import { Link } from "react-router-dom";
 import withContext from "../../context/Context_HOC";
+import "./checkout.scss";
+import firebase from "firebase";
 
 class Checkout extends Component {
   constructor() {
@@ -16,6 +18,26 @@ class Checkout extends Component {
 
   componentDidMount() {
     this.props.context.authListenier();
+    this.getBag();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.context !== prevProps.context) {
+      this.getBag();
+    }
+  }
+
+  getBag() {
+    if (this.props.context.user) {
+      let uid = this.props.context.user.id;
+      firebase
+        .database()
+        .ref(`users/${uid}/cart`)
+        .once("value")
+        .then(cart => {
+          cart.val() && this.setState({ products: cart.val() });
+        });
+    }
   }
 
   onToken = token => {
@@ -36,37 +58,42 @@ class Checkout extends Component {
     this.props.context.user &&
       console.log("user.email---------->", this.props.context.user.email);
     let total = _.getTotal(this.state.products);
+    let totalQty = _.getTotalQty(this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
         <div>
           <span>{product.name}</span>
           <span>{product.price}</span>
+          <span>Qty: {product.quantity}</span>
         </div>
       );
     });
     return (
-      <div>
-        <h1>CHECKOUT</h1>
-        <div>{showProducts}</div>
-        <h1>TOTAL: {total}</h1>
-        <StripeCheckout
-          name="© G U C C I"
-          image="http://desiderata.info/wp-content/uploads/Gucci-GG-logo.png"
-          // White logo with black background:
-          // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
-          amount={total * 100}
-          token={this.onToken}
-          email={
-            this.props.context.user ? this.props.context.user.email : undefined
-          }
-          stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
-        />
-
+      <div className="checkout">
         <span>
           <Link to="/bag">
             <button>Back to Bag</button>
           </Link>
         </span>
+        <div className="order-sum">
+          <h1>{totalQty} items</h1>
+          <div>{showProducts}</div>
+          <h1>TOTAL: {total}</h1>
+          <StripeCheckout
+            name="© G U C C I"
+            image="http://desiderata.info/wp-content/uploads/Gucci-GG-logo.png"
+            // White logo with black background:
+            // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
+            amount={total * 100}
+            token={this.onToken}
+            email={
+              this.props.context.user
+                ? this.props.context.user.email
+                : undefined
+            }
+            stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
+          />
+        </div>
       </div>
     );
   }

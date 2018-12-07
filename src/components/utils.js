@@ -25,5 +25,11 @@ module.exports = {
         parseInt(currentVal.price.replace(/[,$]/g, "")) * currentVal.quantity
       );
     }, 0);
+  },
+
+  getTotalQty: arr => {
+    return arr.reduce((previousVal, currentVal) => {
+      return previousVal + currentVal.quantity;
+    }, 0);
   }
 };

@@ -1,4 +1,4 @@
-@import "../../sass//main.scss";
+@import "../../sass/main.scss";
 
 .header {
   min-height: 120px;
@@ -58,4 +58,9 @@
 
 .clear {
   background: transparent;
+.logo {
+  @include gucci-font;
+}
+
+.bag-link {
 }

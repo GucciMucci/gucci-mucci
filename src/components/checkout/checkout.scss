@@ -1,0 +1,7 @@
+@import "../../sass/main.scss";
+
+.checkout {
+  @include background;
+  display: flex;
+  justify-content: space-between;
+}
