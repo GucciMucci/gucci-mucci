@@ -35,7 +35,7 @@ class Header extends Component {
             <p>+1.877.482.2430</p>
           </div>
           <Link to="/" className="top-child">
-            <span>GUCCI</span>
+            <span className="logo">GUCCI</span>
           </Link>
           <div className="top-child right">
             {this.props.context.user === null ? (

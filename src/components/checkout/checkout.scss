@@ -4,4 +4,25 @@
   @include background;
   display: flex;
   justify-content: space-between;
+  img: {
+    height: 50px;
+  }
+}
+
+.checkout-products {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: $border;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
+.order-sum-co {
+  @include checkout-box;
+  height: 600px;
+  overflow-y: auto;
+  h1 {
+    border-bottom: $border;
+    padding: 0 0 25px;
+  }
 }

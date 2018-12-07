@@ -61,10 +61,17 @@ class Checkout extends Component {
     let totalQty = _.getTotalQty(this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
-        <div>
-          <span>{product.name}</span>
-          <span>{product.price}</span>
-          <span>Qty: {product.quantity}</span>
+        <div className="checkout-products">
+          <img
+            className="bag-product-img"
+            src={product.images[0].image}
+            alt=""
+          />
+          <div>
+            <span>{product.name}</span>
+            <span>Qty: {product.quantity}</span>
+            <h2>{product.price}</h2>
+          </div>
         </div>
       );
     });
@@ -75,10 +82,10 @@ class Checkout extends Component {
             <button>Back to Bag</button>
           </Link>
         </span>
-        <div className="order-sum">
-          <h1>{totalQty} items</h1>
+        <div className="order-sum-co">
+          <h1>👜{totalQty} items</h1>
           <div>{showProducts}</div>
-          <h1>TOTAL: {total}</h1>
+          <h2>TOTAL: $ {total}</h2>
           <StripeCheckout
             name="© G U C C I"
             image="http://desiderata.info/wp-content/uploads/Gucci-GG-logo.png"
