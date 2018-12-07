@@ -44,14 +44,17 @@ class Bag extends Component {
     this.setState({ products: tempBag });
   }
 
+  updateQuantity;
+
   render() {
     let total = _.getTotal(this.state.products);
-
+    console.log("this.state.products---------->", this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
         <div key={product.style} className="bag-product">
           <h1>{product.name}</h1>
           <h3>Price: {product.price}</h3>
+          <h3>Qty: {product.quantity}</h3>
           <img
             className="bag-product-img"
             src={product.images[0].image}

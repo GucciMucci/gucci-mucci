@@ -6,7 +6,7 @@
 
 @mixin background {
   background: $background;
-  margin: 15px;
+  margin: 135px 15px;
   height: 100vh;
   width: unquote("-webkit-calc(100% - 30px)");
 }
