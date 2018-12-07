@@ -6,10 +6,10 @@
   .images {
     display: block;
     width: 100vw;
-    margin: 0 auto;
     background: $gray;
     .slick-list {
       max-width: 2000px;
+      margin: auto;
       button.slick-arrow.slick-next {
         right: -25px;
       }

@@ -1,12 +1,10 @@
+@import "../../sass//main.scss";
+
 .header {
   min-height: 120px;
   width: 100%;
   position: fixed;
   top: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   background: linear-gradient(to bottom, #191919, rgba(0, 0, 0, 0));
   color: white;
@@ -15,7 +13,49 @@
   &:hover {
     background: #191919;
   }
+
+  .top {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    .top-child {
+      flex: 1;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      p {
+        @include primary-font;
+        font-size: 11pt;
+        margin: 0 15px;
+      }
+    }
+    .right {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  nav {
+    width: 100%;
+    position: absolute;
+    bottom: 25px;
+    display: flex;
+    justify-content: center;
+    font-size: 12pt;
+    text-transform: uppercase;
+    a {
+      margin: 0 20px;
+      @include primary-font;
+      font-weight: bold;
+    }
+  }
 }
 
-.bag-link {
+.black {
+  background: #191919;
+}
+
+.clear {
+  background: transparent;
 }

@@ -9,22 +9,50 @@ class Header extends Component {
     this.props.context.authListenier();
   }
 
+  getOptions = () => {
+    let pathname = window.location.pathname;
+    let name = pathname.split("/");
+    switch (pathname) {
+      case "/":
+        console.log("root");
+        break;
+      case "/women/dresses":
+      case "/women/dresses/" + name[name.length - 1]:
+      case "/login":
+        return "black";
+    }
+    return "";
+  };
+
   render() {
+    let options = this.getOptions();
     return (
-      <div className="header">
-        <Link to="/">
-          <span>GUCCI</span>
-        </Link>
-        {this.props.context.user === null ? (
-          <Link to="/login">Login</Link>
-        ) : (
-          <button onClick={this.props.context.logout}>Logout</button>
-        )}
-        <Link to="/bag">
-          <span className="bag-link">👜</span>
-        </Link>
+      <div className={"header " + options}>
+        <div className="top">
+          <div className="top-child left">
+            <p>United Stated</p>
+            <p>English</p>
+            <p>+1.877.482.2430</p>
+          </div>
+          <Link to="/" className="top-child">
+            <span>GUCCI</span>
+          </Link>
+          <div className="top-child right">
+            {this.props.context.user === null ? (
+              <Link to="/login">Login</Link>
+            ) : (
+              <button onClick={this.props.context.logout}>Logout</button>
+            )}
+            <Link to="/bag">
+              <span className="bag-link">👜</span>
+            </Link>
+          </div>
+        </div>
         <nav>
           <Link to="/women/dresses">Women</Link>
+          <Link to="/women/dresses">Men</Link>
+          <Link to="/women/dresses">Children</Link>
+          <Link to="/women/dresses">Jewelry & watches</Link>
         </nav>
       </div>
     );

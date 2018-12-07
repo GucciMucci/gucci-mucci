@@ -1,5 +1,8 @@
-@import './sass/main.scss';
+@import "./sass/main.scss";
 
 .App {
   text-align: center;
+  .not-nav {
+    margin-top: 120px;
+  }
 }
