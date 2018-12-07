@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import firebase from "../firebase";
 import withContext from "../../context/Context_HOC";
+import MucciSlider from "./MucciSlider";
 import "./product.scss";
 
 class Product extends Component {
@@ -27,14 +28,12 @@ class Product extends Component {
   }
 
   addToBag = product => {
-    let localBag = localStorage.getItem("bagArray");
     product.quantity = 1;
     if (this.props.context.user) {
       const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
       usersRef.once("value").then(res => {
         let cart = res.val();
         let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
-        console.log(index);
         if (index !== -1) {
           cart[index].quantity += 1;
           usersRef.set(cart);
@@ -45,9 +44,15 @@ class Product extends Component {
         }
       });
     } else {
+      let localBag = localStorage.getItem("bagArray");
       if (localBag) {
         const tempBag = JSON.parse(localStorage.getItem("bagArray"));
-        tempBag.push(product);
+        const index = tempBag.findIndex(item => item.style === product.style);
+        if (index !== -1) {
+          tempBag[index].quantity += 1;
+        } else {
+          tempBag.push(product);
+        }
         localStorage.setItem("bagArray", JSON.stringify(tempBag));
       } else {
         localStorage.setItem("bagArray", JSON.stringify([product]));
@@ -62,9 +67,7 @@ class Product extends Component {
     return this.state.product.images ? (
       <div className="product">
         <div className="images">
-          {images.map(image => {
-            return <img src={image.image} alt="" />;
-          })}
+          <MucciSlider images={images} />
         </div>
         <h1>{name}</h1>
         <h3>{price}</h3>
