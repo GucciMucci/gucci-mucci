@@ -25,8 +25,13 @@ export default class Login extends Component {
         usersRef.once("value").then(res => {
           console.log("once res~~~~", res.val());
           if (localStorage.getItem("bagArray")) {
-            usersRef.set([...res.val(), ...JSON.parse(localStorage.getItem("bagArray"))]);
-            localStorage.clear();
+            if (res.val()) {
+              usersRef.set([...res.val(), ...JSON.parse(localStorage.getItem("bagArray"))]);
+              localStorage.clear();
+            } else {
+              usersRef.set([...JSON.parse(localStorage.getItem("bagArray"))]);
+              localStorage.clear();
+            }
           }
           this.props.history.push("/profile");
         });

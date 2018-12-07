@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @mixin primary-font {
   font-family: neuzeit-grotesk, sans-serif;
   font-style: normal;
@@ -7,7 +9,7 @@
 @mixin background {
   background: $background;
   margin: 15px;
-  height: 100vh;
+  height: calc(100vh - 250px);
   width: unquote("-webkit-calc(100% - 30px)");
 }
 

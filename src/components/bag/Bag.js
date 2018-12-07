@@ -37,11 +37,24 @@ class Bag extends Component {
   }
 
   removeFromBag(style) {
-    const tempBag = JSON.parse(localStorage.getItem("bagArray"));
-    let itemIndex = tempBag.findIndex(item => item.style === style);
-    tempBag.splice(itemIndex, 1);
-    localStorage.setItem("bagArray", JSON.stringify(tempBag));
-    this.setState({ products: tempBag });
+    if (this.props.context.user) {
+      const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
+      usersRef.once("value").then(res => {
+        let cart = res.val();
+        let index = cart.findIndex(item => item.style === style);
+        if (index !== -1) {
+          cart.splice(index, 1);
+        }
+        usersRef.set(cart);
+        this.setState({ products: cart });
+      });
+    } else {
+      const tempBag = JSON.parse(localStorage.getItem("bagArray"));
+      let itemIndex = tempBag.findIndex(item => item.style === style);
+      tempBag.splice(itemIndex, 1);
+      localStorage.setItem("bagArray", JSON.stringify(tempBag));
+      this.setState({ products: tempBag });
+    }
   }
 
   render() {

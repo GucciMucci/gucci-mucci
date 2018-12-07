@@ -29,7 +29,7 @@ class Product extends Component {
   addToBag = product => {
     let localBag = localStorage.getItem("bagArray");
     product.quantity = 1;
-    if (this.props.context.user.id) {
+    if (this.props.context.user) {
       const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
       usersRef.once("value").then(res => {
         let cart = res.val();
