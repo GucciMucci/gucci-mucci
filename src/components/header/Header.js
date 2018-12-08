@@ -17,10 +17,11 @@ class Header extends Component {
         console.log("root");
         break;
       case "/women/dresses":
-      case "/women/dresses/" + name[name.length - 1]:
       case "/login":
       case "/checkout":
         return "black";
+      case "/women/dresses/" + name[name.length - 1]:
+        return "gray";
     }
     return "";
   };
@@ -57,7 +58,7 @@ class Header extends Component {
         </div>
         <nav>
           <Link to="/women/dresses">Women</Link>
-          <Link to="/women/dresses">Men</Link>
+          <Link to="/women/coats">Men</Link>
           <Link to="/women/dresses">Children</Link>
           <Link to="/women/dresses">Jewelry & watches</Link>
         </nav>
