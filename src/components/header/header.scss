@@ -70,6 +70,14 @@
       color: black;
     }
   }
+  &:hover {
+    * {
+      color: white;
+      &:visited {
+        color: white;
+      }
+    }
+  }
 }
 
 .clear {
