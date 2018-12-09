@@ -3,6 +3,8 @@
 @import "../../sass/main.scss";
 
 .product {
+  margin-top: -120px;
+  position: relative;
   .product-info {
     position: absolute;
     top: 230px;
@@ -36,6 +38,21 @@
     h3 {
       font-size: 13px;
     }
+    .add-to-bag {
+      height: 40px;
+      width: 250px;
+      background: black;
+      color: white;
+      font-size: 10pt;
+      font-weight: 100;
+    }
+  }
+  .heart {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
   }
   .images {
     display: block;
@@ -47,6 +64,37 @@
       button.slick-arrow.slick-next {
         right: -25px;
       }
+    }
+  }
+  $scale: 0.25;
+  $arrowHeight: 300px * $scale;
+  $arrowWidth: 99px * $scale;
+  .prevArrow {
+    height: $arrowHeight;
+    width: $arrowWidth;
+    left: 50px;
+    z-index: 2;
+  }
+  .nextArrow {
+    height: $arrowHeight;
+    width: $arrowWidth;
+    right: 50px;
+    z-index: 2;
+  }
+  .mucci-dots {
+    position: absolute;
+    bottom: 50px;
+    li {
+      height: 5px;
+      width: 50px;
+      margin: 0 1px;
+      background: #ddd;
+      button {
+        display: none;
+      }
+    }
+    li.slick-active {
+      background: darken(gray, 5);
     }
   }
 }

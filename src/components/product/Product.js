@@ -3,6 +3,7 @@ import firebase from "../firebase";
 import withContext from "../../context/Context_HOC";
 import MucciSlider from "./MucciSlider";
 import "./product.scss";
+import heart from "../Card/heart-regular.svg";
 
 class Product extends Component {
   constructor(props) {
@@ -80,22 +81,22 @@ class Product extends Component {
           <h3>Style {style}</h3>
           {this.state.showMemo && <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>}
           <button
-            className=""
+            className="add-to-bag"
             onClick={() => {
               this.addToBag(this.state.product);
             }}
           >
-            Add to Cart
-          </button>
-
-          <button
-            onClick={() => {
-              this.props.context.addFav(this.state.product);
-            }}
-          >
-            Favorite
+            ADD TO SHOPPING BAG
           </button>
         </div>
+        <img
+          className="heart"
+          src={heart}
+          alt=""
+          onClick={() => {
+            this.props.context.addFav(this.state.product);
+          }}
+        />
       </div>
     ) : (
       ""
