@@ -84,29 +84,36 @@ class Bag extends Component {
     const showProducts = this.state.products.map(product => {
       return (
         <div key={product.style} className="bag-product">
-          <h1>{product.name}</h1>
-          <h3>Price: {product.price}</h3>
-          <h3>Qty: {product.quantity} </h3>
           <img
             className="bag-product-img"
             src={product.images[0].image}
             alt=""
           />
-          <button onClick={() => this.removeFromBag(product.style)}>
-            Remove
-          </button>
-          <select
-            onChange={e =>
-              this.updateQuantity(product.style, parseInt(e.target.value))
-            }
-            value={product.quantity}
-          >
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
-          </select>
+          <div className="product-details">
+            <h1>{product.name}</h1>
+            <h3>Style# {product.style}</h3>
+            <h3>Style: Product style description</h3>
+            <h3>Qty: {product.quantity} </h3>
+            <button onClick={() => this.removeFromBag(product.style)}>
+              Remove
+            </button>
+          </div>
+          <span>
+            <select
+              className="select-qty"
+              onChange={e =>
+                this.updateQuantity(product.style, parseInt(e.target.value))
+              }
+              value={product.quantity}
+            >
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </select>
+            <h3>{product.price}</h3>
+          </span>
         </div>
       );
     });
@@ -114,7 +121,10 @@ class Bag extends Component {
       this.state.products && (
         <div className="bag">
           <div className="bag-products">
-            <h2 className="heading">YOUR SELECTIONS</h2>
+            <div className="heading">
+              <h2>YOUR SELECTIONS</h2>
+              <h3>🖨 Print</h3>
+            </div>
             {showProducts}
           </div>
 

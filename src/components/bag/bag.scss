@@ -10,14 +10,35 @@
   h2 {
     @include heading;
   }
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: $border;
+    padding-bottom: 10px;
+  }
 }
 
 .bag-products {
   margin: 0 10px;
+  width: 100%;
 }
 
 .bag-product {
-  border-top: $border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: $border;
+  max-height: 375px;
+  min-height: 318px;
+  span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.select-qty {
+  width: 100px;
 }
 
 .bag-product-img {
