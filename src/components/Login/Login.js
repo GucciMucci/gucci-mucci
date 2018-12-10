@@ -9,7 +9,10 @@ export default class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      error: ""
+      error: "",
+      popup: false,
+      newEmail: "",
+      newPass: ""
     };
   }
 
@@ -50,7 +53,7 @@ export default class Login extends Component {
     const usersRef = firebase.database().ref("users");
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .createUserWithEmailAndPassword(this.state.newEmail, this.state.newPass)
       .then(user => {
         usersRef.child(user.user.uid).set({ email: user.user.email });
         this.props.history.push("/profile");
@@ -62,6 +65,8 @@ export default class Login extends Component {
   };
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  togglePop = () => this.setState({ popup: !this.state.popup });
 
   render() {
     return (
@@ -90,7 +95,7 @@ export default class Login extends Component {
                 className="form-input"
               />
 
-              {this.state.error && <div className="error-msg">Please enter a valid password. {this.state.error}</div>}
+              {/* {this.state.error && <div className="error-msg">Please enter a valid password. {this.state.error}</div>} */}
 
               <button type="submit" onClick={this.login} className="signin-btn">
                 SIGN IN
@@ -106,9 +111,30 @@ export default class Login extends Component {
               <li>Personalized recommendations. </li>
               <li>Order delivery updates and return management.</li>
             </ul>
-            <button onClick={this.signup} className="signup-btn">
+            <button onClick={this.togglePop} className="signup-btn">
               CREATE ACCOUNT
             </button>
+          </div>
+
+          <div className={this.state.popup ? "signup-pop" : "hidden-pop"}>
+            <div className="pop-content">
+              <span className="close" onClick={this.togglePop}>
+                &times;
+              </span>
+              <div className="signin-input">
+                <h2>Create An Account</h2>
+                <img src={diamond} className="diamond" />
+                <label>EMAIL ADDRESS</label>
+                <input value={this.state.newEmail} name="newEmail" type="email" onChange={this.handleChange} className="form-input" />
+                <label>PASSWORD</label>
+                <input value={this.state.newPass} name="newPass" type="password" onChange={this.handleChange} className="form-input" />
+                {this.state.error && <div className="error-msg">{this.state.error}</div>}
+                <button onClick={this.signup} className="signin-btn">
+                  CREATE ACCOUNT
+                </button>
+                <p>By creating an account, you accept the terms of Gucci's Privacy Policy</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
