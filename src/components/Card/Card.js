@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import _ from "../utils";
 import heartOpen from "./heart-regular.svg";
+import CardSlider from "./CardSlider";
 
 class Card extends Component {
   constructor(props) {
@@ -17,10 +18,13 @@ class Card extends Component {
         <Link to={window.location.pathname + "/" + name}>
           <img src={images[0].image} alt="" />
           <div className="hoverPopup">
-            <img src={_.white(images[1].image)} alt="" />
+            {/* <img src={_.white(images[1].image)} alt="" /> */}
+            <CardSlider images={images} />
+
             <h1>{name}</h1>
             <h2>{price}</h2>
             <p>SHOP THIS ></p>
+            <img className="heart" src={heartOpen} alt="" />
           </div>
           <img className="heart" src={heartOpen} alt="" />
         </Link>

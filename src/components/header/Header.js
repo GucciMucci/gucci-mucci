@@ -17,10 +17,12 @@ class Header extends Component {
         console.log("root");
         break;
       case "/women/dresses":
+      case "/women/coats":
       case "/login":
       case "/checkout":
         return "black";
       case "/women/dresses/" + name[name.length - 1]:
+      case "/women/coats/" + name[name.length - 1]:
         return "gray";
     }
     return "";
