@@ -13,7 +13,8 @@ class Checkout extends Component {
     this.state = {
       products: JSON.parse(localStorage.getItem("bagArray")) || [],
       total: 0,
-      showNumberBox: false
+      showNumberBox: false,
+      selected: "radio-1"
     };
   }
 
@@ -184,6 +185,58 @@ class Checkout extends Component {
               </div>
             </div>
           )}
+          <div className="row">
+            <h2>SHIPPING METHOD</h2>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="radio-1"
+              name="myRadio"
+              value="radio-1"
+              checked={this.state.selected === "radio-1"}
+              onChange={e => this.setState({ selected: e.target.value })}
+            />
+            <label for="radio-1"> Two Day</label>
+            <span> - Free</span>
+            {this.state.selected === "radio-1" && (
+              <span> You will be notified when your item is shipped</span>
+            )}
+            <br />
+            <input
+              type="radio"
+              id="radio-2"
+              name="myRadio"
+              value="radio-2"
+              checked={this.state.selected === "radio-2"}
+              onChange={e => this.setState({ selected: e.target.value })}
+            />
+            <label for="radio-2"> Ground</label>
+            <span> - Free</span>
+            {this.state.selected === "radio-2" && (
+              <span>
+                Your order will be delivered within 7 business days. You will be
+                notified when your item is shipped.
+              </span>
+            )}
+            <br />
+            <input
+              type="radio"
+              id="radio-3"
+              name="myRadio"
+              value="radio-3"
+              checked={this.state.selected === "radio-3"}
+              onChange={e => this.setState({ selected: e.target.value })}
+            />
+            <label for="radio-3"> Next Day</label>
+            <span> - $ 35.00</span>
+            {this.state.selected === "radio-3" && (
+              <span>Please allow 1-2 business days for your order to ship</span>
+            )}
+          </div>
+          <div className="row">
+            <button>CONTINUE TO PAYMENT</button>
+          </div>
         </div>
         <div className="order-sum-co">
           <h1>👜{totalQty} items</h1>
