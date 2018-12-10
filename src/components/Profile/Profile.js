@@ -28,8 +28,8 @@ class Profile extends Component {
                 className="pic-holder"
               />
               <h1>Saved Items</h1>
-              <p>All your favorite pieces in one beautiful place.</p>
             </Link>
+            <p>All your favorite pieces in one beautiful place.</p>
           </div>
         </div>
       </div>
