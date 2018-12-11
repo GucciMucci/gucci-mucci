@@ -3,8 +3,16 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 import firebase from "./../firebase";
 import withContext from "../../context/Context_HOC";
+import logo_white from "./logo_white.png";
+import logo_black from "./logo_black.png";
 
 class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      hover: false
+    };
+  }
   componentDidMount() {
     this.props.context.authListenier();
   }
@@ -31,7 +39,19 @@ class Header extends Component {
   render() {
     let options = this.getOptions();
     return (
-      <div className={"header " + options}>
+      <div
+        className={"header " + options}
+        onMouseEnter={() => {
+          if (options === "gray") {
+            this.setState({ hover: true });
+          }
+        }}
+        onMouseLeave={() => {
+          if (options === "gray") {
+            this.setState({ hover: false });
+          }
+        }}
+      >
         <div className="top">
           <div className="top-child left">
             <p>United Stated</p>
@@ -39,7 +59,7 @@ class Header extends Component {
             <p>+1.877.482.2430</p>
           </div>
           <Link to="/" className="top-child">
-            <span className="logo">GUCCI</span>
+            <img className="logo" src={this.state.hover ? logo_white : logo_black} alt="" />
           </Link>
           <div className="top-child right">
             {this.props.context.user === null ? (

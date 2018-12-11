@@ -34,5 +34,8 @@ module.exports = {
   },
   highRes: url => {
     return url.replace(/490/gi, "800");
+  },
+  superRes: url => {
+    return url.replace(/490/gi, "2400");
   }
 };

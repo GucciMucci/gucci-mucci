@@ -30,7 +30,7 @@ export default class MucciSlider extends Component {
       <div className="slider">
         <Slider {...settings}>
           {this.props.images.map(image => {
-            return <img src={_.highRes(image.image)} alt="" />;
+            return <img src={_.highRes(image.image)} alt="" onClick={this.zoomIn} />;
           })}
         </Slider>
       </div>

@@ -58,6 +58,7 @@
     display: block;
     width: 100vw;
     background: $gray;
+    position: relative;
     .slick-list {
       max-width: 2000px;
       margin: auto;
@@ -95,6 +96,51 @@
     }
     li.slick-active {
       background: darken(gray, 5);
+    }
+  }
+  .details {
+    background: #f7f7f7;
+    display: flex;
+
+    main {
+      flex: 2.5;
+      margin: 35px;
+      font-size: 11pt;
+      font-family: "Futura";
+      .accordian {
+        border-bottom: 2px solid $gray;
+        margin: 20px 0;
+        h6,
+        p {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    aside {
+      background: #fff;
+      flex: 1;
+      margin: 35px;
+      text-align: left;
+      padding: 30px;
+      img {
+        height: 200px;
+        display: block;
+        margin: auto;
+      }
+      h4,
+      p,
+      ul,
+      li {
+        font-family: sans-serif;
+        line-height: 25px;
+        margin: 10px 0px;
+        font-size: 10pt;
+        font-weight: 100;
+      }
+      li {
+        list-style: inside;
+      }
     }
   }
 }

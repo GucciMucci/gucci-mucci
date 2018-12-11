@@ -4,6 +4,7 @@ import withContext from "../../context/Context_HOC";
 import MucciSlider from "./MucciSlider";
 import "./product.scss";
 import heart from "../Card/heart-regular.svg";
+import _ from "../utils";
 
 class Product extends Component {
   constructor(props) {
@@ -68,12 +69,20 @@ class Product extends Component {
   };
 
   render() {
-    const { name, images, price, style } = this.state.product;
+    const { name, images, price, style, description, details } = this.state.product;
 
     return this.state.product.images ? (
       <div className="product">
         <div className="images">
           <MucciSlider images={images} />
+          <img
+            className="heart"
+            src={heart}
+            alt=""
+            onClick={() => {
+              this.props.context.addFav(this.state.product);
+            }}
+          />
         </div>
         <div className="product-info">
           <h1>{name}</h1>
@@ -89,14 +98,41 @@ class Product extends Component {
             ADD TO SHOPPING BAG
           </button>
         </div>
-        <img
-          className="heart"
-          src={heart}
-          alt=""
-          onClick={() => {
-            this.props.context.addFav(this.state.product);
-          }}
-        />
+        <div className="details">
+          <main>
+            <hr />
+            <div className="accordian">
+              <h6>
+                SHIPPING INFO <span>+</span>
+              </h6>
+              <p>
+                For the continental U.S., we offer free FedEx ground shipping. We also offer two-day shipping for $25
+                and next-day delivery options for $35.*
+              </p>
+              <p>
+                For Hawaii, Alaska and Puerto Rico, we offer two-day shipping for $25 and next-day shipping for $35.
+              </p>
+              <p>All ground, next-day and two-day deliveries are shipped via FedEx.*</p>
+              <p>Additional shipping information is available during the checkout process.</p>
+              <p>*Exceptions may apply for selected Home products.</p>
+            </div>
+            <div className="accordian">
+              <h6>
+                GIFT WRAPPING <span>+</span>
+              </h6>
+            </div>
+          </main>
+          <aside>
+            <img src={_.white(images[1].image)} alt="" />
+            <h4>Product Details</h4>
+            <p>{description}</p>
+            <ul>
+              {details.map(detail => {
+                return <li>{detail.name}</li>;
+              })}
+            </ul>
+          </aside>
+        </div>
       </div>
     ) : (
       ""

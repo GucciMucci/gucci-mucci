@@ -15,7 +15,7 @@
   }
 
   .top {
-    margin-top: 20px;
+    margin-top: 22px;
     display: flex;
     justify-content: space-between;
     .top-child {
@@ -23,10 +23,11 @@
     }
     .left {
       display: flex;
-      align-items: center;
+      // align-items: center;
       p {
         @include primary-font;
-        font-size: 11pt;
+        font-weight: 100;
+        font-size: 10pt;
         margin: 0 15px;
       }
     }
@@ -53,7 +54,8 @@
     a {
       margin: 0 20px;
       @include primary-font;
-      font-weight: bold;
+      font-size: 10pt;
+      font-weight: normal;
     }
   }
 }
@@ -84,7 +86,7 @@
   background: transparent;
 }
 .logo {
-  @include gucci-font;
+  height: 27px;
 }
 
 .bag-link {

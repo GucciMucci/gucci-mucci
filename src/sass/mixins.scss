@@ -2,8 +2,13 @@
 @import url("https://use.typekit.net/idz8jyc.css");
 @import url("https://fonts.googleapis.com/css?family=Cinzel");
 
+// @font-face {
+//   font-family: "Futura";
+//   src: local("Futura"), url(../fonts/Futura_Book.ttf) format("ttf");
+// }
+
 @mixin primary-font {
-  font-family: "neuzeit-grotesk", sans-serif;
+  font-family: "Futura", sans-serif;
   font-style: normal;
   font-weight: 300;
 }

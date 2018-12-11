@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Component Product Component Renders correctly 1`] = `
+<constextComponent
+  context={
+    Object {
+      "user": Object {
+        "id": "",
+      },
+    }
+  }
+>
+  <Product />
+</constextComponent>
+`;
