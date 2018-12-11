@@ -12,14 +12,9 @@ import bag from "./bag.svg";
 import search from "./search.svg";
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      hover: false
-    };
-  }
   componentDidMount() {
     this.props.context.authListenier();
+    window.addEventListener("scroll", this.resizeHeaderOnScroll);
   }
 
   getOptions = () => {
@@ -41,32 +36,42 @@ class Header extends Component {
     return "";
   };
 
+  resizeHeaderOnScroll = () => {
+    const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+      shrinkOn = 100,
+      header = document.getElementById("header");
+
+    if (distanceY > shrinkOn) {
+      if (this.getOptions() === "gray") {
+        header.classList.add("blacker");
+      } else {
+        header.classList.add("smaller");
+      }
+    } else {
+      if (this.getOptions() === "gray") {
+        header.classList.remove("blacker");
+      } else {
+        header.classList.remove("smaller");
+      }
+    }
+  };
+
   render() {
-    let options = this.getOptions();
     return (
-      <div
-        className={"header " + options}
-        onMouseEnter={() => {
-          if (options === "gray") {
-            this.setState({ hover: true });
-          }
-        }}
-        onMouseLeave={() => {
-          if (options === "gray") {
-            this.setState({ hover: false });
-          }
-        }}
-      >
+      <div id="header" className={"header " + this.getOptions()}>
         <div className="top">
-          <div className="top-child left">
+          <div className="left">
             <p>United Stated</p>
             <p>English</p>
             <p>+1.877.482.2430</p>
           </div>
-          <Link to="/" className="top-child">
-            <img className="logo" src={logo_white} alt="" />
-          </Link>
-          <div className="top-child right">
+          <nav className="middle">
+            <Link to="/women/dresses">Women</Link>
+            <Link to="/women/coats">Men</Link>
+            <Link to="/women/dresses">Children</Link>
+            <Link to="/women/dresses">Jewelry & watches</Link>
+          </nav>
+          <div className="right">
             {this.props.context.user === null ? (
               <Link to="/login">Login</Link>
             ) : (
@@ -92,12 +97,9 @@ class Header extends Component {
             </span>
           </div>
         </div>
-        <nav>
-          <Link to="/women/dresses">Women</Link>
-          <Link to="/women/coats">Men</Link>
-          <Link to="/women/dresses">Children</Link>
-          <Link to="/women/dresses">Jewelry & watches</Link>
-        </nav>
+        <Link to="/" className="logo">
+          <img src={logo_white} alt="" />
+        </Link>
       </div>
     );
   }

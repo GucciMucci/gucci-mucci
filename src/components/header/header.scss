@@ -1,7 +1,7 @@
 @import "../../sass/main.scss";
 
 .header {
-  min-height: 120px;
+  height: 120px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -9,6 +9,7 @@
   background: linear-gradient(to bottom, #191919, rgba(0, 0, 0, 0));
   color: white;
   z-index: 5;
+  transition: height 0.3s ease;
 
   &:hover {
     background: #191919;
@@ -101,7 +102,8 @@
     .heart {
       filter: invert(0);
     }
-    a {
+    a,
+    p {
       color: white;
       &:visited {
         color: white;
@@ -114,5 +116,34 @@
   background: transparent;
 }
 .logo {
-  height: 27px;
+  img {
+    height: 27px;
+    position: relative;
+    top: -30px;
+  }
+}
+
+.smaller {
+  background: #191919;
+  height: 60px;
+  .logo {
+    display: none;
+  }
+}
+
+.blacker {
+  background: #191919;
+  img {
+    filter: invert(0);
+  }
+  .heart {
+    filter: invert(0);
+  }
+  a,
+  p {
+    color: white;
+    &:visited {
+      color: white;
+    }
+  }
 }
