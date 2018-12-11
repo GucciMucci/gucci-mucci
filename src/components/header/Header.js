@@ -3,13 +3,10 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 import firebase from "./../firebase";
 import withContext from "../../context/Context_HOC";
-<<<<<<< HEAD
 import logo_white from "./logo_white.png";
 import logo_black from "./logo_black.png";
-=======
 import Hover from "../Hover/Hover";
 import HoverBag from "../HoverBag/HoverBag";
->>>>>>> bag-checkout
 
 class Header extends Component {
   constructor() {
@@ -64,7 +61,11 @@ class Header extends Component {
             <p>+1.877.482.2430</p>
           </div>
           <Link to="/" className="top-child">
-            <img className="logo" src={this.state.hover ? logo_white : logo_black} alt="" />
+            <img
+              className="logo"
+              src={this.state.hover ? logo_white : logo_black}
+              alt=""
+            />
           </Link>
           <div className="top-child right">
             {this.props.context.user === null ? (
