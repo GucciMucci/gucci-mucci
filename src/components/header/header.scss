@@ -34,8 +34,24 @@
     .right {
       display: flex;
       justify-content: flex-end;
+      $size: 15px;
+      .account {
+        height: $size;
+        display: flex;
+      }
+      .heart {
+        height: $size;
+        width: $size;
+      }
+      .search {
+        height: $size * 2;
+        width: $size * 2;
+        position: relative;
+        top: -10px;
+        margin: 0 10px;
+      }
       a {
-        color: white;
+        font-size: 10pt;
         display: inline;
         margin: 0 15px;
         cursor: pointer;
@@ -66,6 +82,12 @@
 
 .gray {
   background: transparent;
+  img {
+    filter: invert(1);
+  }
+  .heart {
+    filter: invert(1);
+  }
   * {
     color: black;
     &:visited {
@@ -73,7 +95,13 @@
     }
   }
   &:hover {
-    * {
+    img {
+      filter: invert(0);
+    }
+    .heart {
+      filter: invert(0);
+    }
+    a {
       color: white;
       &:visited {
         color: white;
@@ -87,7 +115,4 @@
 }
 .logo {
   height: 27px;
-}
-
-.bag-link {
 }

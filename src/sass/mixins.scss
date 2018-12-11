@@ -8,9 +8,9 @@
 // }
 
 @mixin primary-font {
-  font-family: "Futura", sans-serif;
+  font-family: "Futura_Book", sans-serif;
   font-style: normal;
-  font-weight: 300;
+  font-weight: lighter;
 }
 
 @mixin gucci-font {

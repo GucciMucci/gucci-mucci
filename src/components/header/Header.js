@@ -7,6 +7,9 @@ import logo_white from "./logo_white.png";
 import logo_black from "./logo_black.png";
 import Hover from "../Hover/Hover";
 import HoverBag from "../HoverBag/HoverBag";
+import heart from "../Card/heart-regular.svg";
+import bag from "./bag.svg";
+import search from "./search.svg";
 
 class Header extends Component {
   constructor() {
@@ -61,30 +64,32 @@ class Header extends Component {
             <p>+1.877.482.2430</p>
           </div>
           <Link to="/" className="top-child">
-            <img
-              className="logo"
-              src={this.state.hover ? logo_white : logo_black}
-              alt=""
-            />
+            <img className="logo" src={logo_white} alt="" />
           </Link>
           <div className="top-child right">
             {this.props.context.user === null ? (
               <Link to="/login">Login</Link>
             ) : (
-              <div>
-                <Link to="/saved-items">Saved</Link>
-                <Link to="/profile">Profile</Link>
+              <div className="account">
+                <Link to="/profile">My Account</Link>
                 <a href="#" onClick={this.props.context.logout}>
                   Logout
                 </a>
               </div>
             )}
+            <Link to="/saved-items">
+              <img className="heart" src={heart} alt="" />
+            </Link>
             <Link to="/bag">
               <span className="bag-link">
-                <Hover content={HoverBag} button="👜" />
+                <Hover content={HoverBag}>
+                  <img src={bag} alt="" />
+                </Hover>
               </span>
             </Link>
-            <span>🔍</span>
+            <span className="search">
+              <img src={search} alt="" />
+            </span>
           </div>
         </div>
         <nav>
