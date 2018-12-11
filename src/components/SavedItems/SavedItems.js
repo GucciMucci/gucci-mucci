@@ -61,22 +61,23 @@ class SavedItems extends Component {
     return (
       <div className="saved-items">
         <h1 className="saved-title">SAVED ITEMS</h1>
-        <p>You Have {this.state.favorites.length} Items In Your Saved Items</p>
+        {this.state.favorites && <p>You Have {this.state.favorites.length} Items In Your Saved Items</p>}
         <div className="card-holder">
-          {this.state.favorites.map(item => {
-            console.log(item);
-            return (
-              <div key={item.style} className="saved-card">
-                <span onClick={() => this.removeFav(item.style)}>&times;</span>
-                <img src={item.images[0].image} height={430} />
-                <h1>{item.name}</h1>
-                <p>{item.price}</p>
-                <div className="add-bag" onClick={() => this.props.context.addToBag(item)}>
-                  ADD TO BAG
+          {this.state.favorites &&
+            this.state.favorites.map(item => {
+              console.log(item);
+              return (
+                <div key={item.style} className="saved-card">
+                  <span onClick={() => this.removeFav(item.style)}>&times;</span>
+                  <img src={item.images[0].image} height={430} />
+                  <h1>{item.name}</h1>
+                  <p>{item.price}</p>
+                  <div className="add-bag" onClick={() => this.props.context.addToBag(item)}>
+                    ADD TO BAG
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     );
