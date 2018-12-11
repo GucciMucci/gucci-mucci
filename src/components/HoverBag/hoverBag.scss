@@ -1,0 +1,62 @@
+@import "../../sass/main.scss";
+
+.hover-bag {
+  button {
+    margin: 4px;
+    align-self: center;
+  }
+}
+.btn-link {
+  margin: 0px 0px !important;
+}
+.hover-bag-item {
+  display: flex;
+  align-items: center;
+  border-bottom: $border;
+  height: 150px;
+  font-size: 13px;
+  h3 {
+    margin: 10px;
+  }
+  span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &:hover {
+    background: #f2eeec;
+    .red {
+      display: block;
+    }
+    .white {
+      display: none;
+    }
+  }
+}
+
+.red {
+  display: none;
+}
+
+.hover-bag-title {
+  width: 100%;
+  margin: 10px 0 0;
+  border-bottom: $border;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 0 0;
+  .money {
+    font-size: 30px;
+  }
+}
+
+.cart-details-btn {
+  @include button-light;
+  width: 100%;
+}

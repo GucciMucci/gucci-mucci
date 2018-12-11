@@ -4,7 +4,9 @@ $headerHeight: 120px;
 $headerColor: #191919;
 $background: rgb(231, 231, 231);
 $light-text: rgb(170, 168, 168);
+$dropdown-hover: #f2eeec;
 
 //other
 $border: $light-text 0.9px solid;
 $border-light: lighten($light-text, 5) 0.9px solid;
+$border-white: white 0.9px solid;

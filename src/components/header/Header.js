@@ -3,8 +3,13 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 import firebase from "./../firebase";
 import withContext from "../../context/Context_HOC";
+<<<<<<< HEAD
 import logo_white from "./logo_white.png";
 import logo_black from "./logo_black.png";
+=======
+import Hover from "../Hover/Hover";
+import HoverBag from "../HoverBag/HoverBag";
+>>>>>>> bag-checkout
 
 class Header extends Component {
   constructor() {
@@ -74,8 +79,11 @@ class Header extends Component {
               </div>
             )}
             <Link to="/bag">
-              <span className="bag-link">👜</span>
+              <span className="bag-link">
+                <Hover content={HoverBag} button="👜" />
+              </span>
             </Link>
+            <span>🔍</span>
           </div>
         </div>
         <nav>
