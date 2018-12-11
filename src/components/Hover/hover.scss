@@ -20,8 +20,8 @@
     display: none;
     position: absolute;
     top: 16px;
-    right: 250px;
-    min-width: 280px;
+    right: 270px;
+    min-width: 300px;
     min-height: 115px;
     background-color: white;
     border-radius: 1px;
@@ -31,6 +31,7 @@
     z-index: 5;
     list-style: none;
     text-align: left;
+    cursor: default;
     li {
       padding: 10px;
     }

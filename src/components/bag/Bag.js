@@ -86,7 +86,7 @@ class Bag extends Component {
         <div key={product.style} className="bag-product">
           <img
             className="bag-product-img"
-            src={product.images[0].image}
+            src={product.images[1].image}
             alt=""
           />
           <div className="product-details">

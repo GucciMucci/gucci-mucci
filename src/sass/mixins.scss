@@ -37,6 +37,9 @@
   font-size: 14px;
   height: 40px;
   width: 220px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @mixin button-dark {
