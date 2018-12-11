@@ -1,5 +1,8 @@
 @import "../../sass/main.scss";
 
+.red {
+  display: none;
+}
 .hover-bag {
   button {
     margin: 4px;
@@ -34,10 +37,6 @@
   }
 }
 
-.red {
-  display: none;
-}
-
 .hover-bag-title {
   width: 100%;
   margin: 10px 0 0;
@@ -54,6 +53,11 @@
   .money {
     font-size: 30px;
   }
+}
+
+.show-products {
+  overflow-y: auto;
+  height: 230px;
 }
 
 .cart-details-btn {

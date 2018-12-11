@@ -67,7 +67,7 @@ class HoverBag extends Component {
     return (
       <div className="hover-bag">
         <h1 className="hover-bag-title">Shopping Bag</h1>
-        {showProducts}
+        <div className="show-products">{showProducts}</div>
         <div className="total">
           <span>Sub Total</span>
           <span className="money">$ {total}</span>
