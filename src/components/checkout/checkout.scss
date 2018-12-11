@@ -43,6 +43,9 @@
   .ship-to {
     margin-top: 30px;
   }
+  button {
+    @include button-dark;
+  }
 
   #huey {
     margin: 20px 0px;
@@ -81,6 +84,15 @@
     margin: 24px 0 0 0;
   }
 }
-button {
-  @include button-dark;
+
+#title {
+  width: 20%;
+}
+
+#first-name {
+  width: 40%;
+}
+
+#last-name {
+  width: 40%;
 }

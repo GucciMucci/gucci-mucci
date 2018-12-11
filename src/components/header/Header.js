@@ -3,6 +3,8 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 import firebase from "./../firebase";
 import withContext from "../../context/Context_HOC";
+import Hover from "../Hover/Hover";
+import HoverBag from "../HoverBag/HoverBag";
 
 class Header extends Component {
   componentDidMount() {
@@ -51,8 +53,11 @@ class Header extends Component {
               </div>
             )}
             <Link to="/bag">
-              <span className="bag-link">👜</span>
+              <span className="bag-link">
+                <Hover content={HoverBag} button="👜" />
+              </span>
             </Link>
+            <span>🔍</span>
           </div>
         </div>
         <nav>

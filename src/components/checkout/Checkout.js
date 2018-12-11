@@ -96,22 +96,22 @@ class Checkout extends Component {
           </div>
           <div className="form">
             <div className="row">
-              <div className="input-box">
+              <div className="input-box" id="title">
                 <label for="title">TITLE</label>
-                <select className="title" id="title">
+                <select className="title">
                   <option value="title">Title</option>
                   <option value="Mr.">Mr.</option>
                   <option value="Ms.">Ms.</option>
                   <option value="Mrs.">Mrs.</option>
                 </select>
               </div>
-              <div className="input-box">
+              <div className="input-box" id="first-name">
                 <label for="first-name">FIRST NAME</label>
-                <input type="text" id="first-name" />
+                <input type="text" />
               </div>
-              <div className="input-box">
+              <div className="input-box" id="last-name">
                 <label for="last-name">LAST NAME</label>
-                <input type="text" id="last-name" />
+                <input type="text" />
               </div>
             </div>
             <div className="row">

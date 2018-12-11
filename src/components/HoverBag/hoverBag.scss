@@ -1,0 +1,21 @@
+@import "../../sass/main.scss";
+
+.hover-bag-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: $border;
+  height: 160px;
+  span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.hover-bag-title {
+  width: 100%;
+  margin: 10px 0 0;
+  border-bottom: $border;
+  padding-bottom: 10px;
+}

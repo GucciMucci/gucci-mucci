@@ -1,0 +1,45 @@
+@import "../../sass/main.scss";
+
+.btn_wrapper {
+  background-color: transparent;
+  font-size: 16px;
+  color: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  align-self: auto;
+}
+.btn {
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+
+  ul.btn_subMenu {
+    margin: 0;
+    padding: 20px;
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 250px;
+    min-width: 280px;
+    min-height: 115px;
+    background-color: white;
+    border-radius: 1px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+    z-index: 5;
+    list-style: none;
+    text-align: left;
+    li {
+      padding: 10px;
+    }
+  }
+}
+
+div.btn_wrapper:hover {
+  ul.btn_subMenu {
+    display: block !important;
+    position: relative;
+  }
+}
