@@ -20,9 +20,8 @@
 
 @mixin background {
   background: $background;
-  margin: 135px 15px;
-  // height: calc(100vh - 250px);
-  height: 100vh;
+  margin: 0px 15px;
+  margin-top: 135px;
   width: unquote("-webkit-calc(100% - 30px)");
 }
 

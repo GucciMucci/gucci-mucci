@@ -30,43 +30,43 @@ class Product extends Component {
       });
   }
 
-  addToBag = product => {
-    product.quantity = 1;
-    if (this.props.context.user) {
-      const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
-      usersRef.once("value").then(res => {
-        let cart = res.val();
-        let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
-        if (index !== -1) {
-          if (cart[index].quantity < 5) {
-            cart[index].quantity += 1;
-            usersRef.set(cart);
-          } else this.setState({ showMemo: true });
-        } else if (cart) {
-          usersRef.set([...cart, product]);
-        } else {
-          usersRef.set([product]);
-        }
-      });
-    } else {
-      let localBag = localStorage.getItem("bagArray");
-      if (localBag) {
-        const tempBag = JSON.parse(localStorage.getItem("bagArray"));
-        const index = tempBag.findIndex(item => item.style === product.style);
-        if (index !== -1) {
-          if (tempBag[index].quantity < 5) {
-            tempBag[index].quantity += 1;
-          } else this.setState({ showMemo: true });
-        } else {
-          tempBag.push(product);
-        }
-        localStorage.setItem("bagArray", JSON.stringify(tempBag));
-      } else {
-        localStorage.setItem("bagArray", JSON.stringify([product]));
-      }
-      return localStorage;
-    }
-  };
+  // addToBag = product => {
+  //   product.quantity = 1;
+  //   if (this.props.context.user) {
+  //     const usersRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
+  //     usersRef.once("value").then(res => {
+  //       let cart = res.val();
+  //       let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
+  //       if (index !== -1) {
+  //         if (cart[index].quantity < 5) {
+  //           cart[index].quantity += 1;
+  //           usersRef.set(cart);
+  //         } else this.setState({ showMemo: true });
+  //       } else if (cart) {
+  //         usersRef.set([...cart, product]);
+  //       } else {
+  //         usersRef.set([product]);
+  //       }
+  //     });
+  //   } else {
+  //     let localBag = localStorage.getItem("bagArray");
+  //     if (localBag) {
+  //       const tempBag = JSON.parse(localStorage.getItem("bagArray"));
+  //       const index = tempBag.findIndex(item => item.style === product.style);
+  //       if (index !== -1) {
+  //         if (tempBag[index].quantity < 5) {
+  //           tempBag[index].quantity += 1;
+  //         } else this.setState({ showMemo: true });
+  //       } else {
+  //         tempBag.push(product);
+  //       }
+  //       localStorage.setItem("bagArray", JSON.stringify(tempBag));
+  //     } else {
+  //       localStorage.setItem("bagArray", JSON.stringify([product]));
+  //     }
+  //     return localStorage;
+  //   }
+  // };
 
   render() {
     const { name, images, price, style, description, details } = this.state.product;
@@ -92,7 +92,7 @@ class Product extends Component {
           <button
             className="add-to-bag"
             onClick={() => {
-              this.addToBag(this.state.product);
+              this.props.context.addToBag(this.state.product);
             }}
           >
             ADD TO SHOPPING BAG
