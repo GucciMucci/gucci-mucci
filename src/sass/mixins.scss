@@ -20,14 +20,8 @@
 
 @mixin background {
   background: $background;
-<<<<<<< HEAD
-  margin: 0px 15px;
-  margin-top: 135px;
-=======
   margin: 135px 15px 0;
-  // height: calc(100vh - 250px);
-  // height: 100vh;
->>>>>>> bag-checkout
+
   width: unquote("-webkit-calc(100% - 30px)");
 }
 
