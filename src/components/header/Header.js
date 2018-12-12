@@ -66,10 +66,46 @@ class Header extends Component {
             <p>+1.877.482.2430</p>
           </div>
           <nav className="middle">
-            <Link to="/women/dresses">Women</Link>
-            <Link to="/women/coats">Men</Link>
-            <Link to="/women/dresses">Children</Link>
-            <Link to="/women/dresses">Jewelry & watches</Link>
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "women" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Women
+            </div>
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "men" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Men
+            </div>
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "children" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Children
+            </div>
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "jewelry" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Jewelry & watches
+            </div>
           </nav>
           <div className="right">
             {this.props.context.user === null ? (
