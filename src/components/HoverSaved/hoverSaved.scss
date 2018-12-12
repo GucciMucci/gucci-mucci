@@ -1,0 +1,31 @@
+@import "../../sass/main.scss";
+
+.saved-hover {
+  width: 293px;
+  .hover-items {
+    overflow-y: auto;
+    max-height: 400px;
+  }
+  .view-saved {
+    @include button-dark;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.saved-hover-card {
+  display: flex;
+  align-items: center;
+  border-bottom: $border;
+  height: 150px;
+  font-size: 13px;
+  &:hover {
+    background: #f2eeec;
+    .red {
+      display: block;
+    }
+    .white {
+      display: none;
+    }
+  }
+}

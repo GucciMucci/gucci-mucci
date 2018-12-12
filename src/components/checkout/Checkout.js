@@ -65,7 +65,7 @@ class Checkout extends Component {
       return (
         <div className="checkout-products">
           <img
-            className="bag-product-img"
+            className="chk-product-img"
             src={_.white(product.images[1].image)}
             alt=""
           />

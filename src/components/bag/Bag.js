@@ -5,6 +5,7 @@ import firebase from "../firebase";
 import _ from "../utils";
 import "./bag.scss";
 import heartOpen from "../Card/heart-regular.svg";
+import CheckoutAccordion from "../CheckoutAccordion/CheckoutAccordion";
 
 class Bag extends Component {
   constructor(props) {
@@ -103,7 +104,7 @@ class Bag extends Component {
               <h3>Qty: {product.quantity} </h3>
             </div>
             <div>
-              <p>AVAILABLE</p>
+              <span>AVAILABLE</span>
               <p>Your selection is available for immediate purchase online.</p>
               <p>You will be notified when your item is shipped.</p>
             </div>
@@ -153,38 +154,41 @@ class Bag extends Component {
               {showProducts}
             </div>
 
-            <div className="order-sum">
-              <h2 className="heading-sum">ORDER SUMMARY</h2>
-              <ul>
-                <li>
-                  <span>Subtotal</span> <span>$ {total}</span>
-                </li>
-                <li>
-                  <span>Shipping</span> <span>Free (Next Day) v</span>
-                </li>
-                <li>
-                  <span>Estimated Tax</span> <span>Calculate</span>
-                </li>
-                <li>
-                  <span>Estimated Total</span>{" "}
-                  <span id="total-cart">$ {total}</span>
-                </li>
-              </ul>
-              <div>
-                <h2>VIEW DETAILS</h2>
-                <p>
-                  You will be charged only at the time of shipment except for
-                  DIY orders where the full amount is charged at the time of
-                  purchase.
-                </p>
+            <div className="bag-right">
+              <div className="order-sum">
+                <h2 className="heading-sum">ORDER SUMMARY</h2>
+                <ul>
+                  <li>
+                    <span>Subtotal</span> <span>$ {total}</span>
+                  </li>
+                  <li>
+                    <span>Shipping</span> <span>Free (Next Day) v</span>
+                  </li>
+                  <li>
+                    <span>Estimated Tax</span> <span>Calculate</span>
+                  </li>
+                  <li>
+                    <span>Estimated Total</span>{" "}
+                    <span id="total-cart">$ {total}</span>
+                  </li>
+                </ul>
+                <div>
+                  <h2>VIEW DETAILS</h2>
+                  <p>
+                    You will be charged only at the time of shipment except for
+                    DIY orders where the full amount is charged at the time of
+                    purchase.
+                  </p>
+                </div>
+                <div className="bag-btns">
+                  <Link to="/checkout">
+                    <button className="checkout-btn">CHECKOUT</button>
+                  </Link>
+                  <div>OR</div>
+                  <button className="pay-pal-btn">PAY WITH ©PayPal</button>
+                </div>
               </div>
-              <div className="bag-btns">
-                <Link to="/checkout">
-                  <button className="checkout-btn">CHECKOUT</button>
-                </Link>
-                <div>OR</div>
-                <button className="pay-pal-btn">PAY WITH ©PayPal</button>
-              </div>
+              <CheckoutAccordion />
             </div>
           </div>
         )}

@@ -71,6 +71,10 @@
   h3,
   p {
     font-size: 12px;
+    color: darken($light-text, 10);
+  }
+  span {
+    font-size: 13px;
   }
 }
 
@@ -127,6 +131,7 @@
     line-height: 18px;
     font-family: "Times New Roman", Times, serif;
     font-style: italic;
+    color: darken($light-text, 10);
   }
   .bag-btns {
     margin-top: 20px;
@@ -163,6 +168,11 @@
 .bag-page {
   margin-top: -120px;
 }
+
+// .bag-right {
+//   display: flex;
+//   flex-direction: column;
+// }
 
 select#soflow {
   -webkit-appearance: button;

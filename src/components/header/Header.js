@@ -7,6 +7,7 @@ import logo_white from "./logo_white.png";
 import logo_black from "./logo_black.png";
 import Hover from "../Hover/Hover";
 import HoverBag from "../HoverBag/HoverBag";
+import HoverSaved from "../HoverSaved/HoverSaved";
 import heart from "../Card/heart-regular.svg";
 import bag from "./bag.svg";
 import search from "./search.svg";
@@ -119,7 +120,9 @@ class Header extends Component {
               </div>
             )}
             <Link to="/saved-items">
-              <img className="heart" src={heart} alt="" />
+              <Hover content={HoverSaved}>
+                <img className="heart" src={heart} alt="" />
+              </Hover>
             </Link>
             <Link to="/bag">
               <span className="bag-link">

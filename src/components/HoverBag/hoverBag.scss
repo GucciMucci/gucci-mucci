@@ -1,15 +1,16 @@
 @import "../../sass/main.scss";
+.hover-bag {
+  width: 293px;
+  button {
+    margin: 4px;
+    align-self: center;
+  }
+}
 .bag-product-img-2 {
   width: 120px;
 }
 .red {
   display: none;
-}
-.hover-bag {
-  button {
-    margin: 4px;
-    align-self: center;
-  }
 }
 .btn-link {
   margin: 0px 0px !important;
