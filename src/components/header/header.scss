@@ -1,6 +1,7 @@
 @import "../../sass/main.scss";
 
 .header {
+  @include fade-in(0.4s);
   height: 120px;
   width: 100%;
   position: fixed;

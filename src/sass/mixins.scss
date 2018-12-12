@@ -61,3 +61,15 @@
   color: $light-text;
   text-align: left;
 }
+
+@mixin fade-in($time) {
+  animation: fadeIn $time;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
