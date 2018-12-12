@@ -88,7 +88,7 @@
   flex-direction: column;
   margin-top: -80px;
   margin-bottom: 180px;
-  z-index: 10;
+  // z-index: 10;
   h3 {
     font-size: 45px;
     line-height: 55px;
@@ -96,7 +96,8 @@
   }
   button {
     @include button-dark;
-    width: 125px;
+    width: fit-content;
+    padding: 0px 40px;
     border: none;
     margin-top: 15px;
   }
@@ -148,11 +149,111 @@
   }
 }
 .shoe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 50px;
   .shoe-pic {
     background-image: url("http://media.gucci.com/content/DarkGray_ProductPush_Standard_1400x1400/1543248903/ProductPush_552093A9L009522_001_Light.png");
     background-position: bottom center;
     background-size: cover;
     height: 550px;
     width: 700px;
+    margin-left: 280px;
+    margin-right: 100px;
+  }
+}
+.no-sroll {
+  overflow: hidden;
+}
+.more {
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    color: grey;
+  }
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include fade-in(0.3s);
+
+  .modal-content {
+    height: fit-content;
+    width: 1000px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .right {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      height: 508px;
+      padding: 0px 15px;
+      span {
+        color: grey;
+        align-self: flex-end;
+        font-size: 36px;
+        &:hover {
+          color: black;
+          cursor: pointer;
+        }
+      }
+      img {
+        margin-top: 70px;
+        height: 75px;
+        width: 75px;
+        border-radius: 100%;
+        margin-bottom: 5px;
+      }
+      h2 {
+        font-size: 12px;
+        margin: 10px;
+      }
+      h3 {
+        font-size: 20px;
+        line-height: 40px;
+
+        border-bottom: solid 1px grey;
+      }
+      p {
+        line-height: 25px;
+        color: grey;
+        font-style: italic;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 14.5px;
+        // padding: 10px;
+        margin-top: 13px;
+      }
+    }
+  }
+}
+
+.petra {
+  background-image: url("http://media.gucci.com/content/HomepageVideoBackgroundStandard_2600x1516/1542193206/HomepageVideoBackgroundStandard_GIFTGIVING-2018_001_Default.jpg");
+  background-position: top center;
+  background-size: cover;
+  height: 670px;
+  width: 97.9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .middle-box {
+    height: 240px;
+    width: 135px;
+    padding: 20px;
+    p {
+      margin-bottom: 40px;
+    }
   }
 }

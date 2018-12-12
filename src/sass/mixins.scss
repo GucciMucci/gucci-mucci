@@ -2,11 +2,6 @@
 @import url("https://use.typekit.net/idz8jyc.css");
 @import url("https://fonts.googleapis.com/css?family=Cinzel");
 
-// @font-face {
-//   font-family: "Futura";
-//   src: local("Futura"), url(../fonts/Futura_Book.ttf) format("ttf");
-// }
-
 @mixin primary-font {
   font-family: sans-serif;
   font-style: normal;
@@ -61,4 +56,16 @@
 @mixin heading {
   color: $light-text;
   text-align: left;
+}
+
+@mixin fade-in($time) {
+  animation: fadeIn $time;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
