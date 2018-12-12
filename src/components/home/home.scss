@@ -29,3 +29,130 @@
     }
   }
 }
+.home-body {
+  @include background;
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.home-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  img {
+    height: 700px;
+    justify-content: center;
+    margin-left: 280px;
+    margin-right: 100px;
+  }
+}
+
+.middle-box {
+  height: 350px;
+  width: 170px;
+  background: white;
+  align-items: flex-end;
+  padding: 5px;
+  img {
+    border-radius: 100%;
+    height: 75px;
+    width: 75px;
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  h3 {
+    margin: 15px 0px;
+    font-size: 20px;
+  }
+  p {
+    font-family: "Times New Roman", Times, serif;
+    color: grey;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0px 15px;
+  }
+}
+
+.text-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -80px;
+  margin-bottom: 180px;
+  z-index: 10;
+  h3 {
+    font-size: 45px;
+    line-height: 55px;
+    margin-bottom: 5px;
+  }
+  button {
+    @include button-dark;
+    width: 125px;
+    border: none;
+    margin-top: 15px;
+  }
+}
+.diamond {
+  height: 12px !important;
+  width: 10px;
+  margin: 0px 0px !important;
+}
+.big-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  flex-direction: column;
+  border-bottom: 1px solid white;
+  .big-pic {
+    height: 1500px;
+    width: 96%;
+    background-image: url("http://media.gucci.com/content/GiantEditorialStandard_1366x1643/1541774106/GiantEditorialStandard_S91CRUISE-ChateauMarmont_001_Default.jpg");
+    background-position: top center;
+    background-size: cover;
+  }
+  .top {
+    height: 500px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 55px;
+  }
+  .mid {
+    height: 500px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 55px;
+  }
+  .bottom {
+    height: 500px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 55px;
+  }
+  .text-banner {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+.shoe {
+  .shoe-pic {
+    background-image: url("http://media.gucci.com/content/DarkGray_ProductPush_Standard_1400x1400/1543248903/ProductPush_552093A9L009522_001_Light.png");
+    background-position: bottom center;
+    background-size: cover;
+    height: 550px;
+    width: 700px;
+  }
+}
