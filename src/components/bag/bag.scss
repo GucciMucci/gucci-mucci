@@ -31,10 +31,55 @@
   border-bottom: $border;
   max-height: 375px;
   min-height: 318px;
+  // max-width: 1000px;
   span {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  div {
+    margin: 12px 0;
+  }
+  h3,
+  p,
+  h1,
+  h2 {
+    margin: 10px 0 0 0;
+  }
+  .options {
+    display: flex;
+    span {
+      margin: 10px 10px 0 0;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    img {
+      height: 13px;
+      margin: -2px 6px 3px 6px;
+    }
+  }
+  h1 {
+    font-size: 16px;
+  }
+  h3,
+  p {
+    font-size: 12px;
+  }
+}
+
+.qty-price {
+  align-self: flex-start;
+  margin: 38px 0 0 20px;
+  padding-left: 0px;
+  h3 {
+    margin: 8px 0 0 86px;
   }
 }
 
@@ -43,14 +88,48 @@
 }
 
 .bag-product-img {
-  width: 30%;
+  width: 180px;
 }
 
 .order-sum {
   @include checkout-box;
-  h2,
-  p {
+  ul {
+    border-top: $border;
     border-bottom: $border;
+    margin-bottom: 24px;
+  }
+  h2 {
+    margin: 0 0 20px;
+    font-size: 14px;
+  }
+  li {
+    margin: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    align-items: center;
+  }
+  #total-cart {
+    font-size: 25px;
+    padding: 10px 0;
+  }
+  button {
+    margin: 6px 0 0 0;
+  }
+  .checkout-btn {
+    margin: 8px 0;
+  }
+  p {
+    text-align: left;
+    border-bottom: $border;
+    padding-bottom: 20px;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+  }
+  .bag-btns {
+    margin-top: 20px;
   }
 }
 
@@ -83,4 +162,25 @@
 
 .bag-page {
   margin-top: -120px;
+}
+
+select#soflow {
+  -webkit-appearance: button;
+  -webkit-border-radius: 0px;
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  background: $background;
+  -webkit-user-select: none;
+  background-image: url(http://i62.tinypic.com/15xvbd5.png);
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #aaa;
+  color: #555;
+  font-size: inherit;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 140px;
+  cursor: pointer;
 }

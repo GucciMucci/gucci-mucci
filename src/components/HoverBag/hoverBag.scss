@@ -1,5 +1,7 @@
 @import "../../sass/main.scss";
-
+.bag-product-img-2 {
+  width: 120px;
+}
 .red {
   display: none;
 }
@@ -57,7 +59,7 @@
 
 .show-products {
   overflow-y: auto;
-  height: 230px;
+  max-height: 230px;
 }
 
 .cart-details-btn {

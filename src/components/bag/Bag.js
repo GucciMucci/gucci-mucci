@@ -4,6 +4,7 @@ import withContext from "../../context/Context_HOC";
 import firebase from "../firebase";
 import _ from "../utils";
 import "./bag.scss";
+import heartOpen from "../Card/heart-regular.svg";
 
 class Bag extends Component {
   constructor(props) {
@@ -78,6 +79,11 @@ class Bag extends Component {
     }
   }
 
+  clickSave(product) {
+    this.props.context.addFav(product);
+    this.removeFromBag(product.style);
+  }
+
   render() {
     let total = _.getTotal(this.state.products);
     console.log("this.state.products---------->", this.state.products);
@@ -90,16 +96,31 @@ class Bag extends Component {
             alt=""
           />
           <div className="product-details">
-            <h1>{product.name}</h1>
-            <h3>Style# {product.style}</h3>
-            <h3>Style: Product style description</h3>
-            <h3>Qty: {product.quantity} </h3>
-            <button onClick={() => this.removeFromBag(product.style)}>
-              Remove
-            </button>
+            <div>
+              <h1>{product.name}</h1>
+              <h3>Style# {product.style}</h3>
+              <h3>Style: Product style description</h3>
+              <h3>Qty: {product.quantity} </h3>
+            </div>
+            <div>
+              <p>AVAILABLE</p>
+              <p>Your selection is available for immediate purchase online.</p>
+              <p>You will be notified when your item is shipped.</p>
+            </div>
+            <div className="options">
+              <span>Edit</span>
+              <span onClick={() => this.removeFromBag(product.style)}>
+                | Remove
+              </span>
+              <span onClick={() => this.clickSave(product)}>
+                | <img src={heartOpen} alt="" />
+                Saved Items
+              </span>
+            </div>
           </div>
-          <span>
+          <span className="qty-price">
             <select
+              id="soflow"
               className="select-qty"
               onChange={e =>
                 this.updateQuantity(product.style, parseInt(e.target.value))
@@ -133,12 +154,21 @@ class Bag extends Component {
             </div>
 
             <div className="order-sum">
-              <h2 className="heading">ORDER SUMMARY</h2>
+              <h2 className="heading-sum">ORDER SUMMARY</h2>
               <ul>
-                <li>Subtotal $ {total}</li>
-                <li>Shipping</li>
-                <li>Estimated Tax</li>
-                <li>Estimated Total $ {total}</li>
+                <li>
+                  <span>Subtotal</span> <span>$ {total}</span>
+                </li>
+                <li>
+                  <span>Shipping</span> <span>Free (Next Day) v</span>
+                </li>
+                <li>
+                  <span>Estimated Tax</span> <span>Calculate</span>
+                </li>
+                <li>
+                  <span>Estimated Total</span>{" "}
+                  <span id="total-cart">$ {total}</span>
+                </li>
               </ul>
               <div>
                 <h2>VIEW DETAILS</h2>
@@ -148,7 +178,7 @@ class Bag extends Component {
                   purchase.
                 </p>
               </div>
-              <div>
+              <div className="bag-btns">
                 <Link to="/checkout">
                   <button className="checkout-btn">CHECKOUT</button>
                 </Link>

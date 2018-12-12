@@ -43,12 +43,12 @@ class HoverBag extends Component {
         // <Link to={window.location.pathname + "/" + this.state.products.name}>
         <div key={product.style} className="hover-bag-item">
           <img
-            className="bag-product-img white"
+            className="bag-product-img-2 white"
             src={_.white(product.images[1].image)}
             alt=""
           />
           <img
-            className="bag-product-img red"
+            className="bag-product-img-2 red"
             src={_.lightBrownGray(product.images[1].image)}
             alt=""
           />
