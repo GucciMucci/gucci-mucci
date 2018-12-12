@@ -44,7 +44,7 @@ class HoverSaved extends Component {
       <div className="saved-hover">
         <h1 className="hover-bag-title">Saved Items</h1>
         <div className="hover-items">
-          {this.state.favorites &&
+          {this.state.favorites ? (
             this.state.favorites.map(item => {
               console.log(item);
               return (
@@ -65,9 +65,18 @@ class HoverSaved extends Component {
                   </div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="empty-bag-fav">Currently Empty</div>
+          )}
         </div>
-        <button className="view-saved">VIEW MY SAVED ITEMS</button>
+        {this.state.favorites && (
+          <div className="saved-bottom">
+            <Link to="/saved-items" className="btn-link">
+              <button className="view-saved">VIEW MY SAVED ITEMS</button>
+            </Link>
+          </div>
+        )}
       </div>
     );
   }

@@ -1,15 +1,29 @@
 @import "../../sass/main.scss";
 
 .saved-hover {
-  width: 293px;
+  width: 300px;
   .hover-items {
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 300px;
   }
   .view-saved {
     @include button-dark;
-    width: 100%;
-    margin-top: 10px;
+    width: 280px;
+    margin: 10px 10px 0;
+  }
+  .saved-bottom {
+    border-top: $border;
+  }
+  .saved-hover-right {
+    display: flex;
+    flex-direction: column;
+    h1,
+    p {
+      margin: 10px 0;
+    }
+    p {
+      color: $light-text;
+    }
   }
 }
 
@@ -17,8 +31,9 @@
   display: flex;
   align-items: center;
   border-bottom: $border;
-  height: 150px;
+  height: 110px;
   font-size: 13px;
+  padding: 10px;
   &:hover {
     background: #f2eeec;
     .red {
