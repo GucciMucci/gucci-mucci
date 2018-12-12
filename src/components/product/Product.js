@@ -23,7 +23,9 @@ class Product extends Component {
       .once("value")
       .then(snapshot => {
         let data = snapshot.val();
-        let index = data.findIndex(item => item.name === url[url.length - 1].replace(/%20/g, " "));
+        let index = data.findIndex(
+          item => item.name === url[url.length - 1].replace(/%20/g, " ")
+        );
         this.setState({
           product: data[index]
         });
@@ -69,7 +71,14 @@ class Product extends Component {
   // };
 
   render() {
-    const { name, images, price, style, description, details } = this.state.product;
+    const {
+      name,
+      images,
+      price,
+      style,
+      description,
+      details
+    } = this.state.product;
 
     return this.state.product.images ? (
       <div className="product">
@@ -88,7 +97,9 @@ class Product extends Component {
           <h1>{name}</h1>
           <h2>{price}</h2>
           <h3>Style {style}</h3>
-          {this.state.showMemo && <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>}
+          {this.state.showMemo && (
+            <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>
+          )}
           <button
             className="add-to-bag"
             onClick={() => {
@@ -106,14 +117,22 @@ class Product extends Component {
                 SHIPPING INFO <span>+</span>
               </h6>
               <p>
-                For the continental U.S., we offer free FedEx ground shipping. We also offer two-day shipping for $25
-                and next-day delivery options for $35.*
+                For the continental U.S., we offer free FedEx ground shipping.
+                We also offer two-day shipping for $25 and next-day delivery
+                options for $35.*
               </p>
               <p>
-                For Hawaii, Alaska and Puerto Rico, we offer two-day shipping for $25 and next-day shipping for $35.
+                For Hawaii, Alaska and Puerto Rico, we offer two-day shipping
+                for $25 and next-day shipping for $35.
               </p>
-              <p>All ground, next-day and two-day deliveries are shipped via FedEx.*</p>
-              <p>Additional shipping information is available during the checkout process.</p>
+              <p>
+                All ground, next-day and two-day deliveries are shipped via
+                FedEx.*
+              </p>
+              <p>
+                Additional shipping information is available during the checkout
+                process.
+              </p>
               <p>*Exceptions may apply for selected Home products.</p>
             </div>
             <div className="accordian">

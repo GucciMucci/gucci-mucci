@@ -1,7 +1,8 @@
 @import "../../sass/main.scss";
 
 .header {
-  min-height: 120px;
+  @include fade-in(0.4s);
+  height: 120px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -9,6 +10,7 @@
   background: linear-gradient(to bottom, #191919, rgba(0, 0, 0, 0));
   color: white;
   z-index: 5;
+  transition: height 0.3s ease;
 
   &:hover {
     background: #191919;
@@ -34,8 +36,24 @@
     .right {
       display: flex;
       justify-content: flex-end;
+      $size: 15px;
+      .account {
+        height: $size;
+        display: flex;
+      }
+      .heart {
+        height: $size;
+        width: $size;
+      }
+      .search {
+        height: $size * 2;
+        width: $size * 2;
+        position: relative;
+        top: -10px;
+        margin: 0 10px;
+      }
       a {
-        color: white;
+        font-size: 10pt;
         display: inline;
         margin: 0 15px;
         cursor: pointer;
@@ -66,6 +84,12 @@
 
 .gray {
   background: transparent;
+  img {
+    filter: invert(1);
+  }
+  .heart {
+    filter: invert(1);
+  }
   * {
     color: black;
     &:visited {
@@ -73,7 +97,14 @@
     }
   }
   &:hover {
-    * {
+    img {
+      filter: invert(0);
+    }
+    .heart {
+      filter: invert(0);
+    }
+    a,
+    p {
       color: white;
       &:visited {
         color: white;
@@ -86,8 +117,34 @@
   background: transparent;
 }
 .logo {
-  height: 27px;
+  img {
+    height: 27px;
+    position: relative;
+    top: -30px;
+  }
 }
 
-.bag-link {
+.smaller {
+  background: #191919;
+  height: 60px;
+  .logo {
+    display: none;
+  }
+}
+
+.blacker {
+  background: #191919;
+  img {
+    filter: invert(0);
+  }
+  .heart {
+    filter: invert(0);
+  }
+  a,
+  p {
+    color: white;
+    &:visited {
+      color: white;
+    }
+  }
 }

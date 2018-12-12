@@ -3,9 +3,9 @@
 @import url("https://fonts.googleapis.com/css?family=Cinzel");
 
 @mixin primary-font {
-  font-family: sans-serif;
+  font-family: "Futura_Book", sans-serif;
   font-style: normal;
-  font-weight: 300;
+  font-weight: lighter;
 }
 
 @mixin gucci-font {
@@ -29,7 +29,6 @@
   padding: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 @mixin button {

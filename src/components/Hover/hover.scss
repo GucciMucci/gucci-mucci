@@ -2,19 +2,17 @@
 
 .btn_wrapper {
   background-color: transparent;
-  font-size: 16px;
   color: black;
-  width: 20px;
-  height: 20px;
   border-radius: 50%;
-  align-self: auto;
 }
 .btn {
-  background-position: center;
   position: relative;
   cursor: pointer;
+  width: 15px;
+  height: 15px;
 
   ul.btn_subMenu {
+    font-size: 16px;
     margin: 0;
     padding: 20px;
     display: none;

@@ -7,16 +7,14 @@ import logo_white from "./logo_white.png";
 import logo_black from "./logo_black.png";
 import Hover from "../Hover/Hover";
 import HoverBag from "../HoverBag/HoverBag";
+import heart from "../Card/heart-regular.svg";
+import bag from "./bag.svg";
+import search from "./search.svg";
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      hover: false
-    };
-  }
   componentDidMount() {
     this.props.context.authListenier();
+    window.addEventListener("scroll", this.resizeHeaderOnScroll);
   }
 
   getOptions = () => {
@@ -38,61 +36,106 @@ class Header extends Component {
     return "";
   };
 
+  resizeHeaderOnScroll = () => {
+    const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+      shrinkOn = 100,
+      header = document.getElementById("header");
+
+    if (distanceY > shrinkOn) {
+      if (this.getOptions() === "gray") {
+        header.classList.add("blacker");
+      } else {
+        header.classList.add("smaller");
+      }
+    } else {
+      if (this.getOptions() === "gray") {
+        header.classList.remove("blacker");
+      } else {
+        header.classList.remove("smaller");
+      }
+    }
+  };
+
   render() {
-    let options = this.getOptions();
     return (
-      <div
-        className={"header " + options}
-        onMouseEnter={() => {
-          if (options === "gray") {
-            this.setState({ hover: true });
-          }
-        }}
-        onMouseLeave={() => {
-          if (options === "gray") {
-            this.setState({ hover: false });
-          }
-        }}
-      >
+      <div id="header" className={"header " + this.getOptions()}>
         <div className="top">
-          <div className="top-child left">
+          <div className="left">
             <p>United Stated</p>
             <p>English</p>
             <p>+1.877.482.2430</p>
           </div>
-          <Link to="/" className="top-child">
-            <img
-              className="logo"
-              src={this.state.hover ? logo_white : logo_black}
-              alt=""
-            />
-          </Link>
-          <div className="top-child right">
+          <nav className="middle">
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "women" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Women
+            </div>
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "men" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Men
+            </div>
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "children" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Children
+            </div>
+            <div
+              onMouseEnter={() => {
+                this.setState({ category: "jewelry" });
+              }}
+              onMouseLeave={() => {
+                this.setState({ show: "blah" });
+              }}
+            >
+              Jewelry & watches
+            </div>
+          </nav>
+          <div className="right">
             {this.props.context.user === null ? (
               <Link to="/login">Login</Link>
             ) : (
-              <div>
-                <Link to="/saved-items">Saved</Link>
-                <Link to="/profile">Profile</Link>
+              <div className="account">
+                <Link to="/profile">My Account</Link>
                 <a href="#" onClick={this.props.context.logout}>
                   Logout
                 </a>
               </div>
             )}
+            <Link to="/saved-items">
+              <img className="heart" src={heart} alt="" />
+            </Link>
             <Link to="/bag">
               <span className="bag-link">
-                <Hover content={HoverBag} button="👜" />
+                <Hover content={HoverBag}>
+                  <img src={bag} alt="" />
+                </Hover>
               </span>
             </Link>
-            <span>🔍</span>
+            <span className="search">
+              <img src={search} alt="" />
+            </span>
           </div>
         </div>
-        <nav>
-          <Link to="/women/dresses">Women</Link>
-          <Link to="/women/coats">Men</Link>
-          <Link to="/women/dresses">Children</Link>
-          <Link to="/women/dresses">Jewelry & watches</Link>
-        </nav>
+        <Link to="/" className="logo">
+          <img src={logo_white} alt="" />
+        </Link>
       </div>
     );
   }
