@@ -6,9 +6,8 @@ export default class CheckoutAccordion extends Component {
     return (
       <div>
         <div class="accordion-box">
-          <label for="label01">click me</label>
+          <label for="label01">MAY WE HELP?</label>
           <input type="checkbox" id="label01" class="accordion-check" />
-          {/* contents */}
 
           <div class="accordion-contents">
             <ul>
@@ -24,7 +23,7 @@ export default class CheckoutAccordion extends Component {
             </ul>
           </div>
           {/* //contents */}
-          <label for="label02">click me</label>
+          <label for="label02">PAYMENT OPTIONS</label>
           <input type="checkbox" id="label02" class="accordion-check" />
           {/* //contents */}
           <div class="accordion-contents">
@@ -34,7 +33,7 @@ export default class CheckoutAccordion extends Component {
             error suscipit explicabo ea velit?
           </div>
           {/* //contents */}
-          <label for="label03">click me</label>
+          <label for="label03">SHIPPING OPTIONS</label>
           <input type="checkbox" id="label03" class="accordion-check" />
           {/* //contents */}
           <div class="accordion-contents">
