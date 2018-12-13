@@ -47,9 +47,8 @@
       h1,
       h2,
       p {
-        font-family: sans-serif;
+        @include primary-font;
         margin: 15px;
-        font-weight: 100;
       }
 
       $scale: 0.15;

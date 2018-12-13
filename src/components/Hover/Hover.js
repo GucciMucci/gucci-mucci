@@ -6,10 +6,10 @@ export default class Hover extends Component {
     return (
       <div>
         {/* <td data-label="Edit"> */}
-        <div class="btn_wrapper">
-          <div class="btn">
+        <div className="btn_wrapper">
+          <div className="btn">
             {this.props.children}
-            <ul class="btn_subMenu">
+            <ul className="btn_subMenu">
               <this.props.content />
             </ul>
           </div>

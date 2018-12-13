@@ -17,6 +17,7 @@ class Profile extends Component {
             <img
               src="http://media.gucci.com/content/DarkGray_AccountLandingRecommendedWishlist_Standard_504x504/1541006105/AccountLandingRecommendedWishlist_S91CRUISE-01_001_Light.jpg"
               className="pic-holder"
+              alt=""
             />
             <h1>Recomendations</h1>
             <p>Specially selected items you may also like</p>
@@ -26,6 +27,7 @@ class Profile extends Component {
               <img
                 src="http://media.gucci.com/content/DarkGray_AccountLandingRecommendedWishlist_Standard_504x504/1541006105/AccountLandingRecommendedWishlist_S91CRUISE-02_001_Light.jpg"
                 className="pic-holder"
+                alt=""
               />
               <h1>Saved Items</h1>
             </Link>

@@ -42,16 +42,8 @@ class HoverBag extends Component {
       return (
         // <Link to={window.location.pathname + "/" + this.state.products.name}>
         <div key={product.style} className="hover-bag-item">
-          <img
-            className="bag-product-img-2 white"
-            src={_.white(product.images[1].image)}
-            alt=""
-          />
-          <img
-            className="bag-product-img-2 red"
-            src={_.lightBrownGray(product.images[1].image)}
-            alt=""
-          />
+          <img className="bag-product-img-2 white" src={_.white(product.images[1].image)} alt="" />
+          <img className="bag-product-img-2 red" src={_.lightBrownGray(product.images[1].image)} alt="" />
           <div className="product-details">
             <h3>{product.name}</h3>
             <h3>Style {product.style}</h3>
@@ -73,10 +65,10 @@ class HoverBag extends Component {
           <span className="money">$ {total}</span>
         </div>
         <Link to="/checkout" className="btn-link">
-          <button className="checkout-btn">CHECKOUT</button>
+          <div className="checkout-btn">CHECKOUT</div>
         </Link>
         <Link to="/bag" className="btn-link">
-          <button className="cart-details-btn">VIEW CART DETAILS</button>
+          <div className="cart-details-btn">VIEW CART DETAILS</div>
         </Link>
         <button className="pay-pal-btn">PAY WITH ©PayPal</button>
       </div>

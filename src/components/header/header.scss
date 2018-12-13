@@ -62,9 +62,10 @@
   }
 
   nav {
+    height: 30px;
     position: absolute;
     left: 50%;
-    bottom: 25px;
+    bottom: 0px;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
@@ -76,20 +77,33 @@
       font-size: 10pt;
       font-weight: normal;
     }
-    &:hover {
-      .bottom {
-        display: block;
-      }
-    }
     .bottom {
+      $slideHeight: 43px;
       width: calc(100vw - 30px);
       position: absolute;
-      top: 40px;
-      background: white;
-      display: none;
+      top: 30px;
+      height: $slideHeight;
+      background: rgba(255, 255, 255, 0.7);
       z-index: 0;
+      animation: slideDown 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: hidden;
+      @keyframes slideDown {
+        0% {
+          height: 0px;
+        }
+        100% {
+          height: $slideHeight;
+        }
+      }
       a {
         color: black;
+        margin-bottom: 15px;
+        &:visited {
+          color: black;
+        }
       }
     }
   }

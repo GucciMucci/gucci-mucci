@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import _ from "../utils";
-import { Link } from "react-router-dom";
 import withContext from "../../context/Context_HOC";
 import "./checkout.scss";
 import firebase from "firebase";
@@ -57,18 +56,13 @@ class Checkout extends Component {
   };
 
   render() {
-    this.props.context.user &&
-      console.log("user.email---------->", this.props.context.user.email);
+    this.props.context.user && console.log("user.email---------->", this.props.context.user.email);
     let total = _.getTotal(this.state.products);
     let totalQty = _.getTotalQty(this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
         <div className="checkout-products">
-          <img
-            className="bag-product-img"
-            src={_.white(product.images[1].image)}
-            alt=""
-          />
+          <img className="bag-product-img" src={_.white(product.images[1].image)} alt="" />
           <div>
             <span>{product.name}</span>
             <span>Qty: {product.quantity}</span>
@@ -148,8 +142,7 @@ class Checkout extends Component {
           <div className="row">
             <div className="input-box">
               <label for="phone">
-                CONTACT PHONE NUMBER In the event that our shipping partner
-                needs to reach someone.
+                CONTACT PHONE NUMBER In the event that our shipping partner needs to reach someone.
               </label>
               <div className="row">
                 <input type="text" id="phone" value="🇺🇸 +1 United S..." />
@@ -162,17 +155,13 @@ class Checkout extends Component {
               type="checkbox"
               id="additional-number"
               checked={this.state.showNumberBox}
-              onChange={() =>
-                this.setState({ showNumberBox: !this.state.showNumberBox })
-              }
+              onChange={() => this.setState({ showNumberBox: !this.state.showNumberBox })}
             />
             <label for="additional-number">Add additional contact number</label>
           </div>
           <div className="row">
             <input type="checkbox" id="save" />
-            <label for="save">
-              Save shipping address information to address book
-            </label>
+            <label for="save">Save shipping address information to address book</label>
           </div>
           {this.state.showNumberBox && (
             <div className="row">
@@ -199,9 +188,7 @@ class Checkout extends Component {
             />
             <label for="radio-1"> Two Day</label>
             <span> - Free</span>
-            {this.state.selected === "radio-1" && (
-              <span> You will be notified when your item is shipped</span>
-            )}
+            {this.state.selected === "radio-1" && <span> You will be notified when your item is shipped</span>}
             <br />
             <input
               type="radio"
@@ -215,8 +202,7 @@ class Checkout extends Component {
             <span> - Free</span>
             {this.state.selected === "radio-2" && (
               <span>
-                Your order will be delivered within 7 business days. You will be
-                notified when your item is shipped.
+                Your order will be delivered within 7 business days. You will be notified when your item is shipped.
               </span>
             )}
             <br />
@@ -230,9 +216,7 @@ class Checkout extends Component {
             />
             <label for="radio-3"> Next Day</label>
             <span> - $ 35.00</span>
-            {this.state.selected === "radio-3" && (
-              <span>Please allow 1-2 business days for your order to ship</span>
-            )}
+            {this.state.selected === "radio-3" && <span>Please allow 1-2 business days for your order to ship</span>}
           </div>
           <div className="row">
             <button>CONTINUE TO PAYMENT</button>
@@ -249,11 +233,7 @@ class Checkout extends Component {
             // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
             amount={total * 100}
             token={this.onToken}
-            email={
-              this.props.context.user
-                ? this.props.context.user.email
-                : undefined
-            }
+            email={this.props.context.user ? this.props.context.user.email : undefined}
             stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
           />
         </div>

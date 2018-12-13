@@ -4,6 +4,7 @@ import withContext from "../../context/Context_HOC";
 import Hover from "../Hover/Hover";
 import HoverBag from "../HoverBag/HoverBag";
 import Nav from "../Nav/Nav";
+import firebase from "firebase";
 
 import logo_white from "./logo_white.png";
 import heart from "../Card/heart-regular.svg";
@@ -17,6 +18,19 @@ class Header extends Component {
     this.props.context.authListenier();
     window.addEventListener("scroll", this.resizeHeaderOnScroll);
   }
+
+  // addCat = () => {
+  //   let dataRef = firebase.database().ref("women/coats");
+  //   dataRef.once("value").then(snapshot => {
+  //     let data = snapshot.val();
+  //     data = data.map(item => {
+  //       item.cat = "women";
+  //       item.subCat = "coats";
+  //       return item;
+  //     });
+  //     dataRef.set(data);
+  //   });
+  // };
 
   getOptions = () => {
     let pathname = window.location.pathname;
@@ -33,8 +47,9 @@ class Header extends Component {
       case "/women/dresses/" + name[name.length - 1]:
       case "/women/coats/" + name[name.length - 1]:
         return "gray";
+      default:
+        return "";
     }
-    return "";
   };
 
   resizeHeaderOnScroll = () => {
@@ -96,6 +111,7 @@ class Header extends Component {
         <Link to="/" className="logo">
           <img src={logo_white} alt="" />
         </Link>
+        {/* <button onClick={this.addCat}>Click once</button> */}
       </div>
     );
   }

@@ -136,7 +136,7 @@ class Product extends Component {
             <p>{description}</p>
             <ul>
               {details.map(detail => {
-                return <li>{detail.name}</li>;
+                return <li key={detail.name}>{detail.name}</li>;
               })}
             </ul>
           </aside>
