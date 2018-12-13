@@ -1,0 +1,104 @@
+@import "../../sass/main.scss";
+
+.footer {
+  @include primary-font;
+  background: #1a1a1a;
+  height: 412px;
+  width: 100%;
+  color: white;
+  margin-top: 15px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 56px 56px;
+}
+
+.footer-section {
+  text-align: left;
+  ul {
+    width: 150px;
+  }
+  h2 {
+    color: rgba(229, 223, 217, 0.5);
+    letter-spacing: 1px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 400;
+  }
+  i {
+    padding-right: 10px;
+    color: rgba(229, 223, 217, 0.5);
+  }
+  li:hover {
+    cursor: pointer;
+    font-weight: 500;
+    .fa-facebook-f {
+      color: rgb(48, 64, 97);
+    }
+    .fa-twitter {
+      color: rgb(69, 170, 231);
+    }
+    .fa-instagram {
+      color: rgb(48, 64, 97);
+    }
+    .fa-youtube {
+      color: red;
+    }
+    .fa-google-plus-square {
+      color: red;
+    }
+    .fa-pinterest-p {
+      color: red;
+    }
+    .fa-snapchat-ghost {
+      color: yellow;
+    }
+    .snap-icon {
+      height: 115px;
+      width: 115px;
+      display: block;
+      z-index: 2;
+      position: absolute;
+      left: -150px;
+      top: -50px;
+    }
+  }
+  li {
+    position: relative;
+    font-size: 12.5px;
+    line-height: 15px;
+    text-align: left;
+    margin: 11px 0px;
+  }
+  .snap-icon {
+    display: none;
+  }
+  input {
+    background: black;
+    color: white;
+    margin-bottom: 50px;
+    &::placeholder {
+      color: white;
+      padding-left: 10px;
+    }
+    &:focus {
+      background: white;
+      &::placeholder {
+        color: black;
+      }
+    }
+    font-size: 12px;
+    border: none;
+    height: 25px;
+    width: 200px;
+  }
+  p {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+}
