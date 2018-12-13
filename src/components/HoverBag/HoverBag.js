@@ -53,12 +53,12 @@ class HoverBag extends Component {
             alt=""
           />
           <div className="product-details">
-            <h3>{product.name}</h3>
+            <h2>{product.name}</h2>
             <h3>Style {product.style}</h3>
             <h3>Qty: {product.quantity} </h3>
             <h3>Price: {product.price}</h3>
             <h3>Size: Med </h3>
-            <h3>AVAILABLE</h3>
+            <h2>AVAILABLE</h2>
           </div>
         </div>
         // </Link>
@@ -68,17 +68,25 @@ class HoverBag extends Component {
       <div className="hover-bag">
         <h1 className="hover-bag-title">Shopping Bag</h1>
         <div className="show-products">{showProducts}</div>
-        <div className="total">
-          <span>Sub Total</span>
-          <span className="money">$ {total}</span>
-        </div>
-        <Link to="/checkout" className="btn-link">
-          <button className="checkout-btn">CHECKOUT</button>
-        </Link>
-        <Link to="/bag" className="btn-link">
-          <button className="cart-details-btn">VIEW CART DETAILS</button>
-        </Link>
-        <button className="pay-pal-btn">PAY WITH ©PayPal</button>
+        {this.state.products ? (
+          <div>
+            <div className="total">
+              <span>Sub Total</span>
+              <span className="money">$ {total}</span>
+            </div>
+            <div className="bag-bottom">
+              <Link to="/checkout" className="btn-link">
+                <button className="checkout-btn">CHECKOUT</button>
+              </Link>
+              <Link to="/bag" className="btn-link">
+                <button className="cart-details-btn">VIEW CART DETAILS</button>
+              </Link>
+              <button className="pay-pal-btn">PAY WITH ©PayPal</button>
+            </div>
+          </div>
+        ) : (
+          <div className="empty-bag-fav">Currently Empty</div>
+        )}
       </div>
     );
   }

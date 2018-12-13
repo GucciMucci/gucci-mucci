@@ -19,12 +19,16 @@
 
 .order-sum-co {
   @include checkout-box;
-  height: 600px;
+  min-height: 400px;
   overflow-y: auto;
   h1 {
     border-bottom: $border;
     padding: 0 0 25px;
   }
+}
+
+.chk-product-img {
+  width: 62px;
 }
 
 .checkout-details {

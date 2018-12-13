@@ -14,16 +14,17 @@
   ul.btn_subMenu {
     font-size: 16px;
     margin: 0;
-    padding: 20px;
-    display: none;
-    position: absolute;
+    // display: none;
+    overflow: auto;
+    position: relative;
     top: 16px;
-    right: 270px;
+    right: 230px;
     min-width: 300px;
+    max-width: 300px;
     min-height: 115px;
     background-color: white;
     border-radius: 1px;
-    padding: 10px;
+    padding: 10px 0;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     transition: all 0.5s ease-in-out;
     z-index: 5;
@@ -31,14 +32,20 @@
     text-align: left;
     cursor: default;
     li {
-      padding: 10px;
+      padding: 10px 0;
     }
+    opacity: 0;
+    visibility: hidden;
+    // -webkit-transition: opacity 600ms, visibility 600ms;
+    transition: opacity 300ms ease-in, visibility 300ms ease-in;
   }
 }
 
 div.btn_wrapper:hover {
   ul.btn_subMenu {
-    display: block !important;
-    position: relative;
+    // display: block !important;
+    // position: relative;
+    visibility: visible;
+    opacity: 1;
   }
 }

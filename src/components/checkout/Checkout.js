@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import withContext from "../../context/Context_HOC";
 import "./checkout.scss";
 import firebase from "firebase";
+import CheckoutAccordion from "../CheckoutAccordion/CheckoutAccordion";
 
 class Checkout extends Component {
   constructor() {
@@ -65,7 +66,7 @@ class Checkout extends Component {
       return (
         <div className="checkout-products">
           <img
-            className="bag-product-img"
+            className="chk-product-img"
             src={_.white(product.images[1].image)}
             alt=""
           />
@@ -238,24 +239,27 @@ class Checkout extends Component {
             <button>CONTINUE TO PAYMENT</button>
           </div>
         </div>
-        <div className="order-sum-co">
-          <h1>👜{totalQty} items</h1>
-          <div>{showProducts}</div>
-          <h2>TOTAL: $ {total}</h2>
-          <StripeCheckout
-            name="© G U C C I"
-            image="http://desiderata.info/wp-content/uploads/Gucci-GG-logo.png"
-            // White logo with black background:
-            // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
-            amount={total * 100}
-            token={this.onToken}
-            email={
-              this.props.context.user
-                ? this.props.context.user.email
-                : undefined
-            }
-            stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
-          />
+        <div>
+          <div className="order-sum-co">
+            <h1>👜{totalQty} items</h1>
+            <div>{showProducts}</div>
+            <h2>TOTAL: $ {total}</h2>
+            <StripeCheckout
+              name="© G U C C I"
+              image="http://desiderata.info/wp-content/uploads/Gucci-GG-logo.png"
+              // White logo with black background:
+              // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
+              amount={total * 100}
+              token={this.onToken}
+              email={
+                this.props.context.user
+                  ? this.props.context.user.email
+                  : undefined
+              }
+              stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
+            />
+          </div>
+          <CheckoutAccordion />
         </div>
       </div>
     );
