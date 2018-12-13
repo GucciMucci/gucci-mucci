@@ -7,32 +7,33 @@
   position: relative;
   .product-info {
     position: absolute;
-    top: 230px;
-    width: 100%;
+    top: 210px;
+    width: 300px;
+    left: 50%;
+    transform: translateX(-50%);
     h1,
     h2,
     h3 {
-      width: 300px;
+      @include primary-font;
       margin: 20px auto;
-      font-family: sans-serif;
-      font-weight: 100;
     }
 
     h2,
     h3 {
       color: gray;
+      margin: 15px auto;
     }
 
     h1 {
       font-size: 20pt;
-      letter-spacing: 1px;
+      letter-spacing: 3px;
       line-height: 35px;
     }
 
     h2 {
       padding-bottom: 15px;
       border-bottom: 1px solid gray;
-      font-size: 25px;
+      font-size: 16pt;
     }
 
     h3 {
@@ -106,17 +107,59 @@
       flex: 2.5;
       margin: 35px;
       font-size: 11pt;
-      font-family: "Futura";
+      hr {
+        margin: 0;
+      }
+      @include primary-font;
       .accordian {
         border-bottom: 2px solid $gray;
-        margin: 20px 0;
-        h6,
-        p {
+        height: 70px;
+        overflow: hidden;
+        transition: height 0.4s;
+        text-align: left;
+        &:hover {
+          height: 370px;
+          border-bottom-color: #aaa;
+          h6:after {
+            content: "-";
+            font-size: 18pt;
+            line-height: 11pt;
+          }
+        }
+        > h6 {
           display: flex;
           justify-content: space-between;
         }
+        h6 {
+          margin: 30px 0;
+          &:after {
+            content: "+";
+            font-size: 18pt;
+            line-height: 11pt;
+          }
+        }
+        > p {
+          max-width: 550px;
+          text-align: left;
+          line-height: 35px;
+        }
+        > div {
+          max-width: 550px;
+          img {
+            margin-right: 5px;
+          }
+          h5,
+          > p {
+            text-align: center;
+          }
+          h5 {
+            font-size: 23px;
+            margin: 10px 0;
+          }
+        }
       }
     }
+
     aside {
       background: #fff;
       flex: 1;
@@ -132,14 +175,25 @@
       p,
       ul,
       li {
-        font-family: sans-serif;
+        @include primary-font;
         line-height: 25px;
-        margin: 10px 0px;
+        margin: 5px 0px;
         font-size: 10pt;
         font-weight: 100;
       }
+      h4 {
+        font-size: 11pt;
+        text-transform: uppercase;
+      }
       li {
-        list-style: inside;
+        position: relative;
+        margin-left: 15px;
+        &:before {
+          content: "•";
+          position: absolute;
+          left: -20px;
+        }
+        font-size: 11pt;
       }
     }
   }

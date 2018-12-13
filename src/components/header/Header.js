@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import "./header.scss";
 import { Link } from "react-router-dom";
-import firebase from "./../firebase";
 import withContext from "../../context/Context_HOC";
-import logo_white from "./logo_white.png";
-import logo_black from "./logo_black.png";
 import Hover from "../Hover/Hover";
 import HoverBag from "../HoverBag/HoverBag";
+import Nav from "../Nav/Nav";
+
+import logo_white from "./logo_white.png";
 import heart from "../Card/heart-regular.svg";
 import bag from "./bag.svg";
 import search from "./search.svg";
+
+import "./header.scss";
 
 class Header extends Component {
   componentDidMount() {
@@ -61,52 +62,11 @@ class Header extends Component {
       <div id="header" className={"header " + this.getOptions()}>
         <div className="top">
           <div className="left">
-            <p>United Stated</p>
+            <p>United States</p>
             <p>English</p>
             <p>+1.877.482.2430</p>
           </div>
-          <nav className="middle">
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "women" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Women
-            </div>
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "men" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Men
-            </div>
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "children" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Children
-            </div>
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "jewelry" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Jewelry & watches
-            </div>
-          </nav>
+          <Nav />
           <div className="right">
             {this.props.context.user === null ? (
               <Link to="/login">Login</Link>
