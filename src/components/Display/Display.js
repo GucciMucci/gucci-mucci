@@ -4,26 +4,30 @@ import Card from "../Card/Card";
 import firebase from "../firebase";
 
 export default class Display extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       currentItem: "",
       data: [],
-      route: window.location.pathname
+      route: window.location.pathname,
+      search: this.props.search || false
     };
   }
 
   componentDidMount() {
-    firebase
-      .database()
-      .ref(this.state.route)
-      .once("value")
-      .then(snapshot => {
-        this.setState({
-          data: snapshot.val()
+    if (!this.state.search) {
+      firebase
+        .database()
+        .ref(this.state.route)
+        .once("value")
+        .then(snapshot => {
+          this.setState({
+            data: snapshot.val()
+          });
         });
-      });
+    } else {
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -44,9 +48,9 @@ export default class Display extends Component {
   render() {
     return (
       <div className="products">
-        {this.state.data.map(item => (
-          <Card key={item.style} item={item} />
-        ))}
+        {this.state.data.map(item => {
+          return <Card key={item.style} item={item} />;
+        })}
       </div>
     );
   }

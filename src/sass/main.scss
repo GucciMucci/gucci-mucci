@@ -1,6 +1,9 @@
 @import "./mixins.scss";
 @import "./variables.scss";
 
+body {
+  // background: #888;
+}
 * {
   text-decoration: none;
   font-weight: lighter;

@@ -5,16 +5,22 @@ import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({ adapter: new Adapter() });
 
-function mountProduct(props = {}) {
-  const propsToUse = {
-    context: {
-      user: {
-        id: ""
-      }
-    },
-    ...props
-  };
-  return mount(<Product {...propsToUse} />);
+class mountProduct extends React.Component {
+  constructor(props = {}) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    const propsToUse = {
+      context: {
+        user: {
+          id: ""
+        }
+      },
+      ...props
+    };
+    return shallow(<Product {...propsToUse} />);
+  }
 }
 
 export { mountProduct };

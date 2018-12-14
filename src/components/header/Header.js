@@ -45,6 +45,7 @@ class Header extends Component {
       case "/women/coats":
       case "/login":
       case "/checkout":
+      case "/results":
         return "black";
       case "/women/dresses/" + name[name.length - 1]:
       case "/women/coats/" + name[name.length - 1]:

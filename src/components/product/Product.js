@@ -17,13 +17,15 @@ class Product extends Component {
 
   componentDidMount() {
     let url = window.location.pathname.split("/");
+    let path = url[url.length - 3] + "/" + url[url.length - 2];
     firebase
       .database()
-      .ref(url[url.length - 3] + "/" + url[url.length - 2])
+      .ref(path)
       .once("value")
       .then(snapshot => {
         let data = snapshot.val();
-        let index = data.findIndex(item => item.name === url[url.length - 1].replace(/%20/g, " "));
+        let name = decodeURIComponent(url[url.length - 1]);
+        let index = data.findIndex(item => item.name === name);
         this.setState({
           product: data[index]
         });
@@ -148,3 +150,4 @@ class Product extends Component {
 }
 
 export default withContext(Product);
+export { Product };
