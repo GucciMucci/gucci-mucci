@@ -88,13 +88,12 @@ class Product extends Component {
           <h1>{name}</h1>
           <h2>{price}</h2>
           <h3>Style {style}</h3>
-          {this.state.showMemo && <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>}
+          {this.props.context.showMemo && <p style={{ color: "red" }}>Product exceeded maximum quantity.</p>}
           <button
             className="add-to-bag"
             onClick={() => {
               this.props.context.addToBag(this.state.product);
-            }}
-          >
+            }}>
             ADD TO SHOPPING BAG
           </button>
         </div>
