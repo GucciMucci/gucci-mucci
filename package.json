@@ -17,6 +17,7 @@
     "jest": "^23.6.0",
     "massive": "^5.6.0",
     "node-sass": "^4.10.0",
+    "nodemailer": "^4.7.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",

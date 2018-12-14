@@ -1,6 +1,28 @@
 import React, { Component } from "react";
 import "./Footy.scss";
-export default class Footy extends Component {
+import axios from "axios";
+import withContext from "../../context/Context_HOC";
+
+class Footy extends Component {
+  constructor() {
+    super();
+    this.state = {
+      newEmail: ""
+    };
+  }
+  handleInput(val) {
+    console.log(val);
+    this.setState({
+      newEmail: val
+    });
+  }
+  welcomeEmail() {
+    this.state.newEmail &&
+      axios.post("/api/email", { email: this.state.newEmail }).then(res => {
+        window.alert(`Thanks for signing up, ${this.state.newEmail}`);
+      });
+  }
+
   render() {
     return (
       <div className="footer">
@@ -89,12 +111,16 @@ export default class Footy extends Component {
           <div className="footer-section">
             <h2>SIGN UP FOR GUCCI UPDATES</h2>
             <p>By signing up, you accept the terms of Gucci's Privacy Policy</p>
-            <input placeholder="Email Address" />
+            <div className="send-email">
+              <input className="foot-input" placeholder="Email Address" onChange={e => this.handleInput(e.target.value)} />
+              <button onClick={() => this.welcomeEmail()}>&gt;</button>
+            </div>
             <h2>STORE LOCATOR</h2>
-            <input placeholder="City, country, region" />
+            <input className="foot-input" placeholder="City, country, region" />
           </div>
         </div>
       </div>
     );
   }
 }
+export default withContext(Footy);
