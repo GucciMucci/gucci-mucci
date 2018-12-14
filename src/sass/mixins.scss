@@ -1,11 +1,11 @@
 @import "./variables.scss";
-@import url("https://use.typekit.net/idz8jyc.css");
+@import url("https://use.typekit.net/xpe1lzm.css");
 @import url("https://fonts.googleapis.com/css?family=Cinzel");
 
 @mixin primary-font {
-  font-family: "Futura_Book", sans-serif;
+  font-family: "futura-pt", sans-serif;
+  font-weight: 300;
   font-style: normal;
-  font-weight: lighter;
 }
 
 @mixin gucci-font {
