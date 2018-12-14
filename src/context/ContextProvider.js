@@ -10,8 +10,10 @@ class ContextProvider extends Component {
     this.state = {
       user: null,
       favorites: null,
-      showMemo: false
+      showMemo: false,
+      search: false
     };
+    this.toggleSearch = this.toggleSearch.bind(this);
   }
 
   authListenier = () => {
@@ -98,6 +100,10 @@ class ContextProvider extends Component {
     }
   };
 
+  toggleSearch() {
+    this.setState({ search: !this.state.search });
+  }
+
   render() {
     console.log("context user", this.state.user);
     return (
@@ -107,7 +113,8 @@ class ContextProvider extends Component {
           authListenier: this.authListenier,
           logout: this.logout,
           addFav: this.addFav,
-          addToBag: this.addToBag
+          addToBag: this.addToBag,
+          toggleSearch: this.toggleSearch
         }}>
         {this.props.children}
       </AppContext.Provider>

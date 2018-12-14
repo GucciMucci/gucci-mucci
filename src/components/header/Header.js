@@ -11,6 +11,7 @@ import logo_white from "./logo_white.png";
 import heart from "../Card/heart-regular.svg";
 import bag from "./bag.svg";
 import search from "./search.svg";
+import Search from "../Search/Search";
 
 import "./header.scss";
 
@@ -74,6 +75,7 @@ class Header extends Component {
   };
 
   render() {
+    console.log("---------Search", this.props.context.search);
     return (
       <div id="header" className={"header " + this.getOptions()}>
         <div className="top">
@@ -106,9 +108,13 @@ class Header extends Component {
                 </Hover>
               </span>
             </Link>
-            <span className="search">
-              <img src={search} alt="" />
-            </span>
+            {this.props.context.search ? (
+              <Search />
+            ) : (
+              <span className="search">
+                <img src={search} alt="" onClick={this.props.context.toggleSearch} />
+              </span>
+            )}
           </div>
         </div>
         <Link to="/" className="logo">

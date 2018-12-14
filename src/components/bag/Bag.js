@@ -121,8 +121,7 @@ class Bag extends Component {
           </div>
           <span className="qty-price">
             <select
-              id="soflow"
-              className="select-qty"
+              className="select-qty soflow"
               onChange={e =>
                 this.updateQuantity(product.style, parseInt(e.target.value))
               }

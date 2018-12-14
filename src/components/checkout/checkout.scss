@@ -24,6 +24,16 @@
   h1 {
     border-bottom: $border;
     padding: 0 0 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #bag-svg {
+    width: 20px;
+    padding: 6px 8px 8px;
+  }
+  p {
+    padding: 8px;
   }
 }
 
@@ -38,21 +48,53 @@
   flex-direction: column;
   text-align: left;
   h1 {
-    font-size: 30px;
+    font-size: 32px;
     margin: 46px 0 20px;
     padding: 0 0 46px;
     border-bottom: $border-white;
     width: 100%;
   }
+
+  h3 {
+    font-size: 12px;
+    color: $light-text;
+  }
   .ship-to {
-    margin-top: 30px;
+    margin-top: 28px;
+  }
+  label {
+    font-size: 13px;
+    margin-left: 8px;
+  }
+  .white {
+    background: white;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png);
+    border: none;
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    height: 36px;
+  }
+  input {
+    border: none;
+  }
+  .optional {
+    font-style: italic;
+    color: $light-text;
   }
   button {
     @include button-dark;
   }
-
+  .checkbox {
+    margin-top: 10px;
+    justify-content: flex-start;
+    align-items: center;
+  }
   #huey {
     margin: 20px 0px;
+  }
+  p {
+    margin: 14px 0 6px;
+    font-size: 12px;
   }
 }
 .checkout-name {
@@ -62,8 +104,19 @@
   height: 66px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   width: unquote("-webkit-calc(100% - 25px)");
+  h2 {
+    font-size: 11px;
+    color: darken($light-text, $amount: 10);
+    margin: 9px 0 0;
+  }
+  h3 {
+    font-size: 12px;
+    color: $light-text;
+    font-style: italic;
+    margin: 0 0 9px;
+  }
 }
 
 .row {
@@ -81,7 +134,7 @@
   input,
   select {
     width: 100%;
-    height: 31px;
+    height: 34px;
     margin: 10px 0 0 0;
   }
   label {
@@ -90,13 +143,44 @@
 }
 
 #title {
-  width: 20%;
+  width: 19%;
 }
 
 #first-name {
-  width: 40%;
+  width: 39%;
 }
 
 #last-name {
-  width: 40%;
+  width: 39%;
+}
+
+#city {
+  width: 54%;
+}
+
+#state {
+  width: 21%;
+}
+
+#zip-code {
+  width: 21%;
+}
+
+.phone {
+  width: 49%;
+}
+
+#shipping {
+  margin: 30px 0 10px;
+}
+
+.radio {
+  margin: 10px;
+}
+
+.radio-group {
+  margin-bottom: 16px;
+  span {
+    font-size: 12px;
+  }
 }
