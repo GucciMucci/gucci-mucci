@@ -60,7 +60,7 @@ class Search extends Component {
     const { results, keyword } = this.state;
     return (
       <div className="search-bar">
-        <input placeholder="Search" onChange={e => this.getKeyword(e.target.value)} onKeyDown={this.keyPress} />
+        <input placeholder="Search" onChange={e => this.getKeyword(e.target.value)} onKeyDown={this.keyPress} autoFocus />
         <i class="far fa-times-circle" onClick={this.props.context.toggleSearch} />
         {/* <Results results={results} keyword={keyword} /> */}
       </div>
