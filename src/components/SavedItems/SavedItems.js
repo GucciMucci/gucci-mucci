@@ -3,6 +3,7 @@ import firebase from "./../firebase";
 import withContext from "../../context/Context_HOC";
 import "./SavedItems.scss";
 import { Link } from "react-router-dom";
+import Search from "../Search/Search";
 
 class SavedItems extends Component {
   constructor() {
