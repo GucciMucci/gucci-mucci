@@ -1,22 +1,37 @@
 import React, { Component } from "react";
-import "./header.scss";
 import { Link } from "react-router-dom";
-import firebase from "./../firebase";
 import withContext from "../../context/Context_HOC";
-import logo_white from "./logo_white.png";
-import logo_black from "./logo_black.png";
 import Hover from "../Hover/Hover";
 import HoverBag from "../HoverBag/HoverBag";
 import HoverSaved from "../HoverSaved/HoverSaved";
+import Nav from "../Nav/Nav";
+// import firebase from "firebase";
+
+import logo_white from "./logo_white.png";
 import heart from "../Card/heart-regular.svg";
 import bag from "./bag.svg";
 import search from "./search.svg";
+
+import "./header.scss";
 
 class Header extends Component {
   componentDidMount() {
     this.props.context.authListenier();
     window.addEventListener("scroll", this.resizeHeaderOnScroll);
   }
+
+  // addCat = () => {
+  //   let dataRef = firebase.database().ref("women/coats");
+  //   dataRef.once("value").then(snapshot => {
+  //     let data = snapshot.val();
+  //     data = data.map(item => {
+  //       item.cat = "women";
+  //       item.subCat = "coats";
+  //       return item;
+  //     });
+  //     dataRef.set(data);
+  //   });
+  // };
 
   getOptions = () => {
     let pathname = window.location.pathname;
@@ -33,8 +48,9 @@ class Header extends Component {
       case "/women/dresses/" + name[name.length - 1]:
       case "/women/coats/" + name[name.length - 1]:
         return "gray";
+      default:
+        return "";
     }
-    return "";
   };
 
   resizeHeaderOnScroll = () => {
@@ -62,52 +78,11 @@ class Header extends Component {
       <div id="header" className={"header " + this.getOptions()}>
         <div className="top">
           <div className="left">
-            <p>United Stated</p>
+            <p>United States</p>
             <p>English</p>
             <p>+1.877.482.2430</p>
           </div>
-          <nav className="middle">
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "women" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Women
-            </div>
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "men" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Men
-            </div>
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "children" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Children
-            </div>
-            <div
-              onMouseEnter={() => {
-                this.setState({ category: "jewelry" });
-              }}
-              onMouseLeave={() => {
-                this.setState({ show: "blah" });
-              }}
-            >
-              Jewelry & watches
-            </div>
-          </nav>
+          <Nav />
           <div className="right">
             {this.props.context.user === null ? (
               <Link to="/login">Login</Link>
@@ -139,6 +114,7 @@ class Header extends Component {
         <Link to="/" className="logo">
           <img src={logo_white} alt="" />
         </Link>
+        {/* <button onClick={this.addCat}>Click once</button> */}
       </div>
     );
   }

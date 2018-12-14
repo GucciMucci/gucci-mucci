@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import _ from "../utils";
-import { Link } from "react-router-dom";
 import withContext from "../../context/Context_HOC";
 import "./checkout.scss";
 import firebase from "firebase";
 import CheckoutAccordion from "../CheckoutAccordion/CheckoutAccordion";
 import AddressForm from "../AddressForm/AddressForm";
+import bag from "./bag.svg";
 
 class Checkout extends Component {
   constructor() {
@@ -71,6 +71,8 @@ class Checkout extends Component {
           />
           <div>
             <span>{product.name}</span>
+          </div>
+          <div>
             <span>Qty: {product.quantity}</span>
             <h2>{product.price}</h2>
           </div>
@@ -85,7 +87,10 @@ class Checkout extends Component {
         <AddressForm />
         <div>
           <div className="order-sum-co">
-            <h1>👜{totalQty} items</h1>
+            <h1>
+              <img id="bag-svg" src={bag} alt="" />
+              {totalQty} {totalQty === 1 ? <p>item</p> : <p>items</p>}
+            </h1>
             <div>{showProducts}</div>
             <h2>TOTAL: $ {total}</h2>
             <StripeCheckout
