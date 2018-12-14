@@ -9,7 +9,8 @@ class ContextProvider extends Component {
     super();
     this.state = {
       user: null,
-      favorites: null
+      favorites: null,
+      showMemo: false
     };
   }
 
