@@ -1,0 +1,20 @@
+.result-head {
+  background: rgb(49, 49, 49);
+  height: 200px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 50px;
+  h3 {
+    color: lightgrey;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 25px;
+  }
+  h1 {
+    color: white;
+    font-size: 35px;
+  }
+}

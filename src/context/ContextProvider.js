@@ -10,8 +10,10 @@ class ContextProvider extends Component {
     this.state = {
       user: null,
       favorites: null,
-      showMemo: false
+      showMemo: false,
+      search: false
     };
+    this.toggleSearch = this.toggleSearch.bind(this);
   }
 
   authListenier = () => {
@@ -39,9 +41,7 @@ class ContextProvider extends Component {
     let localFav = localStorage.getItem("favorites");
     if (this.state.user) {
       const usersRef = firebase.database().ref(`users/${this.state.user.id}`);
-      const favRef = firebase
-        .database()
-        .ref(`users/${this.state.user.id}/favorites`);
+      const favRef = firebase.database().ref(`users/${this.state.user.id}/favorites`);
       favRef.once("value").then(res => {
         console.log("res value", res.val());
         if (res.val() !== null) {
@@ -65,14 +65,10 @@ class ContextProvider extends Component {
   addToBag = product => {
     product.quantity = 1;
     if (this.state.user) {
-      const usersRef = firebase
-        .database()
-        .ref(`users/${this.state.user.id}/cart`);
+      const usersRef = firebase.database().ref(`users/${this.state.user.id}/cart`);
       usersRef.once("value").then(res => {
         let cart = res.val();
-        let index = cart
-          ? cart.findIndex(item => item.style === product.style)
-          : -1;
+        let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
         if (index !== -1) {
           if (cart[index].quantity < 5) {
             cart[index].quantity += 1;
@@ -104,6 +100,10 @@ class ContextProvider extends Component {
     }
   };
 
+  toggleSearch() {
+    this.setState({ search: !this.state.search });
+  }
+
   render() {
     console.log("context user", this.state.user);
     return (
@@ -113,7 +113,8 @@ class ContextProvider extends Component {
           authListenier: this.authListenier,
           logout: this.logout,
           addFav: this.addFav,
-          addToBag: this.addToBag
+          addToBag: this.addToBag,
+          toggleSearch: this.toggleSearch
         }}
       >
         {this.props.children}
