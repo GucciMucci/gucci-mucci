@@ -9,7 +9,7 @@ export default class Display extends Component {
     this.state = {
       username: "",
       currentItem: "",
-      data: [],
+      data: this.props.results || [],
       route: window.location.pathname,
       search: this.props.search || false
     };
@@ -26,31 +26,36 @@ export default class Display extends Component {
             data: snapshot.val()
           });
         });
-    } else {
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (this.state.route !== window.location.pathname) {
-      firebase
-        .database()
-        .ref(window.location.pathname)
-        .once("value")
-        .then(snapshot => {
-          this.setState({
-            route: window.location.pathname,
-            data: snapshot.val()
+    if (!this.state.search) {
+      if (this.state.route !== window.location.pathname) {
+        firebase
+          .database()
+          .ref(window.location.pathname)
+          .once("value")
+          .then(snapshot => {
+            this.setState({
+              route: window.location.pathname,
+              data: snapshot.val()
+            });
           });
-        });
+      }
+    } else if (prevProps !== this.props) {
+      this.setState({ data: this.props.results });
     }
   }
 
   render() {
     return (
       <div className="products">
-        {this.state.data.map(item => {
-          return <Card key={item.style} item={item} />;
-        })}
+        {this.state.data
+          ? this.state.data.map(item => {
+              return <Card key={item.style} item={item} />;
+            })
+          : "Loading..."}
       </div>
     );
   }

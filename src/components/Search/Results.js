@@ -1,19 +1,12 @@
 import React, { Component } from "react";
+import Display from "../Display/Display";
 import "./Results.scss";
 
 export default class Results extends Component {
   render() {
     const { results, keyword } = this.props.location.state;
 
-    const showResults =
-      results &&
-      results.map(result => {
-        return (
-          <div>
-            <h1>{result.name}</h1>
-          </div>
-        );
-      });
+    const showResults = results && <Display results={results} search={true} />;
 
     return (
       <div>
