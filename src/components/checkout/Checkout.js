@@ -19,7 +19,6 @@ class Checkout extends Component {
   }
 
   componentDidMount() {
-    this.props.context.authListenier();
     this.getBag();
   }
 
@@ -42,23 +41,49 @@ class Checkout extends Component {
     }
   }
 
+  saveOrderToHistory = order => {
+    const userRef = firebase
+      .database()
+      .ref(`users/${this.props.context.user.id}/orders`);
+    userRef.once("value").then(res => {
+      let orders = res.val();
+      if (orders !== null) {
+        userRef.set([...orders, order]);
+      } else {
+        userRef.set([order]);
+      }
+    });
+  };
+
+  deleteBag = () => {
+    if (this.props.context.user) {
+      const userRef = firebase
+        .database()
+        .ref(`users/${this.props.context.user.id}/cart`);
+      userRef.once("value").then(() => {
+        userRef.set([]);
+      });
+    } else localStorage.setItem("bagArray", JSON.stringify([]));
+  };
+
   onToken = token => {
     let total = _.getTotal(this.state.products);
-    axios.post("/api/stripe", {
-      method: "POST",
-      body: token,
-      amount: total * 100
-    });
-    // .then(res => {
-    //   res.json().then(data => {
-    //     alert(`We are in business, ${data.email}`);
-    //   });
-    // });
+    axios
+      .post("/api/stripe", {
+        method: "POST",
+        body: token,
+        amount: total * 100
+      })
+      .then(res => {
+        console.log("res---------->", res);
+        this.saveOrderToHistory(this.state.products);
+        if (this.props.context.user) {
+          this.deleteBag();
+        }
+      });
   };
 
   render() {
-    this.props.context.user &&
-      console.log("user.email---------->", this.props.context.user.email);
     let total = _.getTotal(this.state.products);
     let totalQty = _.getTotalQty(this.state.products);
     const showProducts = this.state.products.map(product => {
@@ -105,6 +130,7 @@ class Checkout extends Component {
                   ? this.props.context.user.email
                   : undefined
               }
+              description="Thank you for buying from Mucci"
               stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
             />
           </div>
