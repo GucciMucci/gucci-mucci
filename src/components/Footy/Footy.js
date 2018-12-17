@@ -20,6 +20,7 @@ class Footy extends Component {
     this.state.newEmail &&
       axios.post("/api/email", { email: this.state.newEmail }).then(res => {
         window.alert(`Thanks for signing up, ${this.state.newEmail}`);
+        this.refs.emailInput.value = "";
       });
   }
 
@@ -112,7 +113,7 @@ class Footy extends Component {
             <h2>SIGN UP FOR GUCCI UPDATES</h2>
             <p>By signing up, you accept the terms of Gucci's Privacy Policy</p>
             <div className="send-email">
-              <input className="foot-input" placeholder="Email Address" onChange={e => this.handleInput(e.target.value)} />
+              <input className="foot-input" placeholder="Email Address" onChange={e => this.handleInput(e.target.value)} ref="emailInput" />
               <button onClick={() => this.welcomeEmail()}>&gt;</button>
             </div>
             <h2>STORE LOCATOR</h2>

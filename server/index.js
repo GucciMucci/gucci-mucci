@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 
 app.post("/api/stripe", stripeController.checkout);
 app.post("/api/email", mailControll.sendEmail);
+app.post("/api/reciept", mailControll.sendReciept);
 
 const PORT = 4000;
 app.listen(PORT, () => {

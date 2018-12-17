@@ -10,9 +10,11 @@ import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import SavedItems from "./components/SavedItems/SavedItems";
 import Results from "./components/Search/Results";
+import Order from "./components/Order/Order";
 
 export default (
   <Switch>
+    <Route path="/order" component={Order} />
     <Route path="/results" component={Results} />
     <Route path="/profile" component={Profile} />
     <Route path="/saved-items" component={SavedItems} />

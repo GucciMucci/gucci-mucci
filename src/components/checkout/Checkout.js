@@ -44,31 +44,30 @@ class Checkout extends Component {
 
   onToken = token => {
     let total = _.getTotal(this.state.products);
-    axios.post("/api/stripe", {
-      method: "POST",
-      body: token,
-      amount: total * 100
-    });
-    // .then(res => {
-    //   res.json().then(data => {
-    //     alert(`We are in business, ${data.email}`);
-    //   });
-    // });
+    axios
+      .post("/api/stripe", {
+        method: "POST",
+        body: token,
+        amount: total * 100
+      })
+      .then(res => {
+        console.log("first res", res.data);
+        axios.post("/api/reciept", { email: this.props.context.user.email, message: this.state.products, total: total }).then(res2 => {
+          console.log("second res", res2.data);
+          // alert(`Email sent to ${this.props.context.user.email}`);
+          this.props.history.push("/order", this.state.products);
+        });
+      });
   };
 
   render() {
-    this.props.context.user &&
-      console.log("user.email---------->", this.props.context.user.email);
+    this.props.context.user && console.log("user.email---------->", this.props.context.user.email);
     let total = _.getTotal(this.state.products);
     let totalQty = _.getTotalQty(this.state.products);
     const showProducts = this.state.products.map(product => {
       return (
         <div className="checkout-products">
-          <img
-            className="chk-product-img"
-            src={_.white(product.images[1].image)}
-            alt=""
-          />
+          <img className="chk-product-img" src={_.white(product.images[1].image)} alt="" />
           <div>
             <span>{product.name}</span>
           </div>
@@ -100,11 +99,7 @@ class Checkout extends Component {
               // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
               amount={total * 100}
               token={this.onToken}
-              email={
-                this.props.context.user
-                  ? this.props.context.user.email
-                  : undefined
-              }
+              email={this.props.context.user ? this.props.context.user.email : undefined}
               stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
             />
           </div>
