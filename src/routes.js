@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
 import Home from "./components/home/Home";
 import Bag from "./components/bag/Bag";
 import Checkout from "./components/checkout/Checkout";
@@ -9,21 +8,15 @@ import Product from "./components/product/Product";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import SavedItems from "./components/SavedItems/SavedItems";
-<<<<<<< HEAD
+import StoreLocator from "./components/StoreLocator/StoreLocator";
+import OrderHistory from "./components/OrderHistory/OrderHistory";
 import Results from "./components/Search/Results";
 
 export default (
   <Switch>
     <Route path="/results" component={Results} />
-=======
-import StoreLocator from "./components/StoreLocator/StoreLocator";
-import OrderHistory from "./components/OrderHistory/OrderHistory";
-
-export default (
-  <Switch>
     <Route path="/history" component={OrderHistory} />
     <Route path="/locator" component={StoreLocator} />
->>>>>>> orders
     <Route path="/profile" component={Profile} />
     <Route path="/saved-items" component={SavedItems} />
     <Route path="/women/:type/:name" component={Product} />

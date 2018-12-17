@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import withContext from "../../context/Context_HOC";
 import "../Profile/Profile.scss";
+import "./orderHistory.scss";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 import _ from "../utils";
@@ -42,15 +43,21 @@ class Profile extends Component {
         <div className="profile-header">
           <h1>ORDER HISTORY</h1>
         </div>
-        <div className="profile-container">
+        <div className="profile-container history">
           {this.state.orders.map((order, index) => {
             let total = _.getTotal(order);
             return (
-              <div>
+              <div className="history-order">
                 <h1>Order {index + 1}</h1>
-                {order.map(product => {
-                  return <div>{product.name}</div>;
-                })}
+                <div>
+                  {order.map(product => {
+                    return (
+                      <div id="order-details">
+                        {product.quantity} &times; {product.name}
+                      </div>
+                    );
+                  })}
+                </div>
                 <h3>Total: {total}</h3>
               </div>
             );

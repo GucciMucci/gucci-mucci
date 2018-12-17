@@ -94,11 +94,18 @@ class Checkout extends Component {
             src={_.white(product.images[1].image)}
             alt=""
           />
-          <div>
-            <span>{product.name}</span>
+          <div className="co-mid">
+            <h2>{product.name}</h2>
+            <h3>Style# {product.style}</h3>
+            <div className="selection-div">
+              <h2>AVAILABLE</h2>
+              <p className="selection">
+                Your selection is available for immediate purchase online.
+              </p>
+            </div>
           </div>
-          <div>
-            <span>Qty: {product.quantity}</span>
+          <div className="co-right">
+            <h2>Qty: {product.quantity}</h2>
             <h2>{product.price}</h2>
           </div>
         </div>
@@ -117,7 +124,23 @@ class Checkout extends Component {
               {totalQty} {totalQty === 1 ? <p>item</p> : <p>items</p>}
             </h1>
             <div>{showProducts}</div>
-            <h2>TOTAL: $ {total}</h2>
+            <div className="order-sum">
+              <ul>
+                <li>
+                  <span>Subtotal</span> <span>$ {total}</span>
+                </li>
+                <li>
+                  <span>Shipping</span> <span>Free (Next Day) v</span>
+                </li>
+                <li>
+                  <span>Estimated Tax</span> <span>$ 0</span>
+                </li>
+                <li>
+                  <span>Estimated Total</span>{" "}
+                  <span id="total-co">$ {total}</span>
+                </li>
+              </ul>
+            </div>
             <StripeCheckout
               name="© G U C C I"
               image="http://desiderata.info/wp-content/uploads/Gucci-GG-logo.png"
@@ -133,6 +156,13 @@ class Checkout extends Component {
               description="Thank you for buying from Mucci"
               stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
             />
+            <div>
+              <h2 id="view-det">VIEW DETAILS</h2>
+              <p className="detail-paragraph">
+                You will be charged only at the time of shipment except for DIY
+                orders where the full amount is charged at the time of purchase.
+              </p>
+            </div>
           </div>
           <CheckoutAccordion />
         </div>
