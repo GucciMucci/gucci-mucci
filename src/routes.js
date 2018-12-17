@@ -11,9 +11,11 @@ import SavedItems from "./components/SavedItems/SavedItems";
 import StoreLocator from "./components/StoreLocator/StoreLocator";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 import Results from "./components/Search/Results";
+import Order from "./components/Order/Order";
 
 export default (
   <Switch>
+    <Route path="/order" component={Order} />
     <Route path="/results" component={Results} />
     <Route path="/history" component={OrderHistory} />
     <Route path="/locator" component={StoreLocator} />
