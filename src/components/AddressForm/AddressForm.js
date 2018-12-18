@@ -68,7 +68,9 @@ class AddressForm extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.context !== prevProps.context) {
-      this.getAddress();
+      if (this.props.context.user) {
+        this.getAddress();
+      }
     }
   }
 

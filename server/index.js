@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const massive = require("massive");
+// const massive = require("massive");
 const stripeController = require("./controllers/stripe");
+const mailControll = require("./controllers/nodemail");
 
 require("dotenv").config();
 
@@ -17,6 +18,8 @@ app.use(express.static(`${__dirname}/../build/`));
 // });
 
 app.post("/api/stripe", stripeController.checkout);
+app.post("/api/email", mailControll.sendEmail);
+app.post("/api/reciept", mailControll.sendReciept);
 
 const path = require("path");
 app.get("*", (req, res) => {

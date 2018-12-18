@@ -3,7 +3,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_TOKEN);
 
 module.exports = {
   checkout: (req, res) => {
-    console.log("req.body---------->", req.body);
+    console.log("req.body---------->", req.body.body.email);
 
     const stripeToken = req.body.body;
 
@@ -12,17 +12,18 @@ module.exports = {
         amount: req.body.amount,
         currency: "usd",
         description: "© G U C C I  M U C C I gets money",
-        source: stripeToken.id
+        source: stripeToken.id,
+        receipt_email: req.body.body.email
       },
       function(err, charge) {
         console.log("charge---------->", charge);
         if (err) {
-          res.send({
+          res.json({
             success: true,
             message: "Error"
           });
         } else {
-          res.send({
+          res.json({
             success: true,
             message: "Success"
           });
