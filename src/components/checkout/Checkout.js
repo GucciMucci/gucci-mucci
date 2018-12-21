@@ -42,7 +42,9 @@ class Checkout extends Component {
   }
 
   saveOrderToHistory = order => {
-    const userRef = firebase.database().ref(`users/${this.props.context.user.id}/orders`);
+    const userRef = firebase
+      .database()
+      .ref(`users/${this.props.context.user.id}/orders`);
     userRef.once("value").then(res => {
       let orders = res.val();
       if (orders !== null) {
@@ -55,7 +57,9 @@ class Checkout extends Component {
 
   deleteBag = () => {
     if (this.props.context.user) {
-      const userRef = firebase.database().ref(`users/${this.props.context.user.id}/cart`);
+      const userRef = firebase
+        .database()
+        .ref(`users/${this.props.context.user.id}/cart`);
       userRef.once("value").then(() => {
         userRef.set([]);
       });
@@ -77,11 +81,17 @@ class Checkout extends Component {
           this.deleteBag();
         }
         console.log("first res", res.data);
-        axios.post("/api/reciept", { email: this.props.context.user.email, message: this.state.products, total: total }).then(res2 => {
-          console.log("second res", res2.data);
-          // alert(`Email sent to ${this.props.context.user.email}`);
-          this.props.history.push("/order", this.state.products);
-        });
+        axios
+          .post("/api/reciept", {
+            email: this.props.context.user.email,
+            message: this.state.products,
+            total: total
+          })
+          .then(res2 => {
+            console.log("second res", res2.data);
+            // alert(`Email sent to ${this.props.context.user.email}`);
+            this.props.history.push("/order", this.state.products);
+          });
       });
   };
 
@@ -91,13 +101,19 @@ class Checkout extends Component {
     const showProducts = this.state.products.map(product => {
       return (
         <div className="checkout-products">
-          <img className="chk-product-img" src={_.white(product.images[1].image)} alt="" />
+          <img
+            className="chk-product-img"
+            src={_.white(product.images[1].image)}
+            alt=""
+          />
           <div className="co-mid">
             <h2>{product.name}</h2>
             <h3>Style# {product.style}</h3>
             <div className="selection-div">
               <h2>AVAILABLE</h2>
-              <p className="selection">Your selection is available for immediate purchase online.</p>
+              <p className="selection">
+                Your selection is available for immediate purchase online.
+              </p>
             </div>
           </div>
           <div className="co-right">
@@ -119,7 +135,7 @@ class Checkout extends Component {
               <img id="bag-svg" src={bag} alt="" />
               {totalQty} {totalQty === 1 ? <p>item</p> : <p>items</p>}
             </h1>
-            <div>{showProducts}</div>
+            <div id="show-products">{showProducts}</div>
             <div className="order-sum">
               <ul>
                 <li>
@@ -132,7 +148,8 @@ class Checkout extends Component {
                   <span>Estimated Tax</span> <span>$ 0</span>
                 </li>
                 <li>
-                  <span>Estimated Total</span> <span id="total-co">$ {total}</span>
+                  <span>Estimated Total</span>{" "}
+                  <span id="total-co">$ {total}</span>
                 </li>
               </ul>
             </div>
@@ -143,15 +160,19 @@ class Checkout extends Component {
               // image="http://www.noradot.com/wp-content/uploads/2016/10/gucci-desktop-6.jpg"
               amount={total * 100}
               token={this.onToken}
-              email={this.props.context.user ? this.props.context.user.email : undefined}
+              email={
+                this.props.context.user
+                  ? this.props.context.user.email
+                  : undefined
+              }
               description="Thank you for buying from Mucci"
               stripeKey="pk_test_FA9iXNKE4bHwWBQ0KlKbKOq2"
             />
             <div>
               <h2 id="view-det">VIEW DETAILS</h2>
               <p className="detail-paragraph">
-                You will be charged only at the time of shipment except for DIY orders where the full amount is charged at the time of
-                purchase.
+                You will be charged only at the time of shipment except for DIY
+                orders where the full amount is charged at the time of purchase.
               </p>
             </div>
           </div>

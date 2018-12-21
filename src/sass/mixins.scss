@@ -23,7 +23,7 @@
 @mixin checkout-box {
   min-width: 295px;
   max-width: 295px;
-  height: 504px;
+  min-height: 204px;
   background: white;
   margin: 10px 10px;
   padding: 25px;

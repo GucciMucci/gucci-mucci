@@ -50,7 +50,6 @@
 .order-sum-co {
   @include checkout-box;
   min-height: 400px;
-  overflow-y: auto;
   h1 {
     border-bottom: $border;
     padding: 0 0 25px;
@@ -73,6 +72,15 @@
       border-top: none;
     }
   }
+  #view-det {
+    margin-top: 20px;
+  }
+}
+#show-products {
+  min-height: 100px;
+  max-height: 700px;
+  overflow-y: auto;
+  text-align: left;
 }
 .detail-paragraph {
   text-align: left;
@@ -124,6 +132,7 @@
   }
   input {
     border: none;
+    outline: none;
   }
   .optional {
     font-style: italic;

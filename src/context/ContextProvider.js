@@ -11,6 +11,7 @@ class ContextProvider extends Component {
       user: null,
       favorites: null,
       showMemo: false,
+      showAdd: false,
       search: false
     };
     this.toggleSearch = this.toggleSearch.bind(this);
@@ -41,7 +42,9 @@ class ContextProvider extends Component {
     let localFav = localStorage.getItem("favorites");
     if (this.state.user) {
       const usersRef = firebase.database().ref(`users/${this.state.user.id}`);
-      const favRef = firebase.database().ref(`users/${this.state.user.id}/favorites`);
+      const favRef = firebase
+        .database()
+        .ref(`users/${this.state.user.id}/favorites`);
       favRef.once("value").then(res => {
         console.log("res value", res.val());
         if (res.val() !== null) {
@@ -62,22 +65,43 @@ class ContextProvider extends Component {
     }
   };
 
+  showAddMemo = () => {
+    this.setState({ showAdd: true });
+    setTimeout(() => {
+      this.setState({ showAdd: false });
+    }, 1600);
+  };
+
+  showMemo = () => {
+    this.setState({ showMemo: true });
+    setTimeout(() => {
+      this.setState({ showMemo: false });
+    }, 3600);
+  };
+
   addToBag = product => {
     product.quantity = 1;
     if (this.state.user) {
-      const usersRef = firebase.database().ref(`users/${this.state.user.id}/cart`);
+      const usersRef = firebase
+        .database()
+        .ref(`users/${this.state.user.id}/cart`);
       usersRef.once("value").then(res => {
         let cart = res.val();
-        let index = cart ? cart.findIndex(item => item.style === product.style) : -1;
+        let index = cart
+          ? cart.findIndex(item => item.style === product.style)
+          : -1;
         if (index !== -1) {
           if (cart[index].quantity < 5) {
             cart[index].quantity += 1;
             usersRef.set(cart);
-          } else this.setState({ showMemo: true });
+            this.showAddMemo();
+          } else this.showMemo();
         } else if (cart) {
           usersRef.set([...cart, product]);
+          this.showAddMemo();
         } else {
           usersRef.set([product]);
+          this.showAddMemo();
         }
       });
     } else {
@@ -88,13 +112,16 @@ class ContextProvider extends Component {
         if (index !== -1) {
           if (tempBag[index].quantity < 5) {
             tempBag[index].quantity += 1;
-          } else this.setState({ showMemo: true });
+            this.showAddMemo();
+          } else this.showMemo();
         } else {
           tempBag.push(product);
+          this.showAddMemo();
         }
         localStorage.setItem("bagArray", JSON.stringify(tempBag));
       } else {
         localStorage.setItem("bagArray", JSON.stringify([product]));
+        this.showAddMemo();
       }
       return localStorage;
     }
@@ -115,7 +142,8 @@ class ContextProvider extends Component {
           addFav: this.addFav,
           addToBag: this.addToBag,
           toggleSearch: this.toggleSearch
-        }}>
+        }}
+      >
         {this.props.children}
       </AppContext.Provider>
     );

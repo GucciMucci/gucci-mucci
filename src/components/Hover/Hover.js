@@ -5,7 +5,6 @@ export default class Hover extends Component {
   render() {
     return (
       <div>
-        {/* <td data-label="Edit"> */}
         <div class="btn_wrapper clearfix">
           <div class="btn">
             {this.props.children}
@@ -14,7 +13,6 @@ export default class Hover extends Component {
             </ul>
           </div>
         </div>
-        {/* </td> */}
       </div>
     );
   }

@@ -9,7 +9,9 @@ class Profile extends Component {
     return (
       <div className="profile">
         <div className="profile-header">
-          <h1>Welcome, {this.props.context.user && this.props.context.user.email}</h1>
+          <h1>
+            Welcome, {this.props.context.user && this.props.context.user.email}
+          </h1>
         </div>
 
         <div className="profile-container">
@@ -34,6 +36,12 @@ class Profile extends Component {
             <p>All your favorite pieces in one beautiful place.</p>
           </div>
         </div>
+
+        <Link to="/history">
+          <div className="profile-his" style={{ color: "black" }}>
+            Order History
+          </div>
+        </Link>
       </div>
     );
   }

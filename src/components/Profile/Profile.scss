@@ -29,7 +29,7 @@
   background: rgb(231, 231, 231);
   margin: 15px;
   margin-bottom: 0;
-  height: 100vh;
+  height: unquote("-webkit-calc(100vh - 80px)");
   width: unquote("-webkit-calc(100% - 30px)");
   display: flex;
   justify-content: flex-start;
@@ -89,9 +89,20 @@
   }
 
   p {
-    font-family: Times New Roman, "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-family: Times New Roman, "Times New Roman", Times, Baskerville, Georgia,
+      serif;
     font-weight: 400;
     font-style: italic;
     font-size: 16px;
+  }
+}
+.profile-his {
+  @include background;
+  margin-top: 1px;
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 26px;
+  &:hover {
+    background: lighten($background, 3);
   }
 }

@@ -76,7 +76,6 @@ class Header extends Component {
   };
 
   render() {
-    console.log("---------Search", this.props.context.search);
     return (
       <div id="header" className={"header " + this.getOptions()}>
         <div className="top">
@@ -113,7 +112,11 @@ class Header extends Component {
               <Search />
             ) : (
               <span className="search">
-                <img src={search} alt="" onClick={this.props.context.toggleSearch} />
+                <img
+                  src={search}
+                  alt=""
+                  onClick={this.props.context.toggleSearch}
+                />
               </span>
             )}
           </div>
