@@ -21,8 +21,30 @@ module.exports = {
   getTotal: arr => {
     return arr.reduce((previousVal, currentVal) => {
       return (
-        parseInt(previousVal) + parseInt(currentVal.price.replace(/[,$]/g, ""))
+        parseInt(previousVal) +
+        parseInt(currentVal.price.replace(/[,$]/g, "")) * currentVal.quantity
       );
     }, 0);
+  },
+
+  getTotalQty: arr => {
+    return arr.reduce((previousVal, currentVal) => {
+      return previousVal + currentVal.quantity;
+    }, 0);
+  },
+  white: url => {
+    return url.replace(/DarkGray/gi, "White");
+  },
+  lightBrownGray: url => {
+    return url.replace(
+      /DarkGray_Center_0_0_490x490/gi,
+      "LightBrownGray_Center_0_0_150x150"
+    );
+  },
+  highRes: url => {
+    return url.replace(/490/gi, "800");
+  },
+  superRes: url => {
+    return url.replace(/490/gi, "2400");
   }
 };

@@ -9,7 +9,10 @@ export default class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      error: ""
+      error: "",
+      popup: false,
+      newEmail: "",
+      newPass: ""
     };
   }
 
@@ -20,15 +23,24 @@ export default class Login extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
         const usersRef = firebase.database().ref(`users/${user.user.uid}/cart`);
-        console.log(user);
-        // console.log(JSON.parse(localStorage.getItem("bagArray")));
+        const favRef = firebase.database().ref(`users/${user.user.uid}/favorites`);
         usersRef.once("value").then(res => {
-          console.log("once res~~~~", res.val());
           if (localStorage.getItem("bagArray")) {
-            usersRef.set([...res.val(), ...JSON.parse(localStorage.getItem("bagArray"))]);
-            localStorage.clear();
+            if (res.val()) {
+              usersRef.set([...res.val(), ...JSON.parse(localStorage.getItem("bagArray"))]);
+              localStorage.clear();
+            } else {
+              usersRef.set([...JSON.parse(localStorage.getItem("bagArray"))]);
+              localStorage.removeItem("bagArray");
+            }
           }
           this.props.history.push("/profile");
+        });
+        favRef.once("value").then(res => {
+          if (localStorage.getItem("favorites")) {
+            favRef.set({ ...res.val(), ...JSON.parse(localStorage.getItem("favorites")) });
+            localStorage.removeItem("favorites");
+          }
         });
       })
       .catch(error => {
@@ -41,9 +53,10 @@ export default class Login extends Component {
     const usersRef = firebase.database().ref("users");
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .createUserWithEmailAndPassword(this.state.newEmail, this.state.newPass)
       .then(user => {
-        usersRef.child(user.user.uid).set({ email: user.user.email, cart: ["test"] });
+        usersRef.child(user.user.uid).set({ email: user.user.email });
+        this.props.history.push("/profile");
       })
       .catch(error => {
         console.log(error.message);
@@ -52,6 +65,8 @@ export default class Login extends Component {
   };
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  togglePop = () => this.setState({ popup: !this.state.popup });
 
   render() {
     return (
@@ -80,7 +95,7 @@ export default class Login extends Component {
                 className="form-input"
               />
 
-              {this.state.error && <div className="error-msg">Please enter a valid password. {this.state.error}</div>}
+              {/* {this.state.error && <div className="error-msg">Please enter a valid password. {this.state.error}</div>} */}
 
               <button type="submit" onClick={this.login} className="signin-btn">
                 SIGN IN
@@ -96,9 +111,30 @@ export default class Login extends Component {
               <li>Personalized recommendations. </li>
               <li>Order delivery updates and return management.</li>
             </ul>
-            <button onClick={this.signup} className="signup-btn">
+            <button onClick={this.togglePop} className="signup-btn">
               CREATE ACCOUNT
             </button>
+          </div>
+
+          <div className={this.state.popup ? "signup-pop" : "hidden-pop"}>
+            <div className="pop-content">
+              <span className="close" onClick={this.togglePop}>
+                &times;
+              </span>
+              <div className="signin-input">
+                <h2>Create An Account</h2>
+                <img src={diamond} className="diamond" />
+                <label>EMAIL ADDRESS</label>
+                <input value={this.state.newEmail} name="newEmail" type="email" onChange={this.handleChange} className="form-input" />
+                <label>PASSWORD</label>
+                <input value={this.state.newPass} name="newPass" type="password" onChange={this.handleChange} className="form-input" />
+                {this.state.error && <div className="error-msg">{this.state.error}</div>}
+                <button onClick={this.signup} className="signin-btn">
+                  CREATE ACCOUNT
+                </button>
+                <p>By creating an account, you accept the terms of Gucci's Privacy Policy</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

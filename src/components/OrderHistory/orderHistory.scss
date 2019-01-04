@@ -1,0 +1,18 @@
+@import "../../sass/main.scss";
+
+.history {
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.history-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: $border-white;
+  width: 90%;
+  padding: 20px;
+  //   padding-bottom: 20px;
+  overflow-y: auto;
+  line-height: 30px;
+}

@@ -1,0 +1,55 @@
+@import "../../sass/main.scss";
+.order-confirm {
+  .summary-head {
+    margin-top: -120px;
+    width: 100vw;
+    height: 210px;
+    background: rgb(49, 49, 49);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 70px;
+    h1 {
+      font-size: 40px;
+      color: white;
+    }
+  }
+  .confirm-body {
+    @include background;
+    margin-top: 10px;
+
+    p {
+      line-height: 22px;
+      font-size: 20px;
+      padding: 5px 250px;
+    }
+
+    .display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      .sum-display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+        width: 800px;
+      }
+    }
+  }
+}
+
+.producto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 250px;
+  height: 300px;
+  margin: 0px 0px !important;
+  p {
+    width: 100%;
+  }
+}

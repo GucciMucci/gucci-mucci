@@ -1,0 +1,58 @@
+@import "../../sass/main.scss";
+
+.saved-items {
+  @include background;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  .saved-title {
+    margin-top: 80px;
+    font-size: 43px;
+    line-height: 50px;
+    border-bottom: solid 1px grey;
+    padding-bottom: 13px;
+    margin-bottom: 25px;
+  }
+  p {
+    color: grey;
+    font-size: 18px;
+    font-style: italic;
+  }
+}
+.card-holder {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  p {
+    font-style: inherit;
+    margin: 13px 0px;
+  }
+}
+.saved-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 0px 10px;
+  margin-bottom: 25px;
+  span {
+    align-self: flex-end;
+    font-size: 40px;
+    color: grey;
+    padding-right: 25px;
+  }
+  span:hover {
+    color: black;
+    cursor: pointer;
+  }
+  .add-bag:hover {
+    cursor: pointer;
+    color: grey;
+  }
+}

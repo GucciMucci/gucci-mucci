@@ -1,0 +1,30 @@
+@import "../../sass/main.scss";
+
+.search-bar {
+  width: 100vw;
+  z-index: 10;
+  height: 65px;
+  position: fixed;
+  margin: 0px 0px;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgb(49, 49, 49);
+  @include fade-in(0.3s);
+  input {
+    width: 93vw;
+    height: 65px;
+    background: rgb(49, 49, 49);
+    border: none;
+    font-size: 20px;
+    padding-left: 50px;
+    color: white;
+    font-weight: 300;
+    outline: none;
+  }
+  i {
+    font-size: 30px;
+    color: rgba(229, 223, 217, 0.5);
+  }
+}

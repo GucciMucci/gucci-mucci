@@ -4,35 +4,59 @@ import Card from "../Card/Card";
 import firebase from "../firebase";
 
 export default class Display extends Component {
-	constructor() {
-		super();
-		this.state = {
-			username: "",
-			currentItem: "",
-			data: []
-		};
-		this.route = window.location.pathname;
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      currentItem: "",
+      data: this.props.results || [],
+      route: window.location.pathname,
+      search: this.props.search || false
+    };
+  }
 
-	componentDidMount() {
-		firebase
-			.database()
-			.ref(this.route)
-			.once("value")
-			.then(snapshot => {
-				this.setState({
-					data: snapshot.val()
-				});
-			});
-	}
+  componentDidMount() {
+    if (!this.state.search) {
+      firebase
+        .database()
+        .ref(this.state.route)
+        .once("value")
+        .then(snapshot => {
+          this.setState({
+            data: snapshot.val()
+          });
+        });
+    }
+  }
 
-	render() {
-		return (
-			<div className="products">
-				{this.state.data.map(item => (
-					<Card key={item.style} item={item} />
-				))}
-			</div>
-		);
-	}
+  componentDidUpdate(prevProps) {
+    if (!this.state.search) {
+      if (this.state.route !== window.location.pathname) {
+        firebase
+          .database()
+          .ref(window.location.pathname)
+          .once("value")
+          .then(snapshot => {
+            this.setState({
+              route: window.location.pathname,
+              data: snapshot.val()
+            });
+          });
+      }
+    } else if (prevProps !== this.props) {
+      this.setState({ data: this.props.results });
+    }
+  }
+
+  render() {
+    return (
+      <div className="products">
+        {this.state.data
+          ? this.state.data.map(item => {
+              return <Card key={item.style} item={item} />;
+            })
+          : "Loading..."}
+      </div>
+    );
+  }
 }

@@ -1,42 +1,83 @@
 @import "../../sass/main.scss";
 
 .products {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(100px, 1fr));
-	gap: 1px;
-	max-width: 100%;
-	padding: 15px;
-	.card {
-		background: $gray;
-		position: relative;
-		img {
-			display: block;
-			padding-top: 70px;
-			padding-bottom: 30px;
-			width: 100%;
-		}
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  gap: 1px;
+  max-width: 100%;
+  padding: 15px;
+  .card {
+    background: $gray;
+    position: relative;
+    img {
+      display: block;
+      padding-top: 70px;
+      padding-bottom: 30px;
+      width: 100%;
+    }
 
-		.hoverPopup {
-			display: none;
-			background: $gray;
-			position: absolute;
-			top: 0px;
-			left: 0;
-			z-index: 1;
-			box-shadow: 0px 1px 1px 1px #e0e0e0;
-		}
+    a {
+      color: black;
+    }
 
-		&:hover .hoverPopup {
-			display: block;
-		}
+    .hoverPopup {
+      width: 100%;
+      display: none;
+      background: white;
+      position: absolute;
+      top: 0px;
+      left: 0;
+      z-index: 1;
+      box-shadow: 0px 2px 1px 1px #e0e0e0;
+      animation: "fix-hover" 150ms;
+      opacity: 1;
 
-		.heart {
-			position: absolute;
-			top: -50px;
-			right: 15px;
-			height: 15px;
-			width: 15px;
-			z-index: 2;
-		}
-	}
+      @keyframes fix-hover {
+        0% {
+          opacity: 0;
+        }
+        99% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      h1,
+      h2,
+      p {
+        @include primary-font;
+        margin: 15px;
+      }
+
+      $scale: 0.15;
+      $arrowHeight: 238px * $scale;
+      $arrowWidth: 126px * $scale;
+      .prev-arrow,
+      .next-arrow {
+        z-index: 2;
+        width: $arrowWidth;
+        height: $arrowHeight;
+      }
+      .prev-arrow {
+        left: 20px;
+      }
+      .next-arrow {
+        right: 20px;
+      }
+    }
+
+    &:hover .hoverPopup {
+      display: block;
+    }
+
+    .heart {
+      position: absolute;
+      top: -50px;
+      right: 15px;
+      height: 15px;
+      width: 15px;
+    }
+  }
 }

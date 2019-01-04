@@ -7,20 +7,28 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "firebase": "^5.6.0",
+    "google-maps-react": "^2.0.2",
     "http-proxy-middleware": "^0.19.1",
+    "jest": "^23.6.0",
     "massive": "^5.6.0",
     "node-sass": "^4.10.0",
+    "nodemailer": "^4.7.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "react-slick": "^0.23.2",
     "react-stripe-checkout": "^2.6.3",
     "reset-css": "^4.0.1",
     "sass": "^1.15.1",
+    "slick-carousel": "^1.8.1",
     "stripe": "^6.17.0"
   },
   "scripts": {
@@ -37,5 +45,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
 }

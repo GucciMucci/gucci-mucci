@@ -1,0 +1,88 @@
+@import "../../sass/main.scss";
+.hover-bag {
+  width: 300px;
+  button {
+    margin: 4px;
+    align-self: center;
+  }
+}
+.bag-bottom {
+  width: 280px;
+  padding: 10px 6px 0;
+}
+.bag-product-img-2 {
+  width: 120px;
+}
+.red {
+  display: none;
+}
+.btn-link {
+  margin: 0px 0px !important;
+}
+.hover-bag-item {
+  display: flex;
+  align-items: center;
+  border-bottom: $border;
+  height: 150px;
+  font-size: 13px;
+  h3 {
+    margin: 10px;
+    line-height: 6px;
+  }
+  span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &:hover {
+    background: #f2eeec;
+    .red {
+      display: block;
+    }
+    .white {
+      display: none;
+    }
+  }
+}
+
+.hover-bag-title {
+  width: 100%;
+  margin: 10px 0 0;
+  border-bottom: $border;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.empty-bag-fav {
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  color: $light-text;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  border-top: $border;
+  border-bottom: $border;
+  width: 280px;
+  .money {
+    font-size: 30px;
+  }
+}
+
+.show-products {
+  overflow-y: auto;
+  max-height: 230px;
+}
+
+.product-details {
+  padding: 8px;
+}
+
+.cart-details-btn {
+  @include button-light;
+  width: 100%;
+}

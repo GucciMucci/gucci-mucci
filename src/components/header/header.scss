@@ -1,13 +1,181 @@
+@import "../../sass/main.scss";
+
 .header {
-	background-color: #191919;
-	min-height: 120px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-evenly;
-	font-size: calc(10px + 2vmin);
-	color: white;
+  @include fade-in(0.4s);
+  height: 120px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  font-size: calc(10px + 2vmin);
+  background: linear-gradient(to bottom, #191919, rgba(0, 0, 0, 0));
+  color: white;
+  z-index: 5;
+  transition: height 0.3s ease;
+
+  &:hover {
+    background: #191919;
+  }
+
+  .top {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    .top-child {
+      flex: 1;
+    }
+    .left {
+      display: flex;
+      // align-items: center;
+      p {
+        @include primary-font;
+        font-weight: 100;
+        font-size: 10pt;
+        margin: 0 15px;
+      }
+    }
+    .right {
+      display: flex;
+      justify-content: flex-end;
+      $size: 15px;
+      .account {
+        height: $size;
+        display: flex;
+      }
+      .heart {
+        height: $size;
+        width: $size;
+      }
+      .search {
+        height: $size * 2;
+        width: $size * 2;
+        position: relative;
+        top: -10px;
+        margin: 0 10px;
+      }
+      a {
+        font-size: 10pt;
+        display: inline;
+        margin: 0 15px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  nav {
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    font-size: 12pt;
+    text-transform: uppercase;
+    a {
+      margin: 0 20px;
+      @include primary-font;
+      font-size: 10pt;
+      font-weight: normal;
+    }
+    .bottom {
+      $slideHeight: 43px;
+      width: calc(100vw - 30px);
+      position: absolute;
+      top: 30px;
+      height: $slideHeight;
+      background: rgba(255, 255, 255, 0.7);
+      z-index: 0;
+      animation: slideDown 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: hidden;
+      @keyframes slideDown {
+        0% {
+          height: 0px;
+        }
+        100% {
+          height: $slideHeight;
+        }
+      }
+      a {
+        color: black;
+        margin-bottom: 15px;
+        &:visited {
+          color: black;
+        }
+      }
+    }
+  }
 }
 
-.bag-link {
+.black {
+  background: #191919;
+}
+
+.gray {
+  background: transparent;
+  img {
+    filter: invert(1);
+  }
+  .heart {
+    filter: invert(1);
+  }
+  * {
+    color: black;
+    &:visited {
+      color: black;
+    }
+  }
+  &:hover {
+    img {
+      filter: invert(0);
+    }
+    .heart {
+      filter: invert(0);
+    }
+    a,
+    p {
+      color: white;
+      &:visited {
+        color: white;
+      }
+    }
+  }
+}
+
+.clear {
+  background: transparent;
+}
+.logo {
+  img {
+    height: 27px;
+    position: relative;
+    top: -30px;
+  }
+}
+
+.smaller {
+  background: #191919;
+  height: 60px;
+  .logo {
+    display: none;
+  }
+}
+
+.blacker {
+  background: #191919;
+  img {
+    filter: invert(0);
+  }
+  .heart {
+    filter: invert(0);
+  }
+  a,
+  p {
+    color: white;
+    &:visited {
+      color: white;
+    }
+  }
 }

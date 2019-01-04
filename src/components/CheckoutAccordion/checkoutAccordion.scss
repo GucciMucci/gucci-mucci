@@ -1,0 +1,39 @@
+@import "../../sass/main.scss";
+
+.accordion-box {
+  margin: 20px 0;
+  padding: 10px;
+  max-width: 400px;
+}
+
+.accordion-box label {
+  display: block;
+  margin: 2px 0;
+  padding: 10px;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+.accordion-box label:hover {
+  background: #888;
+}
+.accordion-box input {
+  display: none;
+}
+.accordion-contents {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: border-top 0.8s ease-out, padding-top 0.8s ease-out,
+    padding-bottom 0.8s ease-out, line-height 0.8s ease-out,
+    opacity 0.1s linear 0.1s, visibility 0.1s linear 0.1s;
+}
+.accordion-check:checked + .accordion-contents {
+  height: auto;
+  padding: 5px;
+  opacity: 1;
+  transition: border-top 1s ease-out, padding-top 1s ease-out,
+    padding-bottom all 600ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    line-height 1s ease-out, opacity 1s linear 1s, visibility 1s linear 1s;
+}

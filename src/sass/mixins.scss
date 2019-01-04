@@ -1,28 +1,43 @@
+@import "./variables.scss";
+@import url("https://use.typekit.net/xpe1lzm.css");
+@import url("https://fonts.googleapis.com/css?family=Cinzel");
+
 @mixin primary-font {
-  font-family: neuzeit-grotesk, sans-serif;
-  font-style: normal;
+  font-family: "futura-pt", sans-serif;
   font-weight: 300;
+  font-style: normal;
+}
+
+@mixin gucci-font {
+  font-family: Cinzel;
+  font-weight: 700;
 }
 
 @mixin background {
   background: $background;
-  margin: 15px;
-  height: 100vh;
+  margin: 135px 15px 0;
+
   width: unquote("-webkit-calc(100% - 30px)");
 }
 
 @mixin checkout-box {
-  width: 295px;
-  height: 502px;
+  min-width: 295px;
+  max-width: 295px;
+  min-height: 204px;
   background: white;
-  margin: 0 10px;
+  margin: 10px 10px;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 @mixin button {
   font-size: 14px;
   height: 40px;
   width: 220px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @mixin button-dark {
@@ -40,4 +55,16 @@
 @mixin heading {
   color: $light-text;
   text-align: left;
+}
+
+@mixin fade-in($time) {
+  animation: fadeIn $time;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
